@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>답십리교회 10년 성장 계획 인포그래픽</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background-color: #FEF9EF;
+            color: #374151; 
+        }
+        /* Chosen Palette: "Aqua & Coral" 
+           Primary: #227C9D (Deep Aqua)
+           Secondary: #17C3B2 (Medium Teal)
+           Accent1: #FFCB77 (Light Gold/Orange)
+           Accent2: #FE6D73 (Coral Red)
+           Background: #FEF9EF (Very Light Cream)
+        */
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 500px; /* Adjusted for better visual balance */
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px; /* Base height */
+            max-height: 350px; /* Max height */
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 320px; /* Slightly adjusted for md screens */
+                 max-width: 550px;
+            }
+        }
+        @media (min-width: 1024px) {
+            .chart-container {
+                height: 350px;
+                 max-width: 600px;
+            }
+        }
+
+        .timeline-container::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            top: 0;
+            height: 100%;
+            width: 4px;
+            background-color: #17C3B2; 
+            z-index: 0;
+        }
+        .timeline-item {
+            position: relative;
+            z-index: 1;
+        }
+        .timeline-item .timeline-content {
+            background-color: white;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            top: 1.25rem; 
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: #227C9D; 
+            border: 3px solid #FEF9EF; 
+            z-index: 2;
+        }
+        .timeline-item:nth-child(odd)::before {
+            left: -9px; 
+        }
+        .timeline-item:nth-child(even)::before {
+            right: -9px;
+        }
+         .timeline-item:nth-child(odd) .timeline-content {
+            margin-left: 30px;
+        }
+         .timeline-item:nth-child(even) .timeline-content {
+            margin-right: 30px;
+        }
+         @media (min-width: 768px) {
+            .timeline-container::before {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            .timeline-item {
+                width: calc(50% - 25px); 
+            }
+            .timeline-item::before {
+                top: 1.25rem;
+                left: 50%;
+                transform: translateX(-50%);
+                 margin-left: -10px; /* Adjust to center on the main line */
+            }
+             .timeline-item:nth-child(odd) {
+                align-self: flex-start;
+            }
+             .timeline-item:nth-child(even) {
+                align-self: flex-end;
+            }
+            .timeline-item:nth-child(odd)::before {
+                 left: auto;
+                 right: -30px; 
+            }
+            .timeline-item:nth-child(even)::before {
+                 left: -30px;
+                 right: auto;
+            }
+             .timeline-item:nth-child(odd) .timeline-content {
+                margin-left: 0;
+                text-align: left;
+            }
+             .timeline-item:nth-child(even) .timeline-content {
+                margin-right: 0;
+                text-align: right; 
+            }
+         }
+        .strategy-card {
+            border-left: 4px solid #17C3B2;
+        }
+    </style>
+</head>
+<body>
+    <header class="bg-[#227C9D] text-white text-center py-10 px-4 shadow-lg">
+        <h1 class="text-4xl md:text-5xl font-extrabold mb-3 leading-tight">답십리교회 10년 성장 로드맵</h1>
+        <p class="text-xl md:text-2xl font-light">"열심히 일하는 일꾼의 숫자가 많은 교회"를 향한 여정</p>
+    </header>
+
+    <main class="container mx-auto p-4 md:p-8">
+
+        <section id="intro" class="my-12">
+            <div class="bg-white rounded-lg shadow-xl p-6 md:p-8">
+                <h2 class="text-3xl font-bold text-[#227C9D] mb-4 text-center">새로운 10년, 새로운 도약</h2>
+                <p class="text-gray-700 leading-relaxed text-center max-w-3xl mx-auto">
+                    제칠일안식일예수재림교회 답십리교회는 지난 시간 동안 하나님의 은혜 안에서 성장해왔습니다. 이제 우리는 다음 10년을 바라보며, 더욱 역동적이고 건강한 교회 공동체로 발돋움하고자 합니다. 본 인포그래픽은 답십리교회의 현재를 진단하고, 미래 비전을 공유하며, 그 비전을 현실로 만들어갈 구체적인 성장 전략과 로드맵을 제시합니다. "열심히 일하는 일꾼의 숫자가 많은 교회"라는 핵심 비전 아래, 모든 성도가 함께 참여하고 성장하는 교회를 꿈꿉니다.
+                </p>
+            </div>
+        </section>
+
+        <section id="status" class="mb-16">
+            <h2 class="text-3xl font-bold text-center mb-2 text-[#227C9D]">우리의 현재 모습: 현황 분석</h2>
+            <p class="text-center text-gray-600 max-w-3xl mx-auto mb-10">데이터를 통해 답십리교회의 현재를 진단합니다. 우리의 강점을 발견하고, 개선이 필요한 영역을 파악하여 미래 성장의 발판을 마련합니다.</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+                <div class="bg-white rounded-lg shadow-xl p-6 flex flex-col items-center">
+                    <h3 class="text-xl font-semibold text-gray-700 mb-4 text-center">성도 연령 분포 (총 141명)</h3>
+                    <div class="chart-container">
+                        <canvas id="ageDistributionChart"></canvas>
+                    </div>
+                    <p class="text-sm text-gray-600 mt-4 text-center">2024년 기준, 답십리교회는 총 141명의 성도로 구성되어 있으며, 20대 청년층(52명, 약 37%)이 가장 큰 비중을 차지하고 있습니다. 이는 청년 사역의 높은 잠재력과 중요성을 보여주며, 동시에 모든 세대가 조화롭게 성장하고 참여할 수 있는 환경 조성이 필요함을 시사합니다.</p>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-xl p-6 flex flex-col justify-around">
+                     <h3 class="text-xl font-semibold text-gray-700 mb-6 text-center">교회 주요 지표</h3>
+                     <div class="space-y-5">
+                        <div class="text-center">
+                            <p class="text-4xl md:text-5xl font-extrabold text-[#17C3B2]">약 50명</p>
+                            <p class="text-gray-600 font-medium">안식일 대예배 평균 출석</p>
+                        </div>
+                        <div class="text-center">
+                            <p class="text-3xl md:text-4xl font-extrabold text-[#FFCB77]">8명</p>
+                            <p class="text-gray-600 font-medium">2023년 침례자 수</p>
+                        </div>
+                        <div class="text-center">
+                            <p class="text-3xl md:text-4xl font-extrabold text-[#FE6D73]">1.35억 원</p>
+                            <p class="text-gray-600 font-medium">최근 연간 십일금</p>
+                        </div>
+                     </div>
+                      <p class="text-sm text-gray-600 mt-6 text-center">안정적인 재정과 꾸준한 새 신자 유입은 교회의 성장 동력입니다. 예배 출석 인원(안식일학교 약 70-80명)과 실제 사역 참여율을 높이는 것이 향후 중요한 과제입니다. 재정은 필요에 따라 유연하게 집행되며, "필요하면 생긴다"는 믿음으로 운영되고 있습니다.</p>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-xl p-6 md:col-span-2 lg:col-span-1">
+                    <h3 class="text-xl font-semibold text-gray-700 mb-4 text-center">강점 및 개선점 (SWOT 요약)</h3>
+                    <div class="grid grid-cols-1 gap-6">
+                        <div>
+                            <h4 class="font-semibold text-lg text-green-600 mb-2">🚀 핵심 강점</h4>
+                            <ul class="list-none space-y-2 text-sm">
+                                <li class="flex items-start"><span class="text-green-500 mr-2">✔</span><span class="text-gray-700">목회자의 강력한 리더십과 비전 제시</span></li>
+                                <li class="flex items-start"><span class="text-green-500 mr-2">✔</span><span class="text-gray-700">긍정적이고 서로 지원하는 공동체 문화</span></li>
+                                <li class="flex items-start"><span class="text-green-500 mr-2">✔</span><span class="text-gray-700">청년 신뢰 및 즉각적 사역 투입 ("청년은 청년이 제일 잘한다")</span></li>
+                                <li class="flex items-start"><span class="text-green-500 mr-2">✔</span><span class="text-gray-700">온라인/미디어 채널(미라소 앱, 유튜브) 적극 활용</span></li>
+                                <li class="flex items-start"><span class="text-green-500 mr-2">✔</span><span class="text-gray-700">카페 '요한정', 게스트룸 등 공간의 유연한 활용</span></li>
+                            </ul>
+                        </div>
+                        <div>
+                             <h4 class="font-semibold text-lg text-red-500 mb-2">🚧 개선 필요 영역</h4>
+                            <ul class="list-none space-y-2 text-sm">
+                                <li class="flex items-start"><span class="text-red-400 mr-2">❗</span><span class="text-gray-700">전통적 심방/방문 사역의 현대적 한계 (청년층 거부감)</span></li>
+                                <li class="flex items-start"><span class="text-red-400 mr-2">❗</span><span class="text-gray-700">교회 건축/리모델링의 비효율성 (본당-식당-주차장 비율)</span></li>
+                                <li class="flex items-start"><span class="text-red-400 mr-2">❗</span><span class="text-gray-700">청년층 "이동 사다리" 단절 및 수평 이동의 어려움</span></li>
+                                <li class="flex items-start"><span class="text-red-400 mr-2">❗</span><span class="text-gray-700">예배 속도감 및 초신자 집중도 개선 필요</span></li>
+                                <li class="flex items-start"><span class="text-red-400 mr-2">❗</span><span class="text-gray-700">교통 접근성 불편 (버스 2회 환승)</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                     <p class="text-sm text-gray-600 mt-6 text-center">이러한 강점과 약점 분석은 미래 전략 수립의 기초가 됩니다. 강점은 극대화하고 약점은 보완하여 지속 가능한 성장을 이끌어낼 것입니다.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="vision" class="my-16">
+            <h2 class="text-3xl font-bold text-center mb-2 text-[#227C9D]">우리의 비전과 10년 목표</h2>
+            <p class="text-center text-gray-600 max-w-3xl mx-auto mb-10">"열심히 일하는 일꾼의 숫자가 많은 교회"라는 비전 아래, 우리는 구체적인 양적, 질적 목표를 설정하고 함께 나아갑니다. 이는 성도 개개인을 양육하고 역량을 키워 사역에 동참시키는 목양 중심 교회를 지향합니다.</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 items-stretch">
+                <div class="bg-white rounded-lg shadow-xl p-6 flex flex-col">
+                    <h3 class="text-xl font-semibold text-gray-700 mb-4 text-center">10년 후, 출석 교인 성장 목표</h3>
+                     <div class="chart-container flex-grow">
+                        <canvas id="growthProjectionChart"></canvas>
+                    </div>
+                    <p class="text-sm text-gray-600 mt-4 text-center">현재 안식일학교 기준 약 70-80명 수준의 출석 교인을 10년 안에 200명으로 성장시키는 것을 목표로 합니다. 이는 단순한 숫자 증가를 넘어, 건강하고 활력 넘치는 공동체의 확장을 의미하며, 각 성도가 사역의 주체가 되는 질적 성장을 동반할 것입니다.</p>
+                </div>
+                <div class="flex flex-col space-y-6">
+                    <div class="bg-white rounded-lg shadow-xl p-6 text-center">
+                        <h3 class="text-xl font-semibold text-gray-700 mb-3">주요 양적 목표 (10년)</h3>
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                            <div>
+                                <p class="text-4xl font-extrabold text-[#227C9D]">200<span class="text-2xl">명</span></p>
+                                <p class="font-medium text-gray-600">평균 출석 교인</p>
+                            </div>
+                            <div>
+                                <p class="text-4xl font-extrabold text-[#17C3B2]">100<span class="text-2xl">명</span></p>
+                                <p class="font-medium text-gray-600">사역 투입 일꾼</p>
+                            </div>
+                            <div>
+                                <p class="text-4xl font-extrabold text-[#FFCB77]">10<span class="text-2xl">개 이상</span></p>
+                                <p class="font-medium text-gray-600">활성화 소그룹</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-xl p-6 flex-grow">
+                         <h3 class="text-xl font-semibold text-gray-700 mb-3 text-center">핵심 질적 목표 (10년)</h3>
+                         <ul class="text-gray-700 space-y-2 text-sm">
+                             <li class="flex items-start"><span class="text-[#227C9D] mr-2 font-bold">●</span><div><strong class="font-semibold">이동 사다리 회복:</strong> 중고등부부터 3040까지 생애 주기별 신앙 여정 지원, 교회 이탈 방지 및 안정적 정착 유도.</div></li>
+                             <li class="flex items-start"><span class="text-[#17C3B2] mr-2 font-bold">●</span><div><strong class="font-semibold">잃은 양 회복:</strong> 교회를 떠나거나 방황하는 청년들을 다시 공동체로 이끌고, 사역의 핵심 일꾼으로 양성.</div></li>
+                             <li class="flex items-start"><span class="text-[#FFCB77] mr-2 font-bold">●</span><div><strong class="font-semibold">일꾼 공동체 형성:</strong> 모든 성도가 자신의 은사와 재능을 발견하고 교회 사역에 적극 참여하는 활력 넘치는 공동체 구축.</div></li>
+                         </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="strategy" class="my-16">
+            <h2 class="text-3xl font-bold text-center mb-2 text-[#227C9D]">5대 핵심 성장 전략</h2>
+            <p class="text-center text-gray-600 max-w-3xl mx-auto mb-10">비전 달성을 위해 다음 5가지 핵심 전략을 중심으로 모든 사역을 집중하고 실행합니다. 각 전략은 상호 유기적으로 연결되어 시너지를 창출하며, 답십리교회의 강점을 극대화하고 약점을 보완하는 방향으로 설정되었습니다.</p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="bg-white rounded-lg shadow-xl p-6 strategy-card">
+                    <div class="flex items-center mb-3">
+                        <span class="text-3xl mr-3">🐑</span>
+                        <h3 class="text-xl font-semibold text-gray-800">"잃은 양" 청년 회복</h3>
+                    </div>
+                    <p class="text-sm text-gray-600 leading-relaxed">20대 후반 ~ 30대 청년 중 교회를 떠났거나 어려움을 겪는 이들을 대상으로 온라인 채널(미라소, 유튜브) 및 자연스러운 오프라인 만남(식사, 스포츠, 소그룹)을 통해 편안하고 수용적인 분위기 속에서 관계를 형성하고 교회로 다시 인도합니다. 이들은 잠재적 핵심 일꾼입니다.</p>
+                </div>
+                <div class="bg-white rounded-lg shadow-xl p-6 strategy-card">
+                    <div class="flex items-center mb-3">
+                        <span class="text-3xl mr-3">🪜</span>
+                        <h3 class="text-xl font-semibold text-gray-800">"이동 사다리" 구축</h3>
+                    </div>
+                    <p class="text-sm text-gray-600 leading-relaxed">중고등부-대학-직장-3040으로 이어지는 생애 주기별 신앙 궤도 이탈을 방지합니다. 새로운 성도의 재능을 즉시 파악하여 사역팀에 배치하고, 작은 성공 경험을 제공하며, 리더십 기회를 확대합니다. 목회자는 청년 리더를 신뢰하고 지원합니다.</p>
+                </div>
+                <div class="bg-white rounded-lg shadow-xl p-6 strategy-card">
+                     <div class="flex items-center mb-3">
+                        <span class="text-3xl mr-3">🏠</span>
+                        <h3 class="text-xl font-semibold text-gray-800">공간의 선교적 활용</h3>
+                    </div>
+                    <p class="text-sm text-gray-600 leading-relaxed">교회 공간을 예배만을 위한 곳이 아닌, 지역 주민과 성도 모두에게 매력적인 다목적 공간으로 변모시킵니다. 식당 공간 확장 및 다목적화, 카페 '요한정' 및 게스트룸 활성화, 1층 외부 접촉점 마련 등 유연한 공간 활용을 추구합니다.</p>
+                </div>
+                <div class="bg-white rounded-lg shadow-xl p-6 strategy-card">
+                    <div class="flex items-center mb-3">
+                        <span class="text-3xl mr-3">🎶</span>
+                        <h3 class="text-xl font-semibold text-gray-800">예배의 생명력 향상</h3>
+                    </div>
+                    <p class="text-sm text-gray-600 leading-relaxed">특히 젊은 세대의 예배 집중도와 참여도를 높이기 위해 예배 순서 및 진행 템포를 조절합니다. 설교와 각 순서의 길이를 효율화하고, 찬양팀의 역할을 강화하며, 다양한 연령층의 예배 순서 참여 기회를 확대하여 활력 넘치는 예배를 만듭니다.</p>
+                </div>
+                <div class="bg-white rounded-lg shadow-xl p-6 strategy-card">
+                    <div class="flex items-center mb-3">
+                        <span class="text-3xl mr-3">🤝</span>
+                        <h3 class="text-xl font-semibold text-gray-800">유연·긍정 문화 정착</h3>
+                    </div>
+                    <p class="text-sm text-gray-600 leading-relaxed">문제점보다는 강점과 긍정적인 면에 집중합니다. "할 수 있는 작은 일"부터 시작하여 성과를 만들고, 필요 중심의 유연한 재정 집행 및 자원 활용, 빠른 의사결정으로 사역을 지원합니다. 목회자는 긍정적 비전을 제시하며 공동체 분위기를 선도합니다.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="roadmap" class="my-16">
+            <h2 class="text-3xl font-bold text-center mb-2 text-[#227C9D]">10년 여정: 단계별 실행 로드맵</h2>
+            <p class="text-center text-gray-600 max-w-3xl mx-auto mb-10">성장 목표는 체계적인 단계를 통해 달성됩니다. 단기, 중기, 장기 계획을 통해 꾸준히 전진하며, 각 단계의 성과를 바탕으로 다음 단계로 나아갑니다.</p>
+            <div class="relative timeline-container flex flex-col items-center w-full max-w-4xl mx-auto p-4">
+                <div class="timeline-item w-full md:w-auto mb-8 flex md:justify-start">
+                    <div class="timeline-content md:w-2/5 rounded-lg shadow-xl p-4">
+                        <h3 class="text-lg font-semibold text-[#227C9D]">1-3년차: 기반 구축 및 활성화 (2025-2027)</h3>
+                        <ul class="list-disc list-inside text-gray-700 space-y-1 text-sm mt-2">
+                            <li>잃은 양 청년 대상 온라인 Outreach 및 접촉 프로그램 시작</li>
+                            <li>카페 '요한정' 및 게스트룸 운영 시스템 안정화 및 활성화</li>
+                            <li>핵심 사역팀(청년회, 공간활용팀 등) 재정비, 소그룹 활성화 기반 마련</li>
+                            <li>교회 현황 심층 분석 (NCD 조사 등) 및 온라인 소통 채널 강화</li>
+                        </ul>
+                    </div>
+                </div>
+                 <div class="timeline-item w-full md:w-auto mb-8 flex md:justify-end">
+                    <div class="timeline-content md:w-2/5 rounded-lg shadow-xl p-4">
+                        <h3 class="text-lg font-semibold text-[#227C9D]">4-6년차: 시스템 구축 및 심화 (2028-2030)</h3>
+                        <ul class="list-disc list-inside text-gray-700 space-y-1 text-sm mt-2">
+                            <li>"이동 사다리" 모델 개발 및 시범 운영 (연령/단계별 멘토링)</li>
+                            <li>잃은 양 회복을 위한 맞춤형 프로그램 개발 및 집중 캠페인 실행</li>
+                            <li>평신도 리더십 양성 프로그램 도입 (예: FAST) 및 예배 활성화</li>
+                            <li>유휴 공간 리모델링 또는 다목적 활용 방안 실행 (1층/외부 공간 개선)</li>
+                        </ul>
+                    </div>
+                </div>
+                 <div class="timeline-item w-full md:w-auto mb-8 flex md:justify-start">
+                    <div class="timeline-content md:w-2/5 rounded-lg shadow-xl p-4">
+                        <h3 class="text-lg font-semibold text-[#227C9D]">7-10년차: 성장 및 영향력 확대 (2031-2034)</h3>
+                         <ul class="list-disc list-inside text-gray-700 space-y-1 text-sm mt-2">
+                            <li>양적/질적 성장 목표 달성 및 평가, 사역 모델 정착 및 안정화</li>
+                            <li>사역팀 확대 및 전문화, "이동 사다리" 모델 교회 전체 확산</li>
+                            <li>지역 사회 기여 확대 (나눔 봉사, 문화 프로그램 등)</li>
+                            <li>잠재적 분교 개척 또는 멀티사이트 활용 검토</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="effects" class="my-16">
+            <h2 class="text-3xl font-bold text-center mb-2 text-[#227C9D]">우리가 함께 만들 미래: 기대 효과</h2>
+             <p class="text-center text-gray-600 max-w-3xl mx-auto mb-10">10년간의 헌신과 노력을 통해 우리는 다음과 같은 건강하고 활력 넘치는 교회 공동체의 모습을 기대하며, 이는 단순한 희망을 넘어 구체적인 목표 달성을 통해 실현될 것입니다.</p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-white rounded-lg shadow-xl p-6 text-center hover:shadow-2xl transition-shadow duration-300">
+                    <div class="text-5xl mb-4 text-[#227C9D]">🌟</div>
+                    <h3 class="text-lg font-semibold text-gray-800 mb-2">활력 있는 공동체</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">청년층 유입 및 정착을 통해 교회에 새로운 활력이 넘치고, 모든 세대가 조화롭게 어우러지는 역동적인 공동체가 됩니다.</p>
+                </div>
+                 <div class="bg-white rounded-lg shadow-xl p-6 text-center hover:shadow-2xl transition-shadow duration-300">
+                    <div class="text-5xl mb-4 text-[#17C3B2]">💪</div>
+                    <h3 class="text-lg font-semibold text-gray-800 mb-2">개인 역량 강화</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">성도 개개인이 자신의 재능과 은사를 발견하고 사역에 적극 참여함으로써 만족도와 교회 헌신도가 향상되고, 영적 성장을 경험합니다.</p>
+                </div>
+                 <div class="bg-white rounded-lg shadow-xl p-6 text-center hover:shadow-2xl transition-shadow duration-300">
+                    <div class="text-5xl mb-4 text-[#FFCB77]">💖</div>
+                    <h3 class="text-lg font-semibold text-gray-800 mb-2">잃은 양 회복 및 사다리 구축</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">교회를 떠났던 이들이 다시 돌아와 공동체의 일원이 되고, 생애 주기별 신앙 연결이 강화되어 교회 이탈이 방지되며, 모두가 함께 성장합니다.</p>
+                </div>
+                 <div class="bg-white rounded-lg shadow-xl p-6 text-center hover:shadow-2xl transition-shadow duration-300">
+                    <div class="text-5xl mb-4 text-[#FE6D73]">🌍</div>
+                    <h3 class="text-lg font-semibold text-gray-800 mb-2">선교 역량 강화</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">교회 공간과 활동의 선교적 활용을 극대화하여 지역 사회에 선한 영향력을 확대하고, "열심히 일하는 일꾼이 많은 교회" 비전을 실현합니다.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-[#227C9D] text-white text-center py-10 px-4 mt-12">
+        <h2 class="text-2xl md:text-3xl font-bold mb-4">함께 꿈꾸고, 함께 이룹시다!</h2>
+        <p class="max-w-2xl mx-auto text-gray-200 leading-relaxed">
+            답십리교회 10년 성장 계획의 성공은 모든 성도님의 기도와 적극적인 참여에 달려있습니다. 
+            "할 수 있는 작은 일"부터 시작하여 "일꾼이 많은 교회"라는 아름다운 비전을 함께 만들어갑시다. 
+            이 여정에 하나님의 크신 축복이 함께 하시기를 기도합니다.
+        </p>
+        <p class="text-sm text-gray-400 mt-6">제칠일안식일예수재림교회 답십리교회</p>
+    </footer>
+
+    <script>
+        const processLabel = (label, maxLength = 16) => {
+            if (typeof label !== 'string' || label.length <= maxLength) {
+                return label;
+            }
+            const words = label.split(' ');
+            let lines = [];
+            let currentLine = '';
+            for (const word of words) {
+                if ((currentLine + ' ' + word).trim().length > maxLength && currentLine.length > 0) {
+                    lines.push(currentLine.trim());
+                    currentLine = word;
+                } else {
+                    currentLine = (currentLine + ' ' + word).trim();
+                }
+            }
+            if (currentLine) {
+                lines.push(currentLine.trim());
+            }
+            return lines.length > 0 ? lines : label; 
+        };
+        
+        const tooltipTitleCallback = (tooltipItems) => {
+            if (!tooltipItems || tooltipItems.length === 0) return '';
+            const item = tooltipItems[0];
+            if (!item.chart || !item.chart.data || !item.chart.data.labels) return '';
+            let label = item.chart.data.labels[item.dataIndex];
+            if (Array.isArray(label)) {
+                return label.join(' ');
+            }
+            return label || '';
+        };
+
+        const chartDefaultFont = {
+            family: "'Noto Sans KR', sans-serif",
+            size: 12,
+        };
+        
+        const commonChartOptions = {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                tooltip: {
+                    callbacks: {
+                        title: tooltipTitleCallback
+                    },
+                    bodyFont: chartDefaultFont,
+                    titleFont: { ...chartDefaultFont, weight: 'bold' }
+                },
+                legend: {
+                    labels: {
+                        font: chartDefaultFont
+                    }
+                }
+            },
+            scales: {
+                x: {
+                    ticks: { font: chartDefaultFont },
+                    grid: { display: false }
+                },
+                y: {
+                    ticks: { font: chartDefaultFont },
+                    grid: { color: '#e5e7eb' } 
+                }
+            }
+        };
+
+        const ageData = {
+            labels: [
+                processLabel('20대 (52명)'), 
+                processLabel('30대 (21명)'), 
+                processLabel('40대 (23명)'), 
+                processLabel('50대 (12명)'), 
+                processLabel('60대 (13명)'), 
+                processLabel('70대 이상 (18명)'), 
+                processLabel('중고생 (2명)')
+            ],
+            datasets: [{
+                label: '성도 수',
+                data: [52, 21, 23, 12, 13, 18, 2],
+                backgroundColor: [
+                    '#17C3B2', // Medium Teal
+                    '#FFCB77', // Light Gold/Orange
+                    '#FE6D73', // Coral Red
+                    '#227C9D', // Deep Aqua
+                    '#F0A78E', // Lighter Coral variant
+                    '#7ED9D9', // Lighter Teal variant
+                    '#A3D2E0'  // Lighter Aqua variant
+                ],
+                borderColor: '#FEF9EF',
+                borderWidth: 2,
+                hoverOffset: 8
+            }]
+        };
+
+        const ageChartCtx = document.getElementById('ageDistributionChart').getContext('2d');
+        new Chart(ageChartCtx, {
+            type: 'doughnut',
+            data: ageData,
+            options: {
+                ...commonChartOptions,
+                cutout: '60%',
+                plugins: {
+                    ...commonChartOptions.plugins,
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            font: chartDefaultFont,
+                            boxWidth: 15,
+                            padding: 15
+                        }
+                    }
+                }
+            }
+        });
+
+        const growthData = {
+            labels: [processLabel('현재'), processLabel('3년 후'), processLabel('6년 후'), processLabel('10년 후')],
+            datasets: [{
+                label: '평균 출석 교인',
+                data: [75, 120, 160, 200], // 안식일학교 기준 70-80명 중 중간값 75로 시작
+                fill: true,
+                backgroundColor: 'rgba(34, 124, 157, 0.2)', // Deep Aqua transparent
+                borderColor: '#227C9D', // Deep Aqua
+                tension: 0.4,
+                pointBackgroundColor: '#227C9D',
+                pointBorderColor: '#FEF9EF',
+                pointHoverBackgroundColor: '#FEF9EF',
+                pointHoverBorderColor: '#227C9D',
+                pointRadius: 6,
+                pointHoverRadius: 8,
+                borderWidth: 2.5
+            }]
+        };
+
+        const growthChartCtx = document.getElementById('growthProjectionChart').getContext('2d');
+        new Chart(growthChartCtx, {
+            type: 'line',
+            data: growthData,
+            options: {
+                ...commonChartOptions,
+                scales: {
+                    ...commonChartOptions.scales,
+                    y: {
+                        ...commonChartOptions.scales.y,
+                        beginAtZero: false,
+                        min: 50,
+                        max: 220,
+                        title: { display: true, text: '출석 교인 수 (명)', font: chartDefaultFont }
+                    }
+                },
+                plugins: {
+                     ...commonChartOptions.plugins,
+                    legend: {
+                        display: true,
+                        position: 'top',
+                         labels: {
+                            font: chartDefaultFont
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
