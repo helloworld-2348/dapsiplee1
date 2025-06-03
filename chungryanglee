@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>청량리교회 10개년 성장 계획 인포그래픽</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background-color: #f0f4f8;
+        }
+        .hexagon {
+            position: relative;
+            width: 100px;
+            height: 57.74px;
+            background-color: #3A5A9A;
+            margin: 28.87px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+        .hexagon:before,
+        .hexagon:after {
+            content: "";
+            position: absolute;
+            width: 0;
+            border-left: 50px solid transparent;
+            border-right: 50px solid transparent;
+        }
+        .hexagon:before {
+            bottom: 100%;
+            border-bottom: 28.87px solid #3A5A9A;
+        }
+        .hexagon:after {
+            top: 100%;
+            width: 0;
+            border-top: 28.87px solid #3A5A9A;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+            max-height: 450px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 400px;
+            }
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-gray-800">
+
+    <div class="container mx-auto p-4 md:p-8">
+        
+        <header class="text-center mb-12">
+            <div class="flex justify-center items-center mb-4">
+                <div class="hexagon">2024년</div>
+            </div>
+            <h1 class="text-4xl md:text-5xl font-extrabold text-[#2A528A] mb-2">청량리교회 10개년 성장 계획</h1>
+            <p class="text-2xl font-bold text-[#3A5A9A]">R.E.S.T. PROGRAM</p>
+            <p class="mt-4 max-w-3xl mx-auto text-lg text-gray-600">
+                지속적인 발전과 성장을 위한 10개년 전략 계획: R.E.S.T.를 중심으로 지역사회와 함께 호흡하며 복음의 빛을 전합니다.
+            </p>
+        </header>
+
+        <main class="space-y-12">
+
+            <section id="relationship" class="p-6 md:p-8 bg-white rounded-2xl shadow-lg">
+                <h2 class="text-3xl font-bold mb-6 border-b-4 border-[#3A5A9A] pb-2">
+                    <span class="text-5xl font-black text-[#FFA500] mr-2">R</span>elationship (그리스도인 관계 형성) 🫂
+                </h2>
+                <p class="text-lg text-gray-600 mb-8">다음 세대를 세우고 건강한 신앙 공동체를 통해 성도 간의 유대를 강화합니다. 저출산·고령화 시대에 청년 세대의 교회 정착을 돕고, 건강한 관계 형성을 통해 결혼과 출산을 장려하는 프로그램을 마련합니다.</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                    <div class="bg-slate-100 p-6 rounded-lg">
+                        <h3 class="text-xl font-bold text-[#2A528A] mb-4">주요 추진 전략</h3>
+                        <ul class="space-y-3 text-gray-700 list-disc list-inside">
+                            <li>올바른 그리스도인 연애관 및 결혼관 교육 (강연, 세미나)</li>
+                            <li>취미 동호회 등 청년 교제 모임 활성화로 공동체 의식 강화</li>
+                            <li>지역 연합 찬양 집회 개최 (3년차 목표)</li>
+                            <li>서울 본부 지역 및 합회 연합 청년 행사 개최 (6, 10년차 목표)</li>
+                        </ul>
+                    </div>
+                    <div class="text-center p-6 bg-amber-50 rounded-lg">
+                        <h3 class="text-xl font-bold text-[#2A528A] mb-2">지역사회 현황 (2023년)</h3>
+                        <p class="text-lg text-gray-600">동대문구 합계출산율</p>
+                        <p class="text-7xl font-extrabold text-[#FFA500] my-2">0.55<span class="text-3xl">명</span></p>
+                        <p class="text-md text-gray-500">(전국 평균 0.72명 대비 현저히 낮은 수치)</p>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="elderly" class="p-6 md:p-8 bg-white rounded-2xl shadow-lg">
+                <h2 class="text-3xl font-bold mb-6 border-b-4 border-[#3A5A9A] pb-2">
+                    <span class="text-5xl font-black text-[#FFA500] mr-2">E</span>lderly Welfare (노년층 활동 지원) ❤️
+                </h2>
+                <p class="text-lg text-gray-600 mb-8">증가하는 고령 성도들의 활기찬 신앙생활과 교회 내 역할 증진을 위해, 교회 내에서 존중받으며 적극적으로 활동할 수 있는 맞춤형 지원을 확대합니다.</p>
+                <div class="grid grid-cols-1 lg:grid-cols-5 gap-8">
+                    <div class="lg:col-span-3">
+                        <h3 class="text-xl font-bold text-center text-[#2A528A] mb-2">고령 교인을 위한 교회 정책 필요성</h3>
+                        <p class="text-center text-gray-600 mb-4">교회 정책에 대해 '필요하다'고 응답한 비율 (%)</p>
+                        <div class="chart-container h-[450px] md:h-[400px]">
+                            <canvas id="elderlyNeedsChart"></canvas>
+                        </div>
+                    </div>
+                    <div class="lg:col-span-2 space-y-6">
+                        <div class="bg-slate-100 p-6 rounded-lg h-full flex flex-col justify-center">
+                            <h3 class="text-xl font-bold text-[#2A528A] mb-4">주요 추진 전략</h3>
+                            <ul class="space-y-3 text-gray-700 list-disc list-inside">
+                                <li>실버 지도자 양성을 통한 자체 프로그램 운영 기반 마련</li>
+                                <li>주중 고령 교인 대상 실용 프로그램 운영 (건강, 취미, 디지털 교육 등)</li>
+                                <li>시니어 전용 휴식 공간 마련으로 정서적 안정 및 교제 활성화</li>
+                                <li>7080부 개설 및 활동 지원</li>
+                            </ul>
+                        </div>
+                         <div class="bg-rose-50 p-6 rounded-lg text-center">
+                            <h3 class="text-lg font-bold text-gray-600 mb-2">고령 교인 인식 조사</h3>
+                            <p class="text-5xl font-extrabold text-red-500">38%</p>
+                            <p class="text-gray-700 mt-2">"젊은 세대 모임에 갈 때 눈치가 보인다"</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="social" class="p-6 md:p-8 bg-white rounded-2xl shadow-lg">
+                <h2 class="text-3xl font-bold mb-6 border-b-4 border-[#3A5A9A] pb-2">
+                    <span class="text-5xl font-black text-[#FFA500] mr-2">S</span>ocial Activity (사회 소통 및 연계 확장) 🌐
+                </h2>
+                <p class="text-lg text-gray-600 mb-8">교회의 문턱을 낮추고 지역사회와 적극적으로 소통합니다. 현대인의 필요를 채우는 쉼과 회복의 공간을 제공하여 교회의 사회적 책임을 다합니다.</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                    <div class="bg-slate-100 p-6 rounded-lg">
+                        <h3 class="text-xl font-bold text-[#2A528A] mb-4">지역사회 개방 및 소통 전략</h3>
+                        <ul class="space-y-3 text-gray-700 list-disc list-inside">
+                            <li>'마음 챙기기' 트렌드에 맞춘 쉼과 힐링 프로그램 운영 (독서, 명상 모임)</li>
+                            <li>다양한 소모임 및 활동을 위한 교회 공간 적극 제공</li>
+                            <li>교회에 대한 친근한 이미지 구축 및 접근성 강화</li>
+                            <li>지역사회 주민들로부터 '휴식과 쉼의 거점'으로 인식</li>
+                        </ul>
+                    </div>
+                    <div class="text-center p-6 bg-sky-50 rounded-lg">
+                        <h3 class="text-xl font-bold text-[#2A528A] mb-2">포스트 코로나 시대의 휴식</h3>
+                         <p class="text-lg text-gray-600">휴식을 위해 선택하는 활동</p>
+                        <p class="text-7xl font-extrabold text-[#3A5A9A] my-2">25%</p>
+                        <p class="text-md text-gray-700">"아무것도 안 하기"</p>
+                        <p class="text-sm text-gray-500">(2023 KTV 국민방송)</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="testify" class="p-6 md:p-8 bg-white rounded-2xl shadow-lg">
+                <h2 class="text-3xl font-bold mb-6 border-b-4 border-[#3A5A9A] pb-2">
+                    <span class="text-5xl font-black text-[#FFA500] mr-2">T</span>estify to the Gospel (복음의 증거) ✨
+                </h2>
+                <p class="text-lg text-gray-600 mb-8">모든 활동을 통해 자연스럽게 복음을 전하고, 신앙 안에서 성장하는 제자들을 양육합니다. R.E.S.T.의 모든 과정을 통해 그리스도의 사랑을 실천하며 더 많은 이들을 신앙으로 인도합니다.</p>
+                
+                <h3 class="text-2xl font-bold text-center text-[#2A528A] mb-4">10개년 성장 목표</h3>
+                <div class="chart-container h-[400px]">
+                    <canvas id="growthChart"></canvas>
+                </div>
+
+                <div class="mt-12 overflow-x-auto">
+                    <h3 class="text-2xl font-bold text-center text-[#2A528A] mb-4">10개년 성장 계획 로드맵</h3>
+                    <table class="w-full min-w-[800px] text-sm text-left text-gray-600">
+                        <thead class="text-xs text-white uppercase bg-[#3A5A9A]">
+                            <tr>
+                                <th scope="col" class="px-6 py-3 rounded-tl-lg">목표 시점</th>
+                                <th scope="col" class="px-6 py-3">R (관계 형성)</th>
+                                <th scope="col" class="px-6 py-3">E (노년층 지원)</th>
+                                <th scope="col" class="px-6 py-3">S (사회 소통)</th>
+                                <th scope="col" class="px-6 py-3 rounded-tr-lg">T (복음 증거)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="bg-white border-b hover:bg-slate-50">
+                                <th scope="row" class="px-6 py-4 font-bold text-[#2A528A] whitespace-nowrap">3년차 목표</th>
+                                <td class="px-6 py-4">서울본부지역 청년 연합 찬양 집회 개최</td>
+                                <td class="px-6 py-4">노년 교인 50% 이상 주중 소모임 참여</td>
+                                <td class="px-6 py-4">청·장년 취미 기반 소모임 3개 개설</td>
+                                <td class="px-6 py-4">제자훈련 누적 5명, 출석 교인 300명</td>
+                            </tr>
+                            <tr class="bg-slate-50 border-b hover:bg-gray-100">
+                                <th scope="row" class="px-6 py-4 font-bold text-[#2A528A] whitespace-nowrap">6년차 목표</th>
+                                <td class="px-6 py-4">서울본부지역(27개 교회) 연합 청년 행사 개최</td>
+                                <td class="px-6 py-4">주중 소모임 참여 비교인 비율 30% 달성</td>
+                                <td class="px-6 py-4">주중 소모임 참여 비교인 비율 30% 달성</td>
+                                <td class="px-6 py-4">제자훈련 누적 10명, 출석 교인 350명</td>
+                            </tr>
+                            <tr class="bg-white hover:bg-slate-50">
+                                <th scope="row" class="px-6 py-4 font-bold text-[#2A528A] whitespace-nowrap">10년차 목표</th>
+                                <td class="px-6 py-4">동중한합회 연합 청년 행사 개최</td>
+                                <td class="px-6 py-4">지역사회 복지 프로그램의 아이콘으로 성장</td>
+                                <td class="px-6 py-4">주중 소모임 10개 달성 및 힐링 거점화</td>
+                                <td class="px-6 py-4">제자훈련 누적 30명, 출석 교인 450명</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+
+        <footer class="text-center mt-12 py-6 border-t">
+            <p class="text-gray-600">청량리교회 | 10개년 성장 계획 (2024-2034)</p>
+        </footer>
+
+    </div>
+
+    <script>
+        const wrapLabel = (label) => {
+            const maxLen = 16;
+            if (label.length <= maxLen) return label;
+            
+            const words = label.split(' ');
+            let lines = [];
+            let currentLine = '';
+            
+            for(const word of words) {
+                if ((currentLine + ' ' + word).trim().length > maxLen) {
+                    lines.push(currentLine.trim());
+                    currentLine = word;
+                } else {
+                    currentLine = (currentLine + ' ' + word).trim();
+                }
+            }
+            if(currentLine) lines.push(currentLine.trim());
+            return lines;
+        };
+        
+        const tooltipTitleCallback = (tooltipItems) => {
+            const item = tooltipItems[0];
+            let label = item.chart.data.labels[item.dataIndex];
+            if (Array.isArray(label)) {
+                return label.join(' ');
+            }
+            return label;
+        };
+
+        const elderlyNeedsCtx = document.getElementById('elderlyNeedsChart').getContext('2d');
+        const elderlyNeedsChart = new Chart(elderlyNeedsCtx, {
+            type: 'bar',
+            data: {
+                labels: [
+                    wrapLabel('주중에 고령 교인을 위한 프로그램'),
+                    wrapLabel('기존의 노인대학과 차별화된 프로그램'),
+                    wrapLabel('교회에 고령 교인들을 위한 노인 전문 사역자'),
+                    wrapLabel('교회에 고령 교인들을 위한 소그룹'),
+                    wrapLabel('교회에 고령 교인을 위한 노인부서 편성'),
+                    wrapLabel('교회에 고령 교인을 위한 교구를 별도로 운영')
+                ],
+                datasets: [{
+                    label: '필요성 응답 비율 (%)',
+                    data: [73, 67, 63, 61, 53, 45],
+                    backgroundColor: [
+                        '#FFA500', 
+                        '#FFB74D', 
+                        '#FFC87A',
+                        '#FFD9A7',
+                        '#FFEAD4',
+                        '#FFF6F0'
+                    ],
+                    borderColor: '#FFFFFF',
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                indexAxis: 'y',
+                scales: {
+                    x: {
+                        beginAtZero: true,
+                        grid: {
+                            display: false
+                        },
+                        ticks: {
+                            font: {
+                                family: "'Noto Sans KR', sans-serif",
+                                weight: 'bold'
+                            }
+                        }
+                    },
+                    y: {
+                         grid: {
+                            display: false
+                        },
+                        ticks: {
+                            font: {
+                                family: "'Noto Sans KR', sans-serif",
+                                size: 12
+                            }
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    tooltip: {
+                        callbacks: {
+                            title: tooltipTitleCallback
+                        }
+                    }
+                }
+            }
+        });
+
+        const growthCtx = document.getElementById('growthChart').getContext('2d');
+        const growthChart = new Chart(growthCtx, {
+            type: 'line',
+            data: {
+                labels: ['0년차', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10년차'],
+                datasets: [
+                    {
+                        label: '출석 교인 수 (명)',
+                        data: [280, 288, 296, 300, 310, 325, 350, 370, 395, 420, 450],
+                        borderColor: '#3A5A9A',
+                        backgroundColor: 'rgba(58, 90, 154, 0.1)',
+                        fill: true,
+                        tension: 0.3,
+                        yAxisID: 'y'
+                    },
+                    {
+                        label: '제자훈련 이수자 (누적)',
+                        data: [0, 1, 3, 5, 6, 8, 10, 14, 20, 25, 30],
+                        borderColor: '#FFA500',
+                        backgroundColor: 'rgba(255, 165, 0, 0.1)',
+                        fill: true,
+                        tension: 0.3,
+                        yAxisID: 'y1'
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        type: 'linear',
+                        display: true,
+                        position: 'left',
+                        title: {
+                            display: true,
+                            text: '출석 교인 수',
+                            color: '#3A5A9A',
+                             font: { weight: 'bold' }
+                        },
+                         ticks: { color: '#3A5A9A' }
+                    },
+                    y1: {
+                        type: 'linear',
+                        display: true,
+                        position: 'right',
+                        title: {
+                            display: true,
+                            text: '제자훈련 이수자',
+                            color: '#FFA500',
+                             font: { weight: 'bold' }
+                        },
+                         ticks: { color: '#FFA500' },
+                        grid: {
+                            drawOnChartArea: false,
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    tooltip: {
+                         mode: 'index',
+                         intersect: false,
+                    }
+                }
+            }
+        });
+
+    </script>
+</body>
+</html>
