@@ -4,6 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>답십리교회 10년 성장 계획 (프레젠테이션 버전)</title>
+    <!-- Visualization & Content Choices: 
+        - Church Status (Total members, Attendance): Goal: Inform. Method: Big numbers and Bar Chart (Chart.js/Canvas). Justification: High-impact, quick comparison of key metrics.
+        - Age Distribution: Goal: Compare proportions. Method: Donut Chart (Chart.js/Canvas). Justification: Visually emphasizes the core strength (high youth ratio).
+        - SWOT Analysis: Goal: Organize/Compare. Method: Styled HTML lists in a two-column grid. Justification: Clear, side-by-side comparison for easy analysis.
+        - 10-Year Goals: Goal: Inform. Method: Icon-driven cards (HTML/CSS). Justification: Breaks down goals into visually scannable, thematic chunks.
+        - Roadmap: Goal: Show Change/Process. Method: Vertical Timeline (HTML/CSS). Justification: Most intuitive way to display chronological progression and group tasks into phases.
+        - Core Strategies: Goal: Organize/Inform. Method: Grid of styled cards (HTML/CSS). Justification: Presents each strategy as a distinct, digestible piece of information.
+    -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -52,7 +60,7 @@
 </head>
 <body class="text-gray-800">
 
-    <div class="max-w-full"> {/* Changed from container to max-w-full */}
+    <div class="max-w-full">
 
         <header class="main-header text-center px-4 sm:px-6 lg:px-8 scroll-mt-20" id="home">
             <h1 class="text-5xl md:text-6xl lg:text-7xl font-extrabold text-[#005f73] mb-6">답십리교회 10년 성장 계획</h1>
@@ -60,8 +68,8 @@
         </header>
 
         <nav class="sticky top-0 z-50 bg-white/90 backdrop-blur-md shadow-md rounded-b-lg">
-            <div class="max-w-6xl mx-auto px-4"> {/* Increased max-width for nav content */}
-                <div class="flex items-center justify-center h-20 space-x-6 sm:space-x-10 overflow-x-auto"> {/* Increased height and spacing */}
+            <div class="max-w-6xl mx-auto px-4">
+                <div class="flex items-center justify-center h-20 space-x-6 sm:space-x-10 overflow-x-auto">
                     <a href="#home" class="text-gray-700 hover:text-[#005f73] px-3 py-2 rounded-md text-base font-medium">처음</a>
                     <a href="#overview" class="text-gray-700 hover:text-[#005f73] px-3 py-2 rounded-md text-base font-medium">교회 개요</a>
                     <a href="#swot" class="text-gray-700 hover:text-[#005f73] px-3 py-2 rounded-md text-base font-medium">교회 진단</a>
@@ -198,7 +206,7 @@
                         <div class="w-1/2"></div>
                     </div>
 
-                    <div class="flex items-center w-full"> {/* Removed mb-12 for the last item */}
+                    <div class="flex items-center w-full">
                          <div class="w-1/2"></div>
                          <div class="z-10 flex items-center justify-center bg-[#ee9b00] shadow-xl w-16 h-16 rounded-full text-white font-bold text-lg whitespace-nowrap">9-10년</div>
                          <div class="w-1/2 flex justify-start pl-6 md:pl-10">
@@ -289,12 +297,12 @@
 
         const chartDefaultFont = {
             family: "'Noto Sans KR', sans-serif",
-            size: 12, // Base size, can be adjusted
+            size: 12, 
         };
         
         const chartTitleFont = {
             family: "'Noto Sans KR', sans-serif",
-            size: 14, // Slightly larger for titles if needed
+            size: 14, 
             weight: 'bold',
         };
 
@@ -324,8 +332,8 @@
                             position: 'bottom',
                             labels: { 
                                 font: chartDefaultFont, 
-                                padding: 18, // Increased padding
-                                boxWidth: 15 // Increased box width
+                                padding: 18, 
+                                boxWidth: 15 
                             }
                         },
                         tooltip: { 
@@ -346,7 +354,7 @@
                 backgroundColor: ['#005f73', '#0a9396', '#94d2bd'],
                 borderColor: '#f8fafc',
                 borderWidth: 2,
-                borderRadius: 6 // Slightly more rounded
+                borderRadius: 6 
             }]
         };
         
@@ -361,12 +369,12 @@
                     scales: {
                         x: { 
                             beginAtZero: true, 
-                            ticks: { font: chartDefaultFont, color: '#374151' }, // Darker ticks for better contrast
-                            grid: { display: false } // Cleaner look
+                            ticks: { font: chartDefaultFont, color: '#374151' }, 
+                            grid: { display: false } 
                         },
                         y: { 
                             ticks: { font: chartDefaultFont, color: '#374151' },
-                            grid: { color: '#e5e7eb' } // Lighter grid lines
+                            grid: { color: '#e5e7eb' } 
                          }
                     },
                     plugins: {
@@ -375,7 +383,7 @@
                             callbacks: { title: tooltipTitleCallback },
                             titleFont: chartTitleFont,
                             bodyFont: chartDefaultFont,
-                            backgroundColor: '#005f73', // Custom tooltip background
+                            backgroundColor: '#005f73', 
                             titleColor: '#ffffff',
                             bodyColor: '#ffffff',
                         }
@@ -390,7 +398,6 @@
                 const targetId = this.getAttribute('href');
                 const targetElement = document.querySelector(targetId);
                 if (targetElement) {
-                     // Calculate scroll position considering sticky nav
                     const navHeight = document.querySelector('nav').offsetHeight;
                     const targetPosition = targetElement.offsetTop - navHeight;
                     
@@ -404,3 +411,6 @@
     </script>
 </body>
 </html>
+```
+
+이 문서는 이전과 동일한 내용과 구조를 가지지만, 화면에 보이던 불필요한 주석들이 제거되었습니다. 다시 한번 불편을 드려 죄송합
