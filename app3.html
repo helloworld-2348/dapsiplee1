@@ -5,450 +5,281 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>답십리교회 10년 교회 성장 계획</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: 'Nanum Gothic', 'Inter', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f0f2f5; /* Light gray background for the page */
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            overflow-x: hidden;
+            font-family: 'Noto Sans KR', sans-serif;
+            background-color: #f8fafc; /* Light gray background */
         }
-        .presentation-container {
-            width: 100%;
-            max-width: 1280px; /* Max width for larger screens */
-            background-color: white;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-            border-radius: 12px;
-            overflow: hidden; /* Ensures slides don't overflow container */
+        .nav-link {
+            white-space: nowrap;
         }
-        .aspect-ratio-16-9 {
-            position: relative;
-            width: 100%;
-            padding-top: 56.25%; /* 16:9 Aspect Ratio (9 / 16 * 100) */
-            overflow: hidden;
-        }
-        .slide {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: white;
-            display: none; /* Hidden by default */
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 4% 7%; /* Responsive padding */
-            box-sizing: border-box;
-            text-align: center;
-            opacity: 0;
-            transition: opacity 0.7s ease-in-out;
-        }
-        .slide.active {
-            display: flex;
-            opacity: 1;
-        }
-        .slide-content {
-            max-width: 950px; /* Max content width within a slide */
-            width: 100%;
-        }
-        .slide h1 {
-            font-size: 2.8rem; /* Responsive font size */
-            font-weight: 800;
-            color: #1a3a6e; /* Dark blue for titles */
-            margin-bottom: 0.5rem;
-        }
-        .slide h2 {
-            font-size: 2rem; /* Responsive font size for subtitles/headings */
-            font-weight: 700;
-            color: #2c5282; /* Slightly lighter blue */
-            margin-bottom: 1.2rem;
-        }
-        .slide p, .slide li {
-            font-size: 1.05rem; /* Responsive font size for body text */
-            line-height: 1.7;
-            color: #4a5568; /* Dark gray for text */
-            text-align: left;
-            margin-bottom: 0.6rem;
-        }
-        .slide ul {
-            list-style-position: outside;
-            padding-left: 25px;
-            text-align: left;
-        }
-        .slide strong {
-            color: #2c5282;
-            font-weight: 700;
-        }
-
-        .slide-image-placeholder {
-            width: 100%;
-            max-width: 380px;
-            height: 213px; /* 16:9 for placeholder */
+        .image-placeholder {
             background-color: #e2e8f0; /* Light gray for placeholder */
-            border-radius: 8px;
+            border-radius: 0.5rem; /* 8px */
             display: flex;
             justify-content: center;
             align-items: center;
-            margin: 1.2rem auto;
-            font-size: 0.9rem;
-            color: #718096;
+            text-align: center;
+            color: #4b5563; /* Gray-600 */
+            font-style: italic;
+            width: 100%;
+            margin-top: 1.5rem; /* my-6 equivalent for top */
+            margin-bottom: 1.5rem; /* my-6 equivalent for bottom */
+            min-height: 200px; /* Default min height */
         }
-
-        /* Navigation and Progress */
-        .navigation-controls {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 18px 28px;
-            background-color: #2c3e50; /* Darker footer for controls */
-            border-bottom-left-radius: 12px;
-            border-bottom-right-radius: 12px;
-        }
-        .nav-button {
-            background-color: #3498db; /* Blue for buttons */
-            color: white;
-            border: none;
-            padding: 10px 22px;
-            font-size: 0.95rem;
-            font-weight: 600;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-        .nav-button:hover {
-            background-color: #2980b9; /* Darker blue on hover */
-        }
-        .nav-button:disabled {
-            background-color: #95a5a6; /* Gray for disabled buttons */
-            cursor: not-allowed;
-        }
-        .progress-bar-container {
-            flex-grow: 1;
-            height: 8px;
-            background-color: #7f8c8d; /* Gray for progress bar background */
-            border-radius: 5px;
-            margin: 0 18px;
-            overflow: hidden;
-        }
-        .progress-bar {
-            width: 0%;
-            height: 100%;
-            background-color: #3498db; /* Blue for progress fill */
-            border-radius: 5px;
-            transition: width 0.3s ease;
-        }
-        .slide-counter {
-            font-size: 0.95rem;
-            color: #ecf0f1; /* Light text for counter */
-        }
-
-        /* Specific styling for title slide */
-        .slide-1 h1 { font-size: 3.2rem; margin-bottom: 0.8rem; }
-        .slide-1 h2 { font-size: 1.7rem; color: #3498db; margin-bottom: 1rem; }
-        .slide-1 .sub-text { font-size: 1.2rem; color: #4a5568; margin-top:0.5rem;}
-
-
-        /* Smaller text for list items */
-        .slide ul li { margin-bottom: 0.8rem; }
-        .slide ol li { margin-bottom: 0.8rem; text-align: left; margin-left: 25px;}
-
-
-        /* Footer citation for Page 1 */
-        .slide-1 .source-footer {
-            position: absolute;
-            bottom: 30px; /* Adjust as needed */
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 0.8rem;
-            color: #718096;
-        }
-        .heading-philosophy {
-            margin-top: 1rem;
-            margin-bottom: 0.5rem;
-            text-align: left;
-            font-weight: bold;
-            font-size: 1.2rem; /* Adjusted for better hierarchy */
-            color: #2d3748; /* Darker gray for emphasis */
-        }
-
-
-        /* Responsive adjustments */
-        @media (max-width: 1024px) {
-            .slide h1 { font-size: 2.5rem; }
-            .slide h2 { font-size: 1.8rem; }
-            .slide p, .slide li { font-size: 1rem; }
-            .slide-image-placeholder { height: 180px; max-width: 320px;}
-        }
-        @media (max-width: 768px) {
-            .slide h1 { font-size: 2.2rem; }
-            .slide h2 { font-size: 1.6rem; }
-            .slide p, .slide li { font-size: 0.95rem; }
-            .slide-image-placeholder { height: 160px; max-width: 280px;}
-            .nav-button { padding: 9px 18px; font-size: 0.85rem;}
-            .navigation-controls { padding: 12px 18px; }
-        }
-        @media (max-width: 480px) {
-            .slide h1 { font-size: 1.8rem; }
-            .slide h2 { font-size: 1.4rem; }
-            .slide p, .slide li { font-size: 0.85rem; }
-            .slide-image-placeholder { height: 120px; max-width: 220px;}
-            .slide { padding: 6% 4%; }
-            .navigation-controls { flex-direction: column; gap: 8px; padding: 12px;}
-            .progress-bar-container { width: 100%; margin: 8px 0; }
+        @media (min-width: 768px) {
+            .image-placeholder {
+                min-height: 256px; /* h-64 */
+            }
         }
     </style>
 </head>
-<body>
+<body class="text-gray-800">
 
-    <div class="presentation-container">
-        <div class="aspect-ratio-16-9">
-            <section class="slide active slide-1">
-                <div class="slide-content">
-                    <h1>답십리교회 10년 교회 성장 계획</h1>
-                    <h2>(Dapsimni Church 10-Year Growth Plan)</h2>
-                    <p class="sub-text">함께 세워가는 미래: 2025-2034</p>
-                    <p class="sub-text" style="font-size: 1.1rem; color: #5a6578;">(Building the Future Together: 2025-2034)</p>
-                    <div class="slide-image-placeholder">환영하는 교회 또는 다양한 사람들 이미지</div>
-                    <p class="source-footer">출처: 답십리교회 10년 교회 성장 계획서 v3</p>
+    <div class="container mx-auto p-0 sm:p-0 lg:p-0"> {/* Adjusted padding for full-width feel of sections */}
+
+        <header id="title-slide" class="text-center py-16 md:py-24 px-4 bg-white shadow-lg">
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-[#005f73] mb-4">답십리교회 10년 교회 성장 계획</h1>
+            <p class="text-xl md:text-2xl text-[#0a9396] font-medium mb-8">함께 세워가는 미래: 2025-2034</p>
+            <div class="max-w-2xl mx-auto">
+                <div class="image-placeholder">
+                    Image Suggestion: A welcoming image of a church or diverse group of people.
                 </div>
-            </section>
-
-            <section class="slide">
-                <div class="slide-content">
-                    <h2>시작하며: 답십리교회의 내일을 그리다</h2>
-                    <p style="text-align:center; color: #5a6578; margin-bottom:1.5rem;">(Introduction: Envisioning Dapsimni Church's Tomorrow)</p>
-                    <ul>
-                        <li>본 계획은 제칠일안식일예수재림교회 동중한합회 답십리교회의 향후 10년 성장을 위한 로드맵입니다. </li>
-                        <li><strong>교회 기본 정보:</strong> 서울시 동대문구 답십리로 28길 38 </li>
-                        <li><strong>전체 등록 교인:</strong> 132명 </li>
-                        <li><strong>핵심:</strong> 청년층(20대 52명, 30대 24명) 비율이 높아 활력이 넘치는 교회 </li>
-                    </ul>
-                    <div class="slide-image-placeholder">길 또는 성장하는 식물의 추상적 이미지</div>
-                </div>
-            </section>
-
-            <section class="slide">
-                <div class="slide-content">
-                    <h2>우리의 가족: 성도 현황 및 예배</h2>
-                    <p style="text-align:center; color: #5a6578; margin-bottom:1.5rem;">(Our Family: Member Status & Worship)</p>
-                    <ul>
-                        <li><strong>재직 현황:</strong> 장로 9명, 남집사 16명, 여집사 31명 </li>
-                        <li><strong>예배 출석:</strong> 안식일학교 약 50명, 안식일 대예배 70-80명, 어린이 예배 별도 운영 </li>
-                        <li><strong>구도자 현황:</strong> 2023년 침례자 1-2명, 접촉/구도자 다수 (최대 40명 추정 '구원해야 할 대상') </li>
-                        <li><strong>재정:</strong> 정해진 예산서 없이 필요에 따라 운용, 믿음으로 채워지는 경험 (연 십일금 약 1.3억-1.5억) </li>
-                    </ul>
-                     <div class="slide-image-placeholder">예배나 교제 중인 다양한 사람들 이미지</div>
-                </div>
-            </section>
-
-            <section class="slide">
-                <div class="slide-content">
-                    <h2>강점: 우리가 가진 가능성</h2>
-                    <p style="text-align:center; color: #5a6578; margin-bottom:1.5rem;">(Our Strengths: The Potential We Hold)</p>
-                    <ul>
-                        <li><strong>높은 청년 비율:</strong> 교회 활력의 중심 </li>
-                        <li><strong>'잃은 양' 사역 집중:</strong> 떠난 청년들을 위한 실질적 도움 제공 잠재력 </li>
-                        <li><strong>명확한 사역 비전:</strong> 사람을 세우는 데 중점 ('잃은 양 회복', '은사 중심 사역', '일꾼 양성') </li>
-                        <li><strong>재정적 유연성 및 믿음:</strong> 필요할 때마다 채워지는 경험 </li>
-                        <li><strong>성도들의 적극적 참여:</strong> 청년 포함 다수의 사역 동참 </li>
-                    </ul>
-                    <div class="slide-image-placeholder">밝은 상승 추세 그래프 또는 함께 일하는 사람들</div>
-                </div>
-            </section>
-
-            <section class="slide">
-                <div class="slide-content">
-                    <h2>약점 및 개선점: 더 나은 교회를 향한 고민</h2>
-                    <p style="text-align:center; color: #5a6578; margin-bottom:1.5rem;">(Weaknesses & Areas for Improvement: Striving for a Better Church)</p>
-                    <ul>
-                        <li><strong>지리 및 교통의 불리함:</strong> 후미진 위치, 대중교통 불편 (강점으로 상쇄 노력) </li>
-                        <li><strong>공간 활용의 비효율성:</strong> 다목적 활용 어려움, 공간 낭비 (리모델링 계획) </li>
-                        <li><strong>교단 청년 사역 '사다리' 부재:</strong> 청년 이탈 문제 (답십리교회가 해결 기여 목표) </li>
-                        <li><strong>정형화된 예배와 느린 속도 (개선 중):</strong> 초신자 및 젊은 세대 고려 필요 (생동감 있는 예배 추구) </li>
-                        <li><strong>정형화된 제자 훈련 (개선 중):</strong> 현장 중심 성장 추구 </li>
-                    </ul>
-                    <div class="slide-image-placeholder">문제 해결 또는 빌딩 블록 이미지</div>
-                </div>
-            </section>
-
-            <section class="slide">
-                <div class="slide-content">
-                    <h2>비전과 철학: 우리가 나아갈 방향</h2>
-                    <p style="text-align:center; color: #5a6578; margin-bottom:1rem;">(Our Vision & Philosophy: The Direction We're Heading)</p>
-                    <p style="text-align:left;"><strong>핵심 비전:</strong> 잃은 양 회복, 은사 중심적 사역, 교회의 일꾼 양성</p>
-                    <p class="heading-philosophy">주요 사역 철학:</p>
-                    <ul>
-                        <li><strong>사람을 세우는 교회:</strong> '열심히 일하는 일꾼' 양성 (엡 4:12 기반) </li>
-                        <li><strong>재림교회 청년 '사다리' 회복:</strong> 청년들이 신앙생활을 지속하도록 지원 </li>
-                        <li><strong>사람의 재능을 꽃피우는 교회:</strong> 재능 발견 및 즉시 사역팀 배치 </li>
-                        <li><strong>선교적으로 공간을 활용하는 교회:</strong> 지역사회와 교인 필요 충족 공간 조성 </li>
-                    </ul>
-                    <div class="slide-image-placeholder">나침반, 등대, 또는 피어나는 꽃 이미지</div>
-                </div>
-            </section>
-
-            <section class="slide">
-                <div class="slide-content">
-                    <h2>10년 최종 목표: 우리가 함께 이룰 미래</h2>
-                    <p style="text-align:center; color: #5a6578; margin-bottom:1.5rem;">(Our Ultimate 10-Year Goals: The Future We Will Achieve Together)</p>
-                    <ol style="list-style-type: decimal;">
-                        <li><strong>청년 중심 사역 기반의 세대 통합 성장:</strong> 청년 주도, 전 세대 함께 성장하는 공동체 </li>
-                        <li><strong>세대별 맞춤형 사역과 리더십 육성:</strong> 자립적 사역 구조 완성 </li>
-                        <li><strong>지속 가능한 교회 운영 시스템 구축:</strong> 유연한 재정, 다목적 공간, 자발적 참여 기반 </li>
-                        <li><strong>선교적 사명을 실현하는 지역-글로벌 교회:</strong> 복음 확장과 재림신앙 회복 </li>
-                    </ol>
-                    <ul style="list-style-type: none; padding-left: 0; margin-top: 0.5rem;">
-                        <li><strong>전체 비전:</strong> 새 교회 개척, 교인 수 증가, 활성화된 소그룹 증가 </li>
-                        <li><strong>주기적 진단:</strong> NCD 진단 (5년 주기)으로 계획 재설정 </li>
-                    </ul>
-                    <div class="slide-image-placeholder">공동 성과 축하, 산 정상 이미지</div>
-                </div>
-            </section>
-
-            <section class="slide">
-                <div class="slide-content">
-                    <h2>성장 전략 1: 공간, 사람, 회복</h2>
-                    <p style="text-align:center; color: #5a6578; margin-bottom:1rem;">(Growth Strategies Part 1: Space, People, Restoration)</p>
-                    <p class="heading-philosophy">공간의 선교적 활용:</p>
-                    <ul class="mb-3">
-                        <li>다목적 공간 조성, 적절한 인테리어 </li>
-                        <li>1층 공간: 카페/도서관 등 지역 주민 개방 공간으로 리모델링 </li>
-                        <li>사람 중심 설계: 머무르고 관계 맺는 공간 우선 </li>
-                    </ul>
-                    <p class="heading-philosophy">사람 중심, 재능 기반 사역:</p>
-                    <ul>
-                        <li>'일꾼' 양성: 재능 발견 및 즉시 현장 투입 </li>
-                        <li>리더십: 사람을 동원하고 움직이는 능력 중시 </li>
-                        <li>청년 주도성 신뢰 및 지원 </li>
-                    </ul>
-                    <div class="slide-image-placeholder">청사진이 환영 공간으로 변하는 모습; 씨앗 심는 손</div>
-                </div>
-            </section>
-
-             <section class="slide">
-                <div class="slide-content">
-                    <h2>성장 전략 2: 연결, 예배, 긍정</h2>
-                    <p style="text-align:center; color: #5a6578; margin-bottom:1rem;">(Growth Strategies Part 2: Connection, Worship, Positivity)</p>
-                     <p class="heading-philosophy">'잃은 양' 회복과 '신앙의 사다리' 구축:</p>
-                    <ul class="mb-2">
-                        <li>가장 중요하고 효과적인 선교 방법 </li>
-                        <li>교회 떠난 청년들의 재정착 및 신앙 여정 지원 ('이동의 사다리') </li>
-                    </ul>
-                    <p class="heading-philosophy">소통과 관계 중심:</p>
-                    <ul class="mb-2">
-                        <li>디지털 매체(미라소, 유튜브) 활용 소통 </li>
-                        <li>사역팀 활동, '같이 식사합시다', 멘토링 등으로 관계 강화 </li>
-                    </ul>
-                    <p class="heading-philosophy">역동적이고 생명력 있는 예배:</p>
-                    <ul class="mb-2">
-                         <li>속도감 부여, 불필요 요소 축소, 풍성한 찬양 </li>
-                    </ul>
-                    <p class="heading-philosophy">긍정적 분위기 조성 및 강점 극대화:</p>
-                    <ul>
-                        <li>가진 강점 발견 및 극대화 </li>
-                        <li>'할 수 있는 작은 일'부터 시작, 작은 성공 축적 </li>
-                    </ul>
-                    <div class="slide-image-placeholder">네트워크 연결; 활기찬 예배 장면; 떠오르는 태양</div>
-                </div>
-            </section>
-
-            <section class="slide">
-                <div class="slide-content">
-                    <h2>결론: 함께 만들어갈 답십리교회의 빛나는 10년</h2>
-                    <p style="text-align:center; color: #5a6578; margin-bottom:1.5rem;">(Conclusion: Crafting Dapsimni Church's Bright Decade Together)</p>
-                    <ul>
-                        <li>본 계획은 '사람을 세우는' 교회를 통해 '열심히 일하는 일꾼'이 많은 교회를 건설하는 것을 목표로 합니다. </li>
-                        <li><strong>핵심 전략:</strong> 사람 키우기, '잃은 양' 회복, 공간의 선교적 활용, 소통 강화, 긍정적 실행 중심 문화 </li>
-                        <li><strong>궁극적 비전:</strong> 새로운 교회 개척 및 교단 내 긍정적 모델 제시 </li>
-                        <li class="italic mt-1">"우리가 더하기 법에 따라 작은 일에 충실하게 행할 것 같으면 하나님께서는 곱하기 법에 따라 우리를 위해 역사하실 것이다." </li>
-                        <li>작은 시작들이 모여 큰 결실을 맺을 것이라는 믿음으로 전진! </li>
-                    </ul>
-                     <p class="mt-4 text-center text-lg font-semibold text-blue-600">함께 이 미래를 만들어 갑시다!</p>
-                    <div class="slide-image-placeholder">밝은 수평선으로 이어지는 길 또는 앞을 바라보는 사람들</div>
-                </div>
-            </section>
-        </div>
-
-        <div class="navigation-controls">
-            <button id="prevBtn" class="nav-button">이전</button>
-            <div class="progress-bar-container">
-                <div id="progressBar" class="progress-bar"></div>
             </div>
-            <span id="slideCounter" class="slide-counter">1 / 10</span>
-            <button id="nextBtn" class="nav-button">다음</button>
-        </div>
+        </header>
+
+        <nav class="sticky top-0 z-50 bg-white/95 backdrop-blur-md shadow-md mb-12 rounded-b-lg">
+            <div class="max-w-5xl mx-auto px-2 sm:px-4">
+                <div class="flex items-center justify-center h-16 space-x-2 sm:space-x-4 overflow-x-auto">
+                    <a href="#title-slide" class="nav-link text-gray-600 hover:text-[#005f73] px-2 py-2 rounded-md text-xs sm:text-sm font-medium">교회 성장 계획</a>
+                    <a href="#introduction" class="nav-link text-gray-600 hover:text-[#005f73] px-2 py-2 rounded-md text-xs sm:text-sm font-medium">시작하며</a>
+                    <a href="#people-gatherings" class="nav-link text-gray-600 hover:text-[#005f73] px-2 py-2 rounded-md text-xs sm:text-sm font-medium">성도 현황</a>
+                    <a href="#strengths" class="nav-link text-gray-600 hover:text-[#005f73] px-2 py-2 rounded-md text-xs sm:text-sm font-medium">강점</a>
+                    <a href="#challenges" class="nav-link text-gray-600 hover:text-[#005f73] px-2 py-2 rounded-md text-xs sm:text-sm font-medium">약점</a>
+                    <a href="#vision-philosophy" class="nav-link text-gray-600 hover:text-[#005f73] px-2 py-2 rounded-md text-xs sm:text-sm font-medium">비전과 철학</a>
+                    <a href="#grand-goals" class="nav-link text-gray-600 hover:text-[#005f73] px-2 py-2 rounded-md text-xs sm:text-sm font-medium">10년 목표</a>
+                    <a href="#strategies-part1" class="nav-link text-gray-600 hover:text-[#005f73] px-2 py-2 rounded-md text-xs sm:text-sm font-medium">전략 1</a>
+                    <a href="#strategies-part2" class="nav-link text-gray-600 hover:text-[#005f73] px-2 py-2 rounded-md text-xs sm:text-sm font-medium">전략 2</a>
+                    <a href="#conclusion" class="nav-link text-gray-600 hover:text-[#005f73] px-2 py-2 rounded-md text-xs sm:text-sm font-medium">결론</a>
+                </div>
+            </div>
+        </nav>
+
+        <section id="introduction" class="py-12 md:py-20 px-4 scroll-mt-20">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-3xl font-bold text-center mb-6 text-[#005f73]">시작하며: 답십리교회의 내일을 그리다</h2>
+                <div class="bg-white p-6 md:p-8 rounded-2xl shadow-xl">
+                    <ul class="space-y-3 text-gray-700">
+                        <li>본 계획은 제칠일안식일예수재림교회 동중한합회 답십리교회의 향후 10년 성장을 위한 로드맵입니다.</li>
+                        <li><strong class="font-semibold text-gray-800">교회 기본 정보:</strong> 서울시 동대문구 답십리로 28길 38</li>
+                        <li><strong class="font-semibold text-gray-800">전체 등록 교인:</strong> 132명</li>
+                        <li><strong class="font-semibold text-gray-800">핵심:</strong> 청년층(20대 52명, 30대 24명) 비율이 높아 활력이 넘치는 교회</li>
+                    </ul>
+                    <div class="image-placeholder">
+                        Image Suggestion: Abstract image of a path or a growing plant.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="people-gatherings" class="py-12 md:py-20 px-4 bg-slate-100 scroll-mt-20">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-3xl font-bold text-center mb-6 text-[#005f73]">우리의 가족: 성도 현황 및 예배</h2>
+                <div class="bg-white p-6 md:p-8 rounded-2xl shadow-xl">
+                    <ul class="space-y-3 text-gray-700">
+                        <li><strong class="font-semibold text-gray-800">재직 현황:</strong> 장로 9명, 남집사 16명, 여집사 31명</li>
+                        <li><strong class="font-semibold text-gray-800">예배 출석:</strong> 안식일학교 약 50명, 안식일 대예배 70-80명, 어린이 예배 별도 운영</li>
+                        <li><strong class="font-semibold text-gray-800">구도자 현황:</strong> 2023년 침례자 1-2명, 접촉/구도자 다수 (최대 40명 추정 '구원해야 할 대상')</li>
+                        <li><strong class="font-semibold text-gray-800">재정:</strong> 정해진 예산서 없이 필요에 따라 운용, 믿음으로 채워지는 경험 (연 십일금 약 1.3억-1.5억)</li>
+                    </ul>
+                    <div class="image-placeholder">
+                        Image Suggestion: Diverse group of people in worship or fellowship.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="strengths" class="py-12 md:py-20 px-4 scroll-mt-20">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-3xl font-bold text-center mb-6 text-[#005f73]">강점: 우리가 가진 가능성</h2>
+                <div class="bg-white p-6 md:p-8 rounded-2xl shadow-xl">
+                    <ul class="space-y-3 text-gray-700">
+                        <li><strong class="font-semibold text-gray-800">높은 청년 비율:</strong> 교회 활력의 중심</li>
+                        <li><strong class="font-semibold text-gray-800">'잃은 양' 사역 집중:</strong> 떠난 청년들을 위한 실질적 도움 제공 잠재력</li>
+                        <li><strong class="font-semibold text-gray-800">명확한 사역 비전:</strong> 사람을 세우는 데 중점 ('잃은 양 회복', '은사 중심 사역', '일꾼 양성')</li>
+                        <li><strong class="font-semibold text-gray-800">재정적 유연성 및 믿음:</strong> 필요할 때마다 채워지는 경험</li>
+                        <li><strong class="font-semibold text-gray-800">성도들의 적극적 참여:</strong> 청년 포함 다수의 사역 동참</li>
+                    </ul>
+                    <div class="image-placeholder">
+                        Image Suggestion: Bright, upward-trending graph or people working together.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="challenges" class="py-12 md:py-20 px-4 bg-slate-100 scroll-mt-20">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-3xl font-bold text-center mb-6 text-[#005f73]">약점 및 개선점: 더 나은 교회를 향한 고민</h2>
+                <div class="bg-white p-6 md:p-8 rounded-2xl shadow-xl">
+                    <ul class="space-y-3 text-gray-700">
+                        <li><strong class="font-semibold text-gray-800">지리 및 교통의 불리함:</strong> 후미진 위치, 대중교통 불편 (강점으로 상쇄 노력)</li>
+                        <li><strong class="font-semibold text-gray-800">공간 활용의 비효율성:</strong> 다목적 활용 어려움, 공간 낭비 (리모델링 계획)</li>
+                        <li><strong class="font-semibold text-gray-800">교단 청년 사역 '사다리' 부재:</strong> 청년 이탈 문제 (답십리교회가 해결 기여 목표)</li>
+                        <li><strong class="font-semibold text-gray-800">정형화된 예배와 느린 속도 (개선 중):</strong> 초신자 및 젊은 세대 고려 필요 (생동감 있는 예배 추구)</li>
+                        <li><strong class="font-semibold text-gray-800">정형화된 제자 훈련 (개선 중):</strong> 현장 중심 성장 추구</li>
+                    </ul>
+                    <div class="image-placeholder">
+                        Image Suggestion: Image depicting problem-solving or building blocks.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="vision-philosophy" class="py-12 md:py-20 px-4 scroll-mt-20">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-3xl font-bold text-center mb-6 text-[#005f73]">비전과 철학: 우리가 나아갈 방향</h2>
+                <div class="bg-white p-6 md:p-8 rounded-2xl shadow-xl">
+                    <p class="text-lg font-semibold text-gray-800 mb-4"> 핵심 비전: 잃은 양 회복, 은사 중심적 사역, 교회의 일꾼 양성</p>
+                    <h3 class="text-xl font-semibold text-gray-800 mt-6 mb-3">주요 사역 철학:</h3>
+                    <ul class="space-y-3 text-gray-700 list-disc list-inside">
+                        <li><strong class="font-semibold">사람을 세우는 교회:</strong> '열심히 일하는 일꾼' 양성 (엡 4:12 기반)</li>
+                        <li><strong class="font-semibold">재림교회 청년 '사다리' 회복:</strong> 청년들이 신앙생활을 지속하도록 지원</li>
+                        <li><strong class="font-semibold">사람의 재능을 꽃피우는 교회:</strong> 재능 발견 및 즉시 사역팀 배치</li>
+                        <li><strong class="font-semibold">선교적으로 공간을 활용하는 교회:</strong> 지역사회와 교인 필요 충족 공간 조성</li>
+                    </ul>
+                    <div class="image-placeholder">
+                        Image Suggestion: A compass, a lighthouse, or a blooming flower.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="grand-goals" class="py-12 md:py-20 px-4 bg-slate-100 scroll-mt-20">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-3xl font-bold text-center mb-6 text-[#005f73]">10년 최종 목표: 우리가 함께 이룰 미래</h2>
+                <div class="bg-white p-6 md:p-8 rounded-2xl shadow-xl">
+                    <ol class="space-y-3 text-gray-700 list-decimal list-inside">
+                        <li><strong class="font-semibold text-gray-800">청년 중심 사역 기반의 세대 통합 성장:</strong> 청년 주도, 전 세대 함께 성장하는 공동체</li>
+                        <li><strong class="font-semibold text-gray-800">세대별 맞춤형 사역과 리더십 육성:</strong> 자립적 사역 구조 완성</li>
+                        <li><strong class="font-semibold text-gray-800">지속 가능한 교회 운영 시스템 구축:</strong> 유연한 재정, 다목적 공간, 자발적 참여 기반</li>
+                        <li><strong class="font-semibold text-gray-800">선교적 사명을 실현하는 지역-글로벌 교회:</strong> 복음 확장과 재림신앙 회복</li>
+                    </ol>
+                    <ul class="space-y-2 text-gray-700 mt-4 list-disc list-inside">
+                        <li><strong class="font-semibold text-gray-800">전체 비전:</strong> 새 교회 개척, 교인 수 증가, 활성화된 소그룹 증가</li>
+                        <li><strong class="font-semibold text-gray-800">주기적 진단:</strong> NCD 진단 (5년 주기)으로 계획 재설정</li>
+                    </ul>
+                    <div class="image-placeholder">
+                        Image Suggestion: People celebrating a shared achievement, a mountain peak.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="strategies-part1" class="py-12 md:py-20 px-4 scroll-mt-20">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-3xl font-bold text-center mb-6 text-[#005f73]">성장 전략 1: 공간, 사람, 회복</h2>
+                <div class="bg-white p-6 md:p-8 rounded-2xl shadow-xl">
+                    <h3 class="text-xl font-semibold text-gray-800 mt-2 mb-3">공간의 선교적 활용:</h3>
+                    <ul class="space-y-2 text-gray-700 list-disc list-inside mb-6">
+                        <li>다목적 공간 조성, 적절한 인테리어</li>
+                        <li>1층 공간: 카페/도서관 등 지역 주민 개방 공간으로 리모델링</li>
+                        <li>사람 중심 설계: 머무르고 관계 맺는 공간 우선</li>
+                    </ul>
+                    <h3 class="text-xl font-semibold text-gray-800 mt-6 mb-3">사람 중심, 재능 기반 사역:</h3>
+                    <ul class="space-y-2 text-gray-700 list-disc list-inside">
+                        <li>'일꾼' 양성: 재능 발견 및 즉시 현장 투입</li>
+                        <li>리더십: 사람을 동원하고 움직이는 능력 중시</li>
+                        <li>청년 주도성 신뢰 및 지원</li>
+                    </ul>
+                    <div class="image-placeholder">
+                        Image Suggestion: A blueprint transforming into a welcoming space; hands planting a seed.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="strategies-part2" class="py-12 md:py-20 px-4 bg-slate-100 scroll-mt-20">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-3xl font-bold text-center mb-6 text-[#005f73]">성장 전략 2: 연결, 예배, 긍정</h2>
+                <div class="bg-white p-6 md:p-8 rounded-2xl shadow-xl">
+                    <h3 class="text-xl font-semibold text-gray-800 mt-2 mb-3">'잃은 양' 회복과 '신앙의 사다리' 구축:</h3>
+                    <ul class="space-y-2 text-gray-700 list-disc list-inside mb-6">
+                        <li>가장 중요하고 효과적인 선교 방법</li>
+                        <li>교회 떠난 청년들의 재정착 및 신앙 여정 지원 ('이동의 사다리')</li>
+                    </ul>
+                    <h3 class="text-xl font-semibold text-gray-800 mt-6 mb-3">소통과 관계 중심:</h3>
+                    <ul class="space-y-2 text-gray-700 list-disc list-inside mb-6">
+                        <li>디지털 매체(미라소, 유튜브) 활용 소통</li>
+                        <li>사역팀 활동, '같이 식사합시다', 멘토링 등으로 관계 강화</li>
+                    </ul>
+                    <h3 class="text-xl font-semibold text-gray-800 mt-6 mb-3">역동적이고 생명력 있는 예배:</h3>
+                    <ul class="space-y-2 text-gray-700 list-disc list-inside mb-6">
+                        <li>속도감 부여, 불필요 요소 축소, 풍성한 찬양</li>
+                    </ul>
+                    <h3 class="text-xl font-semibold text-gray-800 mt-6 mb-3">긍정적 분위기 조성 및 강점 극대화:</h3>
+                    <ul class="space-y-2 text-gray-700 list-disc list-inside">
+                        <li>가진 강점 발견 및 극대화</li>
+                        <li>'할 수 있는 작은 일'부터 시작, 작은 성공 축적</li>
+                    </ul>
+                    <div class="image-placeholder">
+                        Image Suggestion: Network connections; vibrant worship scene; a rising sun.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="conclusion" class="py-12 md:py-20 px-4 scroll-mt-20">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-3xl font-bold text-center mb-6 text-[#005f73]">결론: 함께 만들어갈 답십리교회의 빛나는 10년</h2>
+                <div class="bg-white p-6 md:p-8 rounded-2xl shadow-xl">
+                    <ul class="space-y-3 text-gray-700">
+                        <li>본 계획은 '사람을 세우는' 교회를 통해 '열심히 일하는 일꾼'이 많은 교회를 건설하는 것을 목표로 합니다.</li>
+                        <li><strong class="font-semibold text-gray-800">핵심 전략:</strong> 사람 키우기, '잃은 양' 회복, 공간의 선교적 활용, 소통 강화, 긍정적 실행 중심 문화</li>
+                        <li><strong class="font-semibold text-gray-800">궁극적 비전:</strong> 새로운 교회 개척 및 교단 내 긍정적 모델 제시</li>
+                        <li class="italic">"우리가 더하기 법에 따라 작은 일에 충실하게 행할 것 같으면 하나님께서는 곱하기 법에 따라 우리를 위해 역사하실 것이다."</li>
+                        <li>작은 시작들이 모여 큰 결실을 맺을 것이라는 믿음으로 전진!</li>
+                    </ul>
+                    <p class="text-center text-xl font-semibold text-[#0a9396] mt-8">함께 이 미래를 만들어 갑시다!</p>
+                    <div class="image-placeholder">
+                        Image Suggestion: A path leading towards a bright horizon or a group of people looking forward.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="text-center mt-12 md:mt-20 py-10 border-t-2 border-gray-200 bg-slate-50">
+            <h2 class="text-2xl font-bold text-[#005f73] mb-4">함께 만들어갈 미래</h2>
+            <p class="text-gray-600 max-w-2xl mx-auto">
+                이 계획은 답십리교회 공동체 모두의 기도와 참여로 완성됩니다. <br>
+                작은 시작들이 모여 큰 결실을 맺을 것이라는 믿음 아래, 지속 가능한 성장과 선교적 사명 완수를 향해 함께 나아갑시다.
+            </p>
+            <p class="text-gray-500 mt-8 font-semibold">제칠일안식일예수재림교회 답십리교회</p>
+        </footer>
+
     </div>
 
     <script>
-        const slides = document.querySelectorAll('.slide');
-        const prevBtn = document.getElementById('prevBtn');
-        const nextBtn = document.getElementById('nextBtn');
-        const progressBar = document.getElementById('progressBar');
-        const slideCounter = document.getElementById('slideCounter');
-        let currentSlide = 0;
-        const totalSlides = slides.length;
+        document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    // Adjust for sticky nav height if necessary
+                    const navHeight = document.querySelector('nav').offsetHeight;
+                    const elementPosition = targetElement.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - navHeight;
 
-        function updateSlides() {
-            slides.forEach((slide, index) => {
-                if (index === currentSlide) {
-                    slide.classList.add('active');
-                } else {
-                    slide.classList.remove('active');
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
                 }
             });
-
-            // Update progress bar
-            const progressPercentage = ((currentSlide + 1) / totalSlides) * 100;
-            progressBar.style.width = `${progressPercentage}%`;
-
-            // Update slide counter
-            slideCounter.textContent = `${currentSlide + 1} / ${totalSlides}`;
-
-            // Update button states
-            prevBtn.disabled = currentSlide === 0;
-            nextBtn.disabled = currentSlide === totalSlides - 1;
-        }
-
-        nextBtn.addEventListener('click', () => {
-            if (currentSlide < totalSlides - 1) {
-                currentSlide++;
-                updateSlides();
-            }
         });
-
-        prevBtn.addEventListener('click', () => {
-            if (currentSlide > 0) {
-                currentSlide--;
-                updateSlides();
-            }
-        });
-        
-        // Keyboard navigation
-        document.addEventListener('keydown', (event) => {
-            if (event.key === 'ArrowRight' || event.key === ' ') { // Add spacebar for next slide
-                event.preventDefault(); // Prevent spacebar from scrolling
-                if (currentSlide < totalSlides - 1) {
-                    currentSlide++;
-                    updateSlides();
-                }
-            } else if (event.key === 'ArrowLeft') {
-                 if (currentSlide > 0) {
-                    currentSlide--;
-                    updateSlides();
-                }
-            }
-        });
-
-        // Initial setup
-        updateSlides();
     </script>
-
 </body>
 </html>
