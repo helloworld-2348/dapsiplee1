@@ -32,7 +32,6 @@
                 width: 100% !important; height: 100% !important; max-width: none !important; margin: 0 !important; padding: 3rem !important;
                 box-sizing: border-box !important; border-radius: 0 !important; box-shadow: none !important; border: none !important; background-color: white !important;
                 display: flex !important; flex-direction: column !important;
-                /* 첫번째 수정사항: justify-content로 콘텐츠를 수직 중앙 정렬합니다. */
                 justify-content: center !important; 
             }
             h1, h2, h3, h4, h5, h6 { page-break-after: avoid; }
@@ -44,15 +43,16 @@
     <div class="max-w-7xl mx-auto">
         <nav id="toc" class="p-2 bg-white/80 backdrop-blur-md rounded-xl shadow-lg sticky top-4 z-20">
             <h2 class="text-center font-bold text-lg mb-2 text-slate-700">목차</h2>
-            <ul class="grid grid-cols-4 lg:grid-cols-8 gap-2">
+            <ul class="grid grid-cols-4 lg:grid-cols-9 gap-2">
                 <li><a href="#title-slide" class="internal-link block text-center p-2 text-sm bg-slate-100 rounded-lg"><span>처음</span></a></li>
                 <li><a href="#detail-status" class="internal-link block text-center p-2 text-sm bg-slate-100 rounded-lg"><span>I. 현황</span></a></li>
                 <li><a href="#detail-surroundings" class="internal-link block text-center p-2 text-sm bg-slate-100 rounded-lg"><span>II. 주변</span></a></li>
                 <li><a href="#detail-swot" class="internal-link block text-center p-2 text-sm bg-slate-100 rounded-lg"><span>III. 진단</span></a></li>
                 <li><a href="#detail-vision" class="internal-link block text-center p-2 text-sm bg-slate-100 rounded-lg"><span>IV. 비전</span></a></li>
                 <li><a href="#detail-roadmap" class="internal-link block text-center p-2 text-sm bg-slate-100 rounded-lg"><span>V. 계획</span></a></li>
-                <li><a href="#detail-strategy" class="internal-link block text-center p-2 text-sm bg-slate-100 rounded-lg"><span>VI. 전략</span></a></li>
-                <li><a href="#detail-conclusion" class="internal-link block text-center p-2 text-sm bg-slate-100 rounded-lg"><span>VII. 결론</span></a></li>
+                <li><a href="#detail-goals" class="internal-link block text-center p-2 text-sm bg-slate-100 rounded-lg"><span>VI. 최종 목표</span></a></li>
+                <li><a href="#detail-strategy" class="internal-link block text-center p-2 text-sm bg-slate-100 rounded-lg"><span>VII. 전략</span></a></li>
+                <li><a href="#detail-conclusion" class="internal-link block text-center p-2 text-sm bg-slate-100 rounded-lg"><span>VIII. 결론</span></a></li>
             </ul>
         </nav>
         
@@ -152,7 +152,7 @@
                     </div>
                     <div id="vision-space-trigger-detail" class="cursor-pointer p-4 rounded-lg">
                         <h3 class="text-2xl font-bold flex items-center mb-2 text-green-900"><span class="text-4xl mr-3">🏠</span>선교적 공간 활용</h3>
-                        <p class="text-gray-700 text-lg ml-12">교회 공간을 단순 예배 장소를 넘어, 지역 사회와 소통하는 선교적 공간으로 재설계합니다. 1층을 카페('요한정')나 쉼터처럼 열린 공간으로 만들고, 특정 그룹이 독점하지 않는 다목적 공간으로 활용하여 관계 중심의 공동체를 지향합니다. <span class="font-bold text-green-600 underline">여기를 클릭하여 갤러리를 확인하세요.</span></p>
+                        <p class="text-gray-700 text-lg ml-12">교회 공간을 단순 예배 장소를 넘어, 지역 사회와 소통하는 선교적 공간으로 재설계합니다. 1층을 카페('요한정')나 쉼터처럼 열린 공간으로 만들고, 특정 그룹이 독점하지 않는 다목적 공간으로 활용하여 관계 중심의 공동체를 지향합니다. <span class="font-bold text-green-600 underline">갤러리를 확인하려면 클릭</span></p>
                     </div>
                 </div>
             </div>
@@ -194,10 +194,44 @@
             </div>
         </section>
 
+        <section id="detail-goals" class="slide">
+            <div class="content-box">
+                <h2 class="text-3xl md:text-4xl font-bold text-center text-pink-800 mb-8">VI. 10년 최종 목표</h2>
+                <p class="text-center text-gray-600 mb-10 max-w-3xl mx-auto">답십리교회의 10년 최종 목표는 다음과 같습니다.</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
+                    <div class="bg-pink-50 p-6 rounded-lg border-l-4 border-pink-400">
+                        <h3 class="text-xl font-bold text-pink-900 mb-2">1) 세대 통합 성장 실현</h3>
+                        <ul class="list-none space-y-2 text-gray-700">
+                            <li><span class="font-bold text-pink-600 mr-2"></span>청년의 재능과 주도성으로 모든 세대가 함께 성장하는 연계형 공동체를 구축합니다.</li>
+                            <li><span class="font-bold text-pink-600 mr-2"></span>단순한 나이 중심 분리를 넘어 사명 공동체로서의 교회 정체성을 확립합니다.</li>
+                        </ul>
+                    </div>
+                    <div class="bg-pink-50 p-6 rounded-lg border-l-4 border-pink-400">
+                        <h3 class="text-xl font-bold text-pink-900 mb-2">2) 맞춤형 사역과 리더십 육성</h3>
+                        <ul class="list-none space-y-2 text-gray-700">
+                            <li><span class="font-bold text-pink-600 mr-2"></span>각 세대의 필요를 고려한 소그룹 중심의 맞춤형 프로그램을 개발하고, 사역 리더와 멘토를 양성하여 자립적 사역 구조를 완성합니다.</li>
+                        </ul>
+                    </div>
+                    <div class="bg-pink-50 p-6 rounded-lg border-l-4 border-pink-400">
+                        <h3 class="text-xl font-bold text-pink-900 mb-2">3) 지속 가능한 교회 운영 시스템</h3>
+                        <ul class="list-none space-y-2 text-gray-700">
+                            <li><span class="font-bold text-pink-600 mr-2"></span>유연한 재정 운영, 다목적 공간 활용, 자발적 사역 참여 시스템으로 내외부 변화에 흔들리지 않는 자생적 성장 기반을 마련합니다.</li>
+                        </ul>
+                    </div>
+                    <div class="bg-pink-50 p-6 rounded-lg border-l-4 border-pink-400">
+                        <h3 class="text-xl font-bold text-pink-900 mb-2">4) 선교적 사명과 배가 실현</h3>
+                         <ul class="list-none space-y-2 text-gray-700">
+                            <li><span class="font-bold text-pink-600 mr-2"></span>지역사회와 글로벌 사역을 통해 복음을 확장하고, 재림 신앙의 회복과 전파를 실천하는 교회가 됩니다.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <section id="detail-strategy" class="slide">
             <div class="content-box">
-                <h2 class="text-3xl md:text-4xl font-bold text-center text-amber-800 mb-10">VI. 교회 성장을 위한 세부 전략</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <h2 class="text-3xl md:text-4xl font-bold text-center text-amber-800 mb-10">VII. 교회 성장을 위한 세부 전략</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
                     <div class="bg-amber-50 p-4 rounded-lg flex items-start"><span class="text-3xl mr-4">📊</span><div><h3 class="font-bold text-lg">NCD 주기적 진단</h3><p class="text-sm text-gray-600">5년 주기(2025, 2029, 2034)로 NCD 진단을 실시하여, 최소치 요소를 개선하고 강점을 극대화하는 방향으로 계획을 보완합니다.</p></div></div>
                     <div class="bg-amber-50 p-4 rounded-lg flex items-start"><span class="text-3xl mr-4">🏠</span><div><h3 class="font-bold text-lg">공간 활용 극대화 및 선교적 재설계</h3><p class="text-sm text-gray-600">교회 공간을 다목적 선교 자원으로 활용합니다. 1층을 카페, 쉼터 등 열린 공간으로 만들고, 사용자 중심의 유연한 설계를 통해 지역 사회와 교류를 확대합니다.</p></div></div>
                     <div class="bg-amber-50 p-4 rounded-lg flex items-start"><span class="text-3xl mr-4">💡</span><div><h3 class="font-bold text-lg">재능 기반 리더십 구축</h3><p class="text-sm text-gray-600">새 성도의 재능을 즉시 사역에 투입하여 현장 중심 성장을 지원하고, 사람을 움직이는 '동원력'을 중심으로 리더를 세웁니다.</p></div></div>
@@ -211,7 +245,7 @@
         
         <section id="detail-conclusion" class="slide">
             <div class="content-box">
-                <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-10">VII. 결론: 사람을 세우고 세상을 향하는 교회</h2>
+                <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-10">VIII. 결론: 사람을 세우고 세상을 향하는 교회</h2>
                 <div class="max-w-4xl mx-auto text-center text-gray-700 text-lg space-y-6">
                     <p>본 계획안의 핵심은 '사람'에 있습니다. 잠재력 있는 인재를 발굴하여 현장에서 성장시키고, 교회를 떠났던 이들을 다시 품으며, 디지털과 오프라인을 넘나드는 깊은 관계를 통해 공동체의 내실을 다집니다.</p>
                     <p>동시에, 물리적 공간을 선교적 관점에서 재설계하고 모든 세대가 공감하는 역동적인 예배를 통해, 누구나 찾아오고 머물고 싶은 '매력적인 교회'를 만들어갑니다. '할 수 있는 작은 일'부터 시작해 쌓아 올린 성공의 경험들은 긍정적 문화를 만들고, 더 큰 사역으로 나아가는 원동력이 될 것입니다.</p>
@@ -235,7 +269,23 @@
             };
             const detailCtx = document.getElementById('detailChart').getContext('2d');
             if (detailCtx) {
-                new Chart(detailCtx, { type: 'bar', data: chartData, options: { responsive: true, maintainAspectRatio: false, indexAxis: 'y', plugins: { legend: { display: false }, title: { display: true, text: '세대별 교인 수 (명)', font: { size: 16 } } }, scales: { x: { beginAtZero: true }, y: { ticks: { font: { size: 12 } } } } } });
+                new Chart(detailCtx, { 
+                    type: 'bar', 
+                    data: chartData, 
+                    options: { 
+                        responsive: true, 
+                        maintainAspectRatio: false, 
+                        indexAxis: 'y', 
+                        plugins: { 
+                            legend: { display: false }, 
+                            title: { display: true, text: '세대별 교인 수 (명)', font: { size: 16 } } 
+                        }, 
+                        scales: { 
+                            x: { beginAtZero: true }, 
+                            y: { ticks: { font: { size: 12 } } } 
+                        } 
+                    } 
+                });
             }
         });
         </script>
