@@ -107,69 +107,80 @@
         .modal-backdrop { transition: opacity 0.3s ease; }
         .modal-content { transition: transform 0.3s ease; }
        @media print {
-            /* 인쇄 시 목차(TOC)와 푸터 숨기기 */
-            #toc, footer {
-                display: none !important;
-            }
+    /* 인쇄 시 목차(TOC), 푸터, 갤러리 팝업 숨기기 */
+    #toc, footer, #gallery-modal {
+        display: none !important;
+    }
 
-            /* 페이지 크기를 16:9 비율로 지정하고 여백 제거 */
-            @page {
-                size: 16in 9in; /* 가로 16, 세로 9 비율의 페이지 크기 */
-                margin: 0;
-            }
+    /* 페이지 크기를 16:9 비율로 지정하고 여백 제거 */
+    @page {
+        size: 16in 9in;
+        margin: 0;
+    }
 
-            /* 기본 HTML, Body 스타일 초기화 */
-            html, body {
-                width: 100%;
-                height: 100%;
-                margin: 0;
-                padding: 0;
-                background: #ffffff; /* 인쇄 시 배경을 흰색으로 고정 */
-                -webkit-print-color-adjust: exact; /* Chrome/Safari에서 배경색 인쇄 강제 */
-                print-color-adjust: exact;
-            }
+    /* 기본 HTML, Body 스타일 초기화 */
+    html, body {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        background: #ffffff;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
 
-            /* 각 슬라이드를 한 페이지에 꽉 채우도록 설정 */
-            .slide {
-                page-break-after: always; /* 각 슬라이드 다음에 페이지 나누기 */
-                page-break-inside: avoid; /* 슬라이드 내용이 잘리지 않도록 함 */
-                width: 100%;
-                height: 100%;
-                padding: 0;
-                margin: 0;
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-                overflow: hidden;
-                /* 화면용 스크롤 및 애니메이션 스타일 제거 */
-                min-height: 0;
-                scroll-snap-align: none;
-                opacity: 1 !important;
-                transform: none !important;
-            }
-            
-            /* 슬라이드 내 콘텐츠 박스 스타일 조정 */
-            .content-box {
-                width: 100%;
-                height: 100%;
-                max-width: none;
-                border-radius: 0;
-                box-shadow: none;
-                border: none;
-                padding: 3rem;
-                box-sizing: border-box; /* 패딩을 크기에 포함 */
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-            }
+    /* * ▼▼▼ 문제 해결을 위한 핵심 코드 ▼▼▼
+     * 스크롤 애니메이션으로 숨겨진 슬라이드들을 강제로 표시합니다. 
+     */
+    body, .slide, .content-box {
+        opacity: 1 !important;
+        transform: none !important;
+        visibility: visible !important;
+    }
 
-            /* 애니메이션 및 전환 효과 제거 */
-            * {
-               transition: none !important;
-               animation: none !important;
-            }
-        }
+    /* 각 슬라이드를 한 페이지에 꽉 채우도록 설정 */
+    .slide {
+        page-break-after: always;
+        page-break-inside: avoid;
+        width: 100%;
+        height: 100%;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        min-height: 0;
+        scroll-snap-align: none;
+    }
+
+    /* 슬라이드 내 콘텐츠 박스 스타일 조정 */
+    .content-box {
+        width: 100%;
+        height: 100%;
+        max-width: none;
+        border-radius: 0;
+        box-shadow: none;
+        border: none;
+        padding: 3rem;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    
+    /* 장식용 가상 요소 숨기기 */
+    .slide::before {
+        display: none;
+    }
+
+    /* 애니메이션 및 전환 효과 제거 */
+    * {
+       transition: none !important;
+       animation: none !important;
+    }
+}
     </style>
 </head>
 <body class="p-4 md:p-8">
