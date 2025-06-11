@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>답십리교회 10년 성장 계획서 (풀스크린 스크롤 버전)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background-color: #f1f5f9;
+            margin: 0;
+            padding: 0;
+        }
+        .scroll-container {
+            scroll-snap-type: y mandatory;
+            overflow-y: scroll;
+            height: 100vh;
+        }
+        .scroll-section {
+            height: 100vh;
+            width: 100%;
+            scroll-snap-align: start;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+            box-sizing: border-box;
+        }
+        .content-wrapper {
+            width: 100%;
+            max-width: 1100px;
+            background-color: #ffffff;
+            border-radius: 1.5rem;
+            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+            padding: 2rem 3rem;
+        }
+        .chart-container-ppt {
+            position: relative;
+            width: 100%;
+            max-width: 350px;
+            margin: auto;
+            height: 300px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="scroll-container">
+
+        <section id="title-slide" class="scroll-section">
+            <div class="text-center">
+                <h1 class="text-5xl md:text-6xl font-extrabold text-gray-900 mb-4">답십리교회 10년 교회 성장 계획서</h1>
+                <p class="text-xl md:text-2xl text-gray-600">사람을 세우고 세상을 향하는 교회를 위한 성장 전략</p>
+                <p class="mt-12 text-gray-500 animate-pulse">아래로 스크롤하여 계속 보기</p>
+            </div>
+        </section>
+
+        <section id="section1-slide" class="scroll-section">
+            <div class="content-wrapper">
+                <h2 class="text-3xl font-bold text-center mb-6">SECTION 1. 교회의 현재</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                    <div class="space-y-4">
+                        <h3 class="text-2xl font-bold text-gray-800 text-center">핵심 지표</h3>
+                        <div class="flex items-center bg-slate-100 p-3 rounded-lg">
+                            <span class="text-3xl mr-3">👥</span>
+                            <div>
+                                <p class="font-bold">전체 등록 교인</p>
+                                <p class="text-2xl font-black text-blue-600">132명</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center bg-slate-100 p-3 rounded-lg">
+                            <span class="text-3xl mr-3">🙌</span>
+                            <div>
+                                <p class="font-bold">대예배 출석</p>
+                                <p class="text-2xl font-black text-blue-600">70-80명</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center bg-slate-100 p-3 rounded-lg">
+                            <span class="text-3xl mr-3">💰</span>
+                            <div>
+                                <p class="font-bold">연간 십일금</p>
+                                <p class="text-2xl font-black text-blue-600">약 1.3억 ~ 1.5억</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-bold text-gray-800 text-center mb-4">세대별 구성</h3>
+                        <div class="chart-container-ppt">
+                            <canvas id="generationChart"></canvas>
+                        </div>
+                        <p class="mt-4 text-center text-gray-600">특히 <span class="font-bold text-orange-500">20-30대 청년층이 57.5%</span>로 핵심 동력입니다.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="section2-slide" class="scroll-section">
+            <div class="content-wrapper">
+                 <h2 class="text-3xl font-bold text-center mb-8">SECTION 2. 교회의 비전</h2>
+                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+                    <div class="bg-orange-50 p-6 rounded-xl border border-orange-200">
+                         <h3 class="text-xl font-bold text-orange-800 flex items-center justify-center"><span class="text-4xl mr-3">🪜</span>신앙의 사다리 회복</h3>
+                         <p class="text-gray-600 mt-2">청년들이 삶의 변화 속에서도 신앙을 이어가도록 돕습니다.</p>
+                    </div>
+                    <div class="bg-green-50 p-6 rounded-xl border border-green-200">
+                        <h3 class="text-xl font-bold text-green-800 flex items-center justify-center"><span class="text-4xl mr-3">🌷</span>재능을 꽃피우는 교회</h3>
+                        <p class="text-gray-600 mt-2">모든 성도의 재능을 발견하고 사역을 통해 성장시킵니다.</p>
+                    </div>
+                     <div class="bg-sky-50 p-6 rounded-xl border border-sky-200">
+                        <h3 class="text-xl font-bold text-sky-800 flex items-center justify-center"><span class="text-4xl mr-3">🏠</span>선교적 공간 활용</h3>
+                        <p class="text-gray-600 mt-2">교회 공간을 지역 사회와 소통하는 선교의 장으로 만듭니다.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="section3-slide" class="scroll-section">
+            <div class="content-wrapper">
+                 <h2 class="text-3xl font-bold text-center mb-4">SECTION 3. 10년 성장 로드맵</h2>
+                 <div class="text-center bg-slate-100 p-3 rounded-lg mb-6">
+                     <p class="text-md italic text-gray-800">"우리가 더하기 법에 따라 작은 일에 충실하면 하나님께서는 곱하기 법에 따라 역사하실 것이다." <span class="text-sm not-italic">(실물, 360)</span></p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-200">
+                        <h3 class="text-2xl font-black text-orange-500 mb-2">Phase 1 (25-27)</h3>
+                        <p class="font-bold text-xl text-gray-700 mb-3">기반 구축기</p>
+                        <ul class="list-disc list-inside text-gray-600 space-y-1">
+                            <li>NCD 진단, 현황 분석</li>
+                            <li>1층 공간 다목적화</li>
+                            <li>은사별 사역팀 구성</li>
+                            <li>청년 소그룹 및 멘토링</li>
+                        </ul>
+                    </div>
+                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-200">
+                        <h3 class="text-2xl font-black text-green-500 mb-2">Phase 2 (28-31)</h3>
+                        <p class="font-bold text-xl text-gray-700 mb-3">사역 확장기</p>
+                        <ul class="list-disc list-inside text-gray-600 space-y-1">
+                            <li>국내외 선교/봉사 파견</li>
+                            <li>사역 리더 양성 시작</li>
+                            <li>주중 커뮤니티 센터 운영</li>
+                            <li>교회 일꾼 양성학교 개설</li>
+                        </ul>
+                    </div>
+                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-200">
+                        <h3 class="text-2xl font-black text-sky-500 mb-2">Phase 3 (32-34)</h3>
+                        <p class="font-bold text-xl text-gray-700 mb-3">자립 및 확산기</p>
+                        <ul class="list-disc list-inside text-gray-600 space-y-1">
+                            <li>성장 모델 매뉴얼 제작</li>
+                            <li>외부 컨설팅 지원 시작</li>
+                            <li>신규 교회 개척/건설</li>
+                            <li>성장 모델 발표 및 전수</li>
+                        </ul>
+                    </div>
+                </div>
+                <footer class="text-center mt-6 pt-4 border-t">
+                    <p class="font-bold">하나님의 비전을 이루어가는 답십리교회</p>
+                    <p class="text-sm text-gray-500 mt-1">*3팀(정찬희, 장건우, 한은진)의 기획안을 바탕으로 제작</p>
+                </footer>
+            </div>
+        </section>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const generationData = {
+                labels: ['어린이', '중고생', '20대', '30대', '40대', '50대', '60대', '70대 이상'],
+                datasets: [{
+                    label: '세대별 교인 수',
+                    data: [5, 2, 52, 24, 9, 13, 9, 18],
+                    backgroundColor: [
+                        '#FFC107','#8BC34A','#FF5722','#F44336',
+                        '#9C27B0','#3F51B5','#03A9F4','#607D8B'
+                    ],
+                    borderColor: '#FFFFFF',
+                    borderWidth: 2,
+                    hoverOffset: 4
+                }]
+            };
+
+            const generationConfig = {
+                type: 'doughnut',
+                data: generationData,
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                           display: true,
+                           position: 'bottom',
+                           labels: {
+                               padding: 10,
+                               font: {
+                                   size: 12
+                               }
+                           }
+                        },
+                        tooltip: {
+                            callbacks: {
+                                title: function(tooltipItems) {
+                                    const item = tooltipItems[0];
+                                    let label = item.chart.data.labels[item.dataIndex];
+                                    if (Array.isArray(label)) {
+                                      return label.join(' ');
+                                    } else {
+                                      return label;
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    cutout: '60%',
+                }
+            };
+            
+            const ctx = document.getElementById('generationChart').getContext('2d');
+            new Chart(ctx, generationConfig);
+        });
+    </script>
+</body>
+</html>
