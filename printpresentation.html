@@ -10,12 +10,13 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
+        /* 화면용 기본 스타일 (애니메이션 관련 속성 제거) */
         html {
             scroll-behavior: smooth;
         }
         body {
             font-family: 'Noto Sans KR', sans-serif;
-            background: linear-gradient(175deg, #f0f4f8 0%, #ffffff 100%);
+            background: #f8fafc;
         }
         .detail-chart-container {
             position: relative;
@@ -34,37 +35,18 @@
             padding: 2rem 1rem;
             position: relative;
             overflow: hidden;
+            border-bottom: 1px solid #e2e8f0; /* 슬라이드 구분선 */
         }
-        .slide::before {
-            content: '';
-            position: absolute;
-            width: 30vw;
-            height: 30vw;
-            border-radius: 50%;
-            opacity: 0.05;
-            z-index: 0;
-        }
-        #detail-status::before { background-color: #3b82f6; top: 10%; left: -5%; }
-        #detail-surroundings::before { background-color: #14b8a6; bottom: 10%; right: -5%; }
-        #detail-swot::before { background-color: #f97316; top: 15%; right: -10%; }
-        #detail-vision::before { background-color: #16a34a; bottom: 5%; left: -10%; }
-        #detail-roadmap::before { background-color: #8b5cf6; top: 20%; left: 5%; }
-        #detail-strategy::before { background-color: #f59e0b; bottom: 15%; right: 5%; }
-        #detail-conclusion::before { background-color: #6b7280; top: 10%; left: -5%; }
-
         .content-box {
             padding: 3rem 2.5rem;
-            background-color: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(10px);
+            background-color: white;
             border-radius: 1.5rem;
-            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
             width: 100%;
             max-width: 1200px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
             position: relative;
             z-index: 1;
         }
-
         .timeline::before {
             content: '';
             position: absolute;
@@ -86,78 +68,77 @@
             border: 3px solid;
         }
 
+       /**
+        * ▼▼▼ 인쇄 문제 해결을 위한 최종 CSS 코드 블록 ▼▼▼
+        */
        @media print {
-            #toc, footer, #gallery-modal {
+            /* 인쇄 불필요 요소 숨기기 */
+            #toc, footer, #gallery-modal, .slide::before {
                 display: none !important;
             }
 
+            /* 16:9 프레젠테이션 페이지 설정 */
             @page {
                 size: 16in 9in;
                 margin: 0;
             }
 
+            /* HTML, Body 기본 스타일 리셋 */
             html, body {
                 width: 100%;
-                height: 100%;
+                height: auto;
                 margin: 0;
                 padding: 0;
                 background: #ffffff;
                 -webkit-print-color-adjust: exact;
                 print-color-adjust: exact;
-            }
-
-            /* 인쇄 시 모든 요소가 보이도록 강제 */
-            body, .slide, .content-box {
-                opacity: 1 !important;
-                transform: none !important;
-                visibility: visible !important;
-            }
-
-            .slide {
-                page-break-after: always;
-                page-break-inside: avoid;
-                width: 100%;
-                height: 100%;
-                padding: 0;
-                margin: 0;
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-                overflow: hidden;
-                min-height: 0;
+                overflow: visible !important;
             }
             
-            /* [수정사항 2] 마지막 슬라이드 뒤에 빈 페이지가 생기지 않도록 수정 */
+            /* 모든 요소의 위치와 크기를 명확하게 재정의 */
+            .slide {
+                width: 100% !important;
+                height: 100% !important; /* 페이지 높이에 꽉 채움 */
+                min-height: 0 !important; /* vh 단위 무효화 */
+                margin: 0 !important;
+                padding: 0 !important;
+                overflow: hidden !important;
+                display: flex !important;
+                align-items: stretch !important; /* 자식 요소가 전체 높이를 차지하도록 */
+                justify-content: stretch !important; /* 자식 요소가 전체 너비를 차지하도록 */
+                page-break-after: always;
+                page-break-inside: avoid;
+                border-bottom: none; /* 화면용 구분선 제거 */
+            }
+
+            /* 마지막 슬라이드 뒤 빈 페이지 제거 */
             .slide:last-of-type {
                 page-break-after: auto;
             }
 
+            /* 콘텐츠 박스를 슬라이드 내에서 중앙 정렬되도록 설정 */
             .content-box {
-                width: 100%;
-                height: 100%;
-                max-width: none;
-                border-radius: 0;
-                box-shadow: none;
-                border: none;
-                padding: 3rem;
-                box-sizing: border-box;
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                background-color: white; /* 인쇄 시 배경을 흰색으로 고정 */
-                backdrop-filter: none;
+                width: 100% !important;
+                height: 100% !important;
+                max-width: none !important;
+                margin: 0 !important;
+                padding: 4rem !important; /* 충분한 안쪽 여백 */
+                box-sizing: border-box !important;
+                border-radius: 0 !important;
+                box-shadow: none !important;
+                border: none !important;
+                background-color: white !important;
+                backdrop-filter: none !important;
+                display: flex !important;
+                flex-direction: column !important;
+                justify-content: center !important;
+                align-items: center !important;
             }
             
-            .slide::before {
-                display: none;
+            h1, h2, h3, h4, h5, h6 {
+                page-break-after: avoid; /* 제목 뒤에서 페이지가 나뉘지 않도록 */
             }
-
-            * {
-               transition: none !important;
-               animation: none !important;
-            }
-        }
+       }
     </style>
 </head>
 <body class="p-4 md:p-8">
@@ -176,7 +157,7 @@
                 <li><a href="#detail-conclusion" class="internal-link block text-center p-2 text-sm bg-slate-100 rounded-lg"><span>VII. 결론</span></a></li>
             </ul>
         </nav>
-
+        
         <section id="title-slide" class="slide">
             <div class="content-box">
                 <header class="text-center">
@@ -194,12 +175,12 @@
                         <h3 class="text-2xl font-bold mb-4 text-center">교회 핵심 지표</h3>
                         <table class="w-full text-left text-base">
                             <tbody>
-                                <tr class="border-b border-gray-200"><td class="py-3 font-semibold">교회명</td><td class="py-3">제칠일안식일예수재림교 답십리교회</td></tr>
-                                <tr class="border-b border-gray-200"><td class="py-3 font-semibold">위치</td><td class="py-3">서울시 동대문구 답십리로 28길 38</td></tr>
-                                <tr class="border-b border-gray-200"><td class="py-3 font-semibold">목회자</td><td class="py-3">담임목사 류대균, 전도사 임다비</td></tr>
-                                <tr class="border-b border-gray-200"><td class="py-3 font-semibold">재직 현황</td><td class="py-3">장로 9, 남집사 16, 여집사 31</td></tr>
-                                <tr class="border-b border-gray-200"><td class="py-3 font-semibold">예배 출석</td><td class="py-3">안교 50, 대예배 70-80</td></tr>
-                                <tr class="border-b border-gray-200"><td class="py-3 font-semibold">구도자 현황</td><td class="py-3">'잃은 양' 포함 20-40명</td></tr>
+                                <tr class="border-b"><td class="py-3 font-semibold">교회명</td><td class="py-3">제칠일안식일예수재림교 답십리교회</td></tr>
+                                <tr class="border-b"><td class="py-3 font-semibold">위치</td><td class="py-3">서울시 동대문구 답십리로 28길 38</td></tr>
+                                <tr class="border-b"><td class="py-3 font-semibold">목회자</td><td class="py-3">담임목사 류대균, 전도사 임다비</td></tr>
+                                <tr class="border-b"><td class="py-3 font-semibold">재직 현황</td><td class="py-3">장로 9, 남집사 16, 여집사 31</td></tr>
+                                <tr class="border-b"><td class="py-3 font-semibold">예배 출석</td><td class="py-3">안교 50, 대예배 70-80</td></tr>
+                                <tr><td class="py-3 font-semibold">구도자 현황</td><td class="py-3">'잃은 양' 포함 20-40명</td></tr>
                             </tbody>
                         </table>
                     </div>
@@ -215,12 +196,12 @@
             <div class="content-box">
                 <h2 class="text-3xl md:text-4xl font-bold text-center text-cyan-800 mb-10">II. 교회 주변 상황</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
-                    <div class="bg-cyan-50/50 p-6 rounded-lg h-full border-l-4 border-cyan-400">
+                    <div class="bg-cyan-50 p-6 rounded-lg h-full border-l-4 border-cyan-400">
                         <h3 class="text-2xl font-bold mb-4 flex items-center text-cyan-900"><span class="text-3xl mr-3">🏙️</span> 지리 및 교통</h3>
                         <p class="text-gray-700"><span class="font-bold text-green-600">장점:</span> 서울 내에 위치하여 전반적인 접근성이 높음.</p>
                         <p class="text-gray-700 mt-2"><span class="font-bold text-red-600">단점:</span> 대중교통 이용이 다소 불편하며, 주변에 청량리교회, 본부교회 등 대형 교회가 인접하여 상대적으로 불리한 위치.</p>
                     </div>
-                    <div class="bg-cyan-50/50 p-6 rounded-lg h-full border-l-4 border-cyan-400">
+                    <div class="bg-cyan-50 p-6 rounded-lg h-full border-l-4 border-cyan-400">
                          <h3 class="text-2xl font-bold mb-4 flex items-center text-cyan-900"><span class="text-3xl mr-3">👨‍👩‍👧‍👦</span> 인구 현황 (답십리1동)</h3>
                          <p class="text-gray-700 mb-2">교회가 위치한 답십리1동의 인구는 약 27,571명으로, 다양한 연령층이 거주하는 도심 지역 (2024.05 기준)</p>
                          <div class="flex justify-around text-center mt-4">
@@ -237,7 +218,7 @@
             <div class="content-box">
                 <h2 class="text-3xl md:text-4xl font-bold text-center text-orange-800 mb-10">III. 교회의 강점과 개선할 점</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <div class="bg-green-50/50 p-6 rounded-lg border-l-4 border-green-500">
+                    <div class="bg-green-50 p-6 rounded-lg border-l-4 border-green-500">
                         <h3 class="text-2xl font-bold mb-4 text-green-700 text-center">강점 (Strengths)</h3>
                         <ul class="space-y-4 text-base">
                             <li class="flex items-start"><span class="mr-2 mt-1">✅</span><div><span class="font-semibold">높은 청년 비율:</span> 20-30대가 57.5%를 차지하여 교회에 활력을 제공.</div></li>
@@ -246,7 +227,7 @@
                             <li class="flex items-start"><span class="mr-2 mt-1">✅</span><div><span class="font-semibold">성도들의 적극적 참여:</span> 청년 중심의 능동적인 사역 참여 분위기.</div></li>
                         </ul>
                     </div>
-                    <div class="bg-red-50/50 p-6 rounded-lg border-l-4 border-red-500">
+                    <div class="bg-red-50 p-6 rounded-lg border-l-4 border-red-500">
                         <h3 class="text-2xl font-bold mb-4 text-red-700 text-center">개선 및 발전 과제</h3>
                         <ul class="space-y-4 text-base">
                             <li class="flex items-start"><span class="mr-2 mt-1">🛠️</span><div><span class="font-semibold">지리/교통의 불리함 극복:</span> 위치적 약점을 상쇄할 매력적인 콘텐츠 강화.</div></li>
@@ -319,13 +300,13 @@
             <div class="content-box">
                 <h2 class="text-3xl md:text-4xl font-bold text-center text-amber-800 mb-10">VI. 교회 성장을 위한 세부 전략</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div class="bg-amber-50/50 p-4 rounded-lg flex items-start"><span class="text-3xl mr-4">📊</span><div><h3 class="font-bold text-lg">NCD 주기적 진단</h3><p class="text-sm text-gray-600">5년 주기(2025, 2029, 2034)로 NCD 진단을 실시하여, 최소치 요소를 개선하고 강점을 극대화하는 방향으로 계획을 보완합니다.</p></div></div>
-                    <div class="bg-amber-50/50 p-4 rounded-lg flex items-start"><span class="text-3xl mr-4">🏠</span><div><h3 class="font-bold text-lg">공간 활용 극대화 및 선교적 재설계</h3><p class="text-sm text-gray-600">교회 공간을 다목적 선교 자원으로 활용합니다. 1층을 카페, 쉼터 등 열린 공간으로 만들고, 사용자 중심의 유연한 설계를 통해 지역 사회와 교류를 확대합니다.</p></div></div>
-                    <div class="bg-amber-50/50 p-4 rounded-lg flex items-start"><span class="text-3xl mr-4">💡</span><div><h3 class="font-bold text-lg">재능 기반 리더십 구축</h3><p class="text-sm text-gray-600">새 성도의 재능을 즉시 사역에 투입하여 현장 중심 성장을 지원하고, 사람을 움직이는 '동원력'을 중심으로 리더를 세웁니다.</p></div></div>
-                    <div class="bg-amber-50/50 p-4 rounded-lg flex items-start"><span class="text-3xl mr-4">🐑</span><div><h3 class="font-bold text-lg">'잃은 양' 회복을 위한 접근</h3><p class="text-sm text-gray-600">교회를 떠난 청년들이 안정적으로 정착하도록 '신앙의 사다리'를 구축하고, 이들을 통해 주변 비신자까지 연결되는 관계 확산을 기대합니다.</p></div></div>
-                    <div class="bg-amber-50/50 p-4 rounded-lg flex items-start"><span class="text-3xl mr-4">🔗</span><div><h3 class="font-bold text-lg">온/오프라인 관계 강화</h3><p class="text-sm text-gray-600">디지털 매체로 일상 소통을, '같이 식사합시다' 등 오프라인 프로그램으로 깊은 관계를 형성하며, 신뢰 기반의 적극적 시도를 지속합니다.</p></div></div>
-                    <div class="bg-amber-50/50 p-4 rounded-lg flex items-start"><span class="text-3xl mr-4">✨</span><div><h3 class="font-bold text-lg">매력적인 예배 및 문화 조성</h3><p class="text-sm text-gray-600">젊은 세대를 고려한 속도감 있는 예배를 만들고, '작은 성공' 경험을 축적하여 '하루하루 최선을 다하는' 긍정적 공동체 문화를 만듭니다.</p></div></div>
-                    <div class="bg-amber-50/50 p-4 rounded-lg flex items-start md:col-span-2"><span class="text-3xl mr-4">🚀</span><div><h3 class="font-bold text-lg">성장 모델의 확산</h3><p class="text-sm text-gray-600">교회 내부 성장을 넘어, 신규 교회를 개척하고 다른 교회에 컨설팅을 제공하는 등 교단 전체에 기여하는 것을 목표로 합니다.</p></div></div>
+                    <div class="bg-amber-50 p-4 rounded-lg flex items-start"><span class="text-3xl mr-4">📊</span><div><h3 class="font-bold text-lg">NCD 주기적 진단</h3><p class="text-sm text-gray-600">5년 주기(2025, 2029, 2034)로 NCD 진단을 실시하여, 최소치 요소를 개선하고 강점을 극대화하는 방향으로 계획을 보완합니다.</p></div></div>
+                    <div class="bg-amber-50 p-4 rounded-lg flex items-start"><span class="text-3xl mr-4">🏠</span><div><h3 class="font-bold text-lg">공간 활용 극대화 및 선교적 재설계</h3><p class="text-sm text-gray-600">교회 공간을 다목적 선교 자원으로 활용합니다. 1층을 카페, 쉼터 등 열린 공간으로 만들고, 사용자 중심의 유연한 설계를 통해 지역 사회와 교류를 확대합니다.</p></div></div>
+                    <div class="bg-amber-50 p-4 rounded-lg flex items-start"><span class="text-3xl mr-4">💡</span><div><h3 class="font-bold text-lg">재능 기반 리더십 구축</h3><p class="text-sm text-gray-600">새 성도의 재능을 즉시 사역에 투입하여 현장 중심 성장을 지원하고, 사람을 움직이는 '동원력'을 중심으로 리더를 세웁니다.</p></div></div>
+                    <div class="bg-amber-50 p-4 rounded-lg flex items-start"><span class="text-3xl mr-4">🐑</span><div><h3 class="font-bold text-lg">'잃은 양' 회복을 위한 접근</h3><p class="text-sm text-gray-600">교회를 떠난 청년들이 안정적으로 정착하도록 '신앙의 사다리'를 구축하고, 이들을 통해 주변 비신자까지 연결되는 관계 확산을 기대합니다.</p></div></div>
+                    <div class="bg-amber-50 p-4 rounded-lg flex items-start"><span class="text-3xl mr-4">🔗</span><div><h3 class="font-bold text-lg">온/오프라인 관계 강화</h3><p class="text-sm text-gray-600">디지털 매체로 일상 소통을, '같이 식사합시다' 등 오프라인 프로그램으로 깊은 관계를 형성하며, 신뢰 기반의 적극적 시도를 지속합니다.</p></div></div>
+                    <div class="bg-amber-50 p-4 rounded-lg flex items-start"><span class="text-3xl mr-4">✨</span><div><h3 class="font-bold text-lg">매력적인 예배 및 문화 조성</h3><p class="text-sm text-gray-600">젊은 세대를 고려한 속도감 있는 예배를 만들고, '작은 성공' 경험을 축적하여 '하루하루 최선을 다하는' 긍정적 공동체 문화를 만듭니다.</p></div></div>
+                    <div class="bg-amber-50 p-4 rounded-lg flex items-start md:col-span-2"><span class="text-3xl mr-4">🚀</span><div><h3 class="font-bold text-lg">성장 모델의 확산</h3><p class="text-sm text-gray-600">교회 내부 성장을 넘어, 신규 교회를 개척하고 다른 교회에 컨설팅을 제공하는 등 교단 전체에 기여하는 것을 목표로 합니다.</p></div></div>
                 </div>
             </div>
         </section>
@@ -347,8 +328,8 @@
     </div>
     
     <div id="gallery-modal" class="fixed inset-0 z-50 flex items-center justify-center hidden">
-        <div id="modal-backdrop" class="absolute inset-0 bg-black bg-opacity-75 modal-backdrop"></div>
-        <div class="bg-white rounded-lg p-6 max-w-4xl w-full mx-4 relative modal-content">
+        <div id="modal-backdrop" class="absolute inset-0 bg-black bg-opacity-75"></div>
+        <div class="bg-white rounded-lg p-6 max-w-4xl w-full mx-4 relative">
             <h3 class="text-2xl font-bold text-center mb-6">선교적 공간 활용: 요한정</h3>
             <button id="close-modal" class="absolute top-4 right-4 text-gray-600 hover:text-black text-3xl">&times;</button>
             <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
@@ -363,7 +344,6 @@
     </div>
 
     <script>
-        // 애니메이션 관련 스크립트 제거
         document.addEventListener('DOMContentLoaded', function () {
             // 차트 스크립트
             const chartData = {
@@ -393,24 +373,26 @@
             };
             
             const detailCtx = document.getElementById('detailChart').getContext('2d');
-            new Chart(detailCtx, {
-                type: 'bar',
-                data: chartData,
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    indexAxis: 'y',
-                    plugins: {
-                        ...tooltipCallback.plugins,
-                        legend: { display: false },
-                        title: { display: true, text: '세대별 교인 수 (명)', font: { size: 16 } }
-                    },
-                    scales: {
-                        x: { beginAtZero: true },
-                        y: { ticks: { font: { size: 12 } } }
+            if (detailCtx) {
+                new Chart(detailCtx, {
+                    type: 'bar',
+                    data: chartData,
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        indexAxis: 'y',
+                        plugins: {
+                            ...tooltipCallback.plugins,
+                            legend: { display: false },
+                            title: { display: true, text: '세대별 교인 수 (명)', font: { size: 16 } }
+                        },
+                        scales: {
+                            x: { beginAtZero: true },
+                            y: { ticks: { font: { size: 12 } } }
+                        }
                     }
-                }
-            });
+                });
+            }
             
             // 네비게이션 링크 스크롤
             document.querySelectorAll('a.internal-link').forEach(anchor => {
@@ -429,18 +411,15 @@
             // 모달 로직
             const modal = document.getElementById('gallery-modal');
             const backdrop = document.getElementById('modal-backdrop');
-            const modalContent = modal.querySelector('.modal-content');
-            const openModalTriggers = [document.getElementById('vision-space-trigger-detail')];
             const closeModalButton = document.getElementById('close-modal');
+            const openModalTriggers = [document.getElementById('vision-space-trigger-detail')];
 
             function openModal() {
-                if(!modal) return;
-                modal.classList.remove('hidden');
+                if(modal) modal.classList.remove('hidden');
             }
 
             function closeModal() {
-                if(!modal) return;
-                modal.classList.add('hidden');
+                if(modal) modal.classList.add('hidden');
             }
 
             openModalTriggers.forEach(trigger => {
