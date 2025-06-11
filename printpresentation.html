@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
-        /* 화면용 기본 스타일 (애니메이션 관련 속성 제거) */
+        /* 화면용 기본 스타일 */
         html {
             scroll-behavior: smooth;
         }
@@ -35,7 +35,7 @@
             padding: 2rem 1rem;
             position: relative;
             overflow: hidden;
-            border-bottom: 1px solid #e2e8f0; /* 슬라이드 구분선 */
+            border-bottom: 1px solid #e2e8f0;
         }
         .content-box {
             padding: 3rem 2.5rem;
@@ -69,21 +69,21 @@
         }
 
        /**
-        * ▼▼▼ 인쇄 문제 해결을 위한 최종 CSS 코드 블록 ▼▼▼
+        * ▼▼▼ 인쇄 설정 CSS ▼▼▼
         */
        @media print {
-            /* 인쇄 불필요 요소 숨기기 (목차, 푸터, 모달 등) */
+            /* 목차 등 불필요 요소 숨기기 */
             #toc, footer, #gallery-modal, .slide::before {
                 display: none !important;
             }
 
-            /* 프레젠테이션 페이지 설정 (16:9 비율 유지) */
+            /* 페이지 크기를 가로 비율로 설정 */
             @page {
-                size: 16in 9in;
+                size: 16in 9in; /* 가로 방향의 16:9 비율 설정 */
                 margin: 0;
             }
 
-            /* HTML, Body 기본 스타일 리셋 */
+            /* 기본 스타일 리셋 */
             html, body {
                 width: 100%;
                 height: auto;
@@ -95,11 +95,11 @@
                 overflow: visible !important;
             }
             
-            /* 모든 슬라이드를 한 페이지로 명확하게 재정의 (모든 슬라이드가 보이게 하는 핵심) */
+            /* 각 섹션(슬라이드)을 한 페이지로 만듦 */
             .slide {
                 width: 100% !important;
-                height: 100% !important; /* 페이지 높이에 꽉 채움 */
-                min-height: 0 !important; /* vh 단위 무효화 */
+                height: 100% !important;
+                min-height: 0 !important;
                 margin: 0 !important;
                 padding: 0 !important;
                 overflow: hidden !important;
@@ -107,7 +107,7 @@
                 align-items: stretch !important;
                 justify-content: stretch !important;
                 page-break-after: always; /* 각 슬라이드 후 페이지 나누기 */
-                page-break-inside: avoid; /* 슬라이드 내부에서 페이지 나뉘지 않게 */
+                page-break-inside: avoid;
                 border-bottom: none;
             }
 
@@ -116,13 +116,13 @@
                 page-break-after: auto;
             }
 
-            /* 콘텐츠 박스를 슬라이드 내에서 중앙 정렬 */
+            /* 콘텐츠 박스 스타일 조정 */
             .content-box {
                 width: 100% !important;
                 height: 100% !important;
                 max-width: none !important;
                 margin: 0 !important;
-                padding: 4rem !important; /* 안쪽 여백 */
+                padding: 4rem !important;
                 box-sizing: border-box !important;
                 border-radius: 0 !important;
                 box-shadow: none !important;
