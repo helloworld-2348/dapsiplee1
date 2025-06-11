@@ -186,4 +186,307 @@
                 <li><a href="#detail-vision" class="internal-link block text-center p-2 text-sm bg-slate-100 rounded-lg hover:bg-green-100 transition-all duration-300 transform hover:scale-105"><span class="font-semibold text-gray-700">IV. 비전</span></a></li>
                 <li><a href="#detail-roadmap" class="internal-link block text-center p-2 text-sm bg-slate-100 rounded-lg hover:bg-purple-100 transition-all duration-300 transform hover:scale-105"><span class="font-semibold text-gray-700">V. 계획</span></a></li>
                 <li><a href="#detail-strategy" class="internal-link block text-center p-2 text-sm bg-slate-100 rounded-lg hover:bg-amber-100 transition-all duration-300 transform hover:scale-105"><span class="font-semibold text-gray-700">VI. 전략</span></a></li>
-                <li><a href="#detail-conclusion" class="internal-link block text-center p-2 text-sm bg-slate-100 rounded-lg hover:bg-gray-2
+                <li><a href="#detail-conclusion" class="internal-link block text-center p-2 text-sm bg-slate-100 rounded-lg hover:bg-gray-200 transition-all duration-300 transform hover:scale-105"><span class="font-semibold text-gray-700">VII. 결론</span></a></li>
+            </ul>
+        </nav>
+
+        <section id="title-slide" class="slide is-visible">
+            <div class="content-box">
+                <header class="text-center">
+                    <h1 class="text-5xl md:text-6xl font-black text-gray-900 mb-4">답십리교회 10년 성장 계획</h1>
+                    <p class="text-xl text-gray-600 mt-2">사람을 세우고, 미래를 향하며, 세상을 섬기는 교회를 향한 로드맵</p>
+                </header>
+            </div>
+        </section>
+
+        <section id="detail-status" class="slide">
+            <div class="content-box">
+                <h2 class="text-3xl md:text-4xl font-bold text-center text-blue-800 mb-10">I. 교회 현황</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <h3 class="text-2xl font-bold mb-4 text-center">교회 핵심 지표</h3>
+                        <table class="w-full text-left text-base">
+                            <tbody>
+                                <tr class="border-b border-gray-200"><td class="py-3 font-semibold">교회명</td><td class="py-3">제칠일안식일예수재림교 답십리교회</td></tr>
+                                <tr class="border-b border-gray-200"><td class="py-3 font-semibold">위치</td><td class="py-3">서울시 동대문구 답십리로 28길 38</td></tr>
+                                <tr class="border-b border-gray-200"><td class="py-3 font-semibold">목회자</td><td class="py-3">담임목사 류대균, 전도사 임다비</td></tr>
+                                <tr class="border-b border-gray-200"><td class="py-3 font-semibold">재직 현황</td><td class="py-3">장로 9, 남집사 16, 여집사 31</td></tr>
+                                <tr class="border-b border-gray-200"><td class="py-3 font-semibold">예배 출석</td><td class="py-3">안교 50, 대예배 70-80</td></tr>
+                                <tr class="border-b border-gray-200"><td class="py-3 font-semibold">구도자 현황</td><td class="py-3">'잃은 양' 포함 20-40명</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-bold mb-4 text-center">세대별 구성 (총 132명)</h3>
+                        <div class="detail-chart-container"><canvas id="detailChart"></canvas></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="detail-surroundings" class="slide">
+            <div class="content-box">
+                <h2 class="text-3xl md:text-4xl font-bold text-center text-cyan-800 mb-10">II. 교회 주변 상황</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+                    <div class="bg-cyan-50/50 p-6 rounded-lg h-full border-l-4 border-cyan-400">
+                        <h3 class="text-2xl font-bold mb-4 flex items-center text-cyan-900"><span class="text-3xl mr-3">🏙️</span> 지리 및 교통</h3>
+                        <p class="text-gray-700"><span class="font-bold text-green-600">장점:</span> 서울 내에 위치하여 전반적인 접근성이 높음.</p>
+                        <p class="text-gray-700 mt-2"><span class="font-bold text-red-600">단점:</span> 대중교통 이용이 다소 불편하며, 주변에 청량리교회, 본부교회 등 대형 교회가 인접하여 상대적으로 불리한 위치.</p>
+                    </div>
+                    <div class="bg-cyan-50/50 p-6 rounded-lg h-full border-l-4 border-cyan-400">
+                         <h3 class="text-2xl font-bold mb-4 flex items-center text-cyan-900"><span class="text-3xl mr-3">👨‍👩‍👧‍👦</span> 인구 현황 (답십리1동)</h3>
+                         <p class="text-gray-700 mb-2">교회가 위치한 답십리1동의 인구는 약 27,571명으로, 다양한 연령층이 거주하는 도심 지역 (2024.05 기준)</p>
+                         <div class="flex justify-around text-center mt-4">
+                             <div><p class="font-bold text-2xl text-cyan-700">13,168</p><p>남성</p></div>
+                             <div><p class="font-bold text-2xl text-cyan-700">14,403</p><p>여성</p></div>
+                             <div><p class="font-bold text-2xl text-cyan-700">12,945</p><p>세대수</p></div>
+                         </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="detail-swot" class="slide">
+            <div class="content-box">
+                <h2 class="text-3xl md:text-4xl font-bold text-center text-orange-800 mb-10">III. 교회의 강점과 개선할 점</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="bg-green-50/50 p-6 rounded-lg border-l-4 border-green-500">
+                        <h3 class="text-2xl font-bold mb-4 text-green-700 text-center">강점 (Strengths)</h3>
+                        <ul class="space-y-4 text-base">
+                            <li class="flex items-start"><span class="mr-2 mt-1">✅</span><div><span class="font-semibold">높은 청년 비율:</span> 20-30대가 57.5%를 차지하여 교회에 활력을 제공.</div></li>
+                            <li class="flex items-start"><span class="mr-2 mt-1">✅</span><div><span class="font-semibold">'잃은 양' 사역 집중:</span> 갈 곳 없는 재림 청년들을 위한 사역에 집중.</div></li>
+                            <li class="flex items-start"><span class="mr-2 mt-1">✅</span><div><span class="font-semibold">명확한 사역 비전:</span> 사람을 세우는 데 중점을 둔 명확한 비전 보유.</div></li>
+                            <li class="flex items-start"><span class="mr-2 mt-1">✅</span><div><span class="font-semibold">성도들의 적극적 참여:</span> 청년 중심의 능동적인 사역 참여 분위기.</div></li>
+                        </ul>
+                    </div>
+                    <div class="bg-red-50/50 p-6 rounded-lg border-l-4 border-red-500">
+                        <h3 class="text-2xl font-bold mb-4 text-red-700 text-center">개선 및 발전 과제</h3>
+                        <ul class="space-y-4 text-base">
+                            <li class="flex items-start"><span class="mr-2 mt-1">🛠️</span><div><span class="font-semibold">지리/교통의 불리함 극복:</span> 위치적 약점을 상쇄할 매력적인 콘텐츠 강화.</div></li>
+                            <li class="flex items-start"><span class="mr-2 mt-1">🛠️</span><div><span class="font-semibold">효율적인 공간 활용:</span> 비효율적인 공간 구조를 개선하고 다목적으로 활용.</div></li>
+                            <li class="flex items-start"><span class="mr-2 mt-1">🛠️</span><div><span class="font-semibold">'신앙의 사다리' 구축:</span> 청년들이 지속적으로 정착할 수 있는 시스템 마련.</div></li>
+                            <li class="flex items-start"><span class="mr-2 mt-1">🛠️</span><div><span class="font-semibold">생동감 있는 예배 구현:</span> 모든 세대가 몰입하는 감동적인 예배 경험 제공.</div></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="detail-vision" class="slide">
+            <div class="content-box">
+                <h2 class="text-3xl md:text-4xl font-bold text-center text-green-800 mb-10">IV. 비전 및 핵심 사역 철학</h2>
+                <div class="space-y-8">
+                    <div class="p-4 rounded-lg">
+                        <h3 class="text-2xl font-bold flex items-center mb-2 text-green-900"><span class="text-4xl mr-3">🪜</span>신앙의 사다리 회복</h3>
+                        <p class="text-gray-700 text-lg ml-12">졸업, 군 입대, 취업 등 생애 주기 변화로 교회를 떠나는 청년들이 안정적으로 신앙을 이어가도록 돕습니다. 이미 신앙 교육을 받은 이들이 편안하게 정착하고 즉시 교회의 '일꾼'이 될 수 있도록 문턱을 낮추는 '수평 이동'을 긍정적으로 재해석합니다.</p>
+                    </div>
+                    <div class="p-4 rounded-lg">
+                        <h3 class="text-2xl font-bold flex items-center mb-2 text-green-900"><span class="text-4xl mr-3">🌷</span>재능을 꽃피우는 교회 (은사 중심적 사역)</h3>
+                        <p class="text-gray-700 text-lg ml-12">"성도를 온전하게 하여 봉사의 일을 하게 하며 그리스도의 몸을 세우려 하심이라" (엡 4:12) 말씀에 따라, 새로운 성도의 재능을 발견하여 즉시 사역에 투입합니다. 이론 교육보다 현장 경험을 통한 빠른 성장을 지원하며, 목회자는 청년들의 주도성을 신뢰하고 필요한 자원을 과감히 투자합니다.</p>
+                    </div>
+                    <div id="vision-space-trigger-detail" class="cursor-pointer p-4 rounded-lg">
+                        <h3 class="text-2xl font-bold flex items-center mb-2 text-green-900"><span class="text-4xl mr-3">🏠</span>선교적 공간 활용</h3>
+                        <p class="text-gray-700 text-lg ml-12">교회 공간을 단순 예배 장소를 넘어, 지역 사회와 소통하는 선교적 공간으로 재설계합니다. 1층을 카페('요한정')나 쉼터처럼 열린 공간으로 만들고, 특정 그룹이 독점하지 않는 다목적 공간으로 활용하여 관계 중심의 공동체를 지향합니다. <span class="font-bold text-green-600 underline">여기를 클릭하여 갤러리를 확인하세요.</span></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="detail-roadmap" class="slide">
+            <div class="content-box">
+                <h2 class="text-3xl md:text-4xl font-bold text-center text-purple-800 mb-10">V. 10개년 장기 목표 및 연도별 계획</h2>
+                <div class="text-center bg-purple-50 p-4 rounded-lg mb-8 shadow-inner">
+                    <p class="italic text-gray-800 text-lg">"우리가 더하기 법에 따라 작은 일에 충실하면 하나님께서는 곱하기 법에 따라 역사하실 것이다." <span class="text-sm not-italic font-semibold">(실물, 360)</span></p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="bg-slate-50 p-6 rounded-lg">
+                        <h3 class="text-2xl font-black text-purple-600 mb-3">1단계 (2025-2027)<br><span class="text-xl font-bold text-gray-700">기반 구축기</span></h3>
+                        <div class="relative pl-4 timeline border-purple-600">
+                            <div class="relative mb-4 pl-4 timeline-item"><p class="font-bold">2025</p><p class="text-sm">NCD 진단, 유튜브 정비, 1층 공간화</p></div>
+                            <div class="relative mb-4 pl-4 timeline-item"><p class="font-bold">2026</p><p class="text-sm">은사별 사역팀 구성, 세대교제 프로그램</p></div>
+                            <div class="relative pl-4 timeline-item"><p class="font-bold">2027</p><p class="text-sm">청년 소그룹(4개), 장년-청년 멘토링</p></div>
+                        </div>
+                    </div>
+                    <div class="bg-slate-50 p-6 rounded-lg">
+                        <h3 class="text-2xl font-black text-purple-700 mb-3">2단계 (2028-2031)<br><span class="text-xl font-bold text-gray-700">사역 확장기</span></h3>
+                        <div class="relative pl-4 timeline border-purple-700">
+                            <div class="relative mb-4 pl-4 timeline-item"><p class="font-bold">2028</p><p class="text-sm">국내 봉사단, 지역사회 사역</p></div>
+                            <div class="relative mb-4 pl-4 timeline-item"><p class="font-bold">2029</p><p class="text-sm">해외 단기선교, 리더 양성 시작</p></div>
+                            <div class="relative mb-4 pl-4 timeline-item"><p class="font-bold">2030</p><p class="text-sm">세대별 소그룹 정규화, 주중 커뮤니티 센터</p></div>
+                            <div class="relative pl-4 timeline-item"><p class="font-bold">2031</p><p class="text-sm">'교회 일꾼 학교' 개설, 교회 개척 기획</p></div>
+                        </div>
+                    </div>
+                    <div class="bg-slate-50 p-6 rounded-lg">
+                        <h3 class="text-2xl font-black text-purple-800 mb-3">3단계 (2032-2034)<br><span class="text-xl font-bold text-gray-700">자립 및 확산기</span></h3>
+                        <div class="relative pl-4 timeline border-purple-800">
+                            <div class="relative mb-4 pl-4 timeline-item"><p class="font-bold">2032</p><p class="text-sm">성장 모델 매뉴얼 제작, 외부 컨설팅</p></div>
+                            <div class="relative mb-4 pl-4 timeline-item"><p class="font-bold">2033</p><p class="text-sm">신규 교회 건설 시작, 리더십 컨퍼런스</p></div>
+                            <div class="relative pl-4 timeline-item"><p class="font-bold">2034</p><p class="text-sm">신규 교회 완공, 성장 모델 발표/전수</p></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="detail-strategy" class="slide">
+            <div class="content-box">
+                <h2 class="text-3xl md:text-4xl font-bold text-center text-amber-800 mb-10">VI. 교회 성장을 위한 세부 전략</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="bg-amber-50/50 p-4 rounded-lg flex items-start"><span class="text-3xl mr-4">📊</span><div><h3 class="font-bold text-lg">NCD 주기적 진단</h3><p class="text-sm text-gray-600">5년 주기(2025, 2029, 2034)로 NCD 진단을 실시하여, 최소치 요소를 개선하고 강점을 극대화하는 방향으로 계획을 보완합니다.</p></div></div>
+                    <div class="bg-amber-50/50 p-4 rounded-lg flex items-start"><span class="text-3xl mr-4">🏠</span><div><h3 class="font-bold text-lg">공간 활용 극대화 및 선교적 재설계</h3><p class="text-sm text-gray-600">교회 공간을 다목적 선교 자원으로 활용합니다. 1층을 카페, 쉼터 등 열린 공간으로 만들고, 사용자 중심의 유연한 설계를 통해 지역 사회와 교류를 확대합니다.</p></div></div>
+                    <div class="bg-amber-50/50 p-4 rounded-lg flex items-start"><span class="text-3xl mr-4">💡</span><div><h3 class="font-bold text-lg">재능 기반 리더십 구축</h3><p class="text-sm text-gray-600">새 성도의 재능을 즉시 사역에 투입하여 현장 중심 성장을 지원하고, 사람을 움직이는 '동원력'을 중심으로 리더를 세웁니다.</p></div></div>
+                    <div class="bg-amber-50/50 p-4 rounded-lg flex items-start"><span class="text-3xl mr-4">🐑</span><div><h3 class="font-bold text-lg">'잃은 양' 회복을 위한 접근</h3><p class="text-sm text-gray-600">교회를 떠난 청년들이 안정적으로 정착하도록 '신앙의 사다리'를 구축하고, 이들을 통해 주변 비신자까지 연결되는 관계 확산을 기대합니다.</p></div></div>
+                    <div class="bg-amber-50/50 p-4 rounded-lg flex items-start"><span class="text-3xl mr-4">🔗</span><div><h3 class="font-bold text-lg">온/오프라인 관계 강화</h3><p class="text-sm text-gray-600">디지털 매체로 일상 소통을, '같이 식사합시다' 등 오프라인 프로그램으로 깊은 관계를 형성하며, 신뢰 기반의 적극적 시도를 지속합니다.</p></div></div>
+                    <div class="bg-amber-50/50 p-4 rounded-lg flex items-start"><span class="text-3xl mr-4">✨</span><div><h3 class="font-bold text-lg">매력적인 예배 및 문화 조성</h3><p class="text-sm text-gray-600">젊은 세대를 고려한 속도감 있는 예배를 만들고, '작은 성공' 경험을 축적하여 '하루하루 최선을 다하는' 긍정적 공동체 문화를 만듭니다.</p></div></div>
+                    <div class="bg-amber-50/50 p-4 rounded-lg flex items-start md:col-span-2"><span class="text-3xl mr-4">🚀</span><div><h3 class="font-bold text-lg">성장 모델의 확산</h3><p class="text-sm text-gray-600">교회 내부 성장을 넘어, 신규 교회를 개척하고 다른 교회에 컨설팅을 제공하는 등 교단 전체에 기여하는 것을 목표로 합니다.</p></div></div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="detail-conclusion" class="slide">
+            <div class="content-box">
+                <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-10">VII. 결론: 사람을 세우고 세상을 향하는 교회</h2>
+                <div class="max-w-4xl mx-auto text-center text-gray-700 text-lg space-y-6">
+                    <p>본 계획안의 핵심은 '사람'에 있습니다. 잠재력 있는 인재를 발굴하여 현장에서 성장시키고, 교회를 떠났던 이들을 다시 품으며, 디지털과 오프라인을 넘나드는 깊은 관계를 통해 공동체의 내실을 다집니다.</p>
+                    <p>동시에, 물리적 공간을 선교적 관점에서 재설계하고 모든 세대가 공감하는 역동적인 예배를 통해, 누구나 찾아오고 머물고 싶은 '매력적인 교회'를 만들어갑니다. '할 수 있는 작은 일'부터 시작해 쌓아 올린 성공의 경험들은 긍정적 문화를 만들고, 더 큰 사역으로 나아가는 원동력이 될 것입니다.</p>
+                    <p class="font-bold text-xl mt-6">궁극적으로 이러한 노력은 단순히 한 교회의 성장을 넘어, 건강한 성장 모델을 정립하여 다른 교회와 교단 전체에 기여하는 '확장성'을 지향합니다. 하루하루 최선을 다하는 꾸준한 실행을 통해 이 비전은 반드시 현실이 될 것입니다.</p>
+                </div>
+            </div>
+        </section>
+
+        <footer class="text-center my-12">
+            <p class="text-sm text-gray-500">3팀(정찬희, 장건우, 한은진)의 기획안을 바탕으로 제작되었습니다.</p>
+        </footer>
+    </div>
+    
+    <div id="gallery-modal" class="fixed inset-0 z-50 flex items-center justify-center hidden">
+        <div id="modal-backdrop" class="absolute inset-0 bg-black bg-opacity-75 modal-backdrop"></div>
+        <div class="bg-white rounded-lg p-6 max-w-4xl w-full mx-4 relative modal-content scale-95">
+            <h3 class="text-2xl font-bold text-center mb-6">선교적 공간 활용: 요한정</h3>
+            <button id="close-modal" class="absolute top-4 right-4 text-gray-600 hover:text-black text-3xl">&times;</button>
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                <img src="https://cdn87523823.blazingcdn.net/cdn-img/box1/dsnsda/news/dsnsda.1749130268652.42253.17.1280.1273.jpg" alt="교회 1층 카페의 야간 외부 전경" class="w-full h-full object-cover rounded-lg shadow-md">
+                <img src="https://cdn87523823.blazingcdn.net/cdn-img/box1/dsnsda/news/dsnsda.1749131793851.60210.2.960.1280.jpg" alt="요한정 카페 내부 공간" class="w-full h-full object-cover rounded-lg shadow-md">
+                <img src="https://cdn87523823.blazingcdn.net/cdn-img/box1/dsnsda/news/dsnsda.1749424035824.91890.11.1280.960.jpg" alt="요한정 아이스크림" class="w-full h-full object-cover rounded-lg shadow-md">
+                <img src="https://cdn87523823.blazingcdn.net/cdn-img/box1/dsnsda/news/dsnsda.1749424246056.96838.2.960.1280.jpg" alt="청년들이 테이블에 모여 교제하는 모습" class="w-full h-full object-cover rounded-lg shadow-md">
+                <img src="https://cdn87523823.blazingcdn.net/cdn-img/box1/dsnsda/news/dsnsda.1749424035824.91890.9.1280.960.jpg" alt="또 다른 그룹의 청년들이 모여 대화하는 모습" class="w-full h-full object-cover rounded-lg shadow-md">
+                <img src="https://cdn87523823.blazingcdn.net/cdn-img/box1/dsnsda/news/dsnsda.1749425002012.52638.13.1280.960.jpg" alt="카페 공간에서 아이스크림 만드는 집사님" class="w-full h-full object-cover rounded-lg shadow-md">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const slides = document.querySelectorAll('.slide');
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                    }
+                });
+            }, { threshold: 0.3 });
+
+            slides.forEach(slide => {
+                observer.observe(slide);
+            });
+
+            const chartData = {
+                labels: ['어린이', '중고생', '20대', '30대', '40대', '50대', '60대', '70대 이상'],
+                datasets: [{
+                    label: '세대별 교인 수',
+                    data: [5, 2, 52, 24, 9, 13, 9, 18],
+                    backgroundColor: ['#FFC107', '#8BC34A', '#FF5722', '#F44336', '#9C27B0', '#3F51B5', '#03A9F4', '#607D8B'],
+                    borderColor: '#FFFFFF',
+                    borderWidth: 2,
+                    hoverOffset: 4
+                }]
+            };
+
+            const tooltipCallback = {
+                plugins: {
+                    tooltip: {
+                        callbacks: {
+                            title: function(tooltipItems) {
+                                const item = tooltipItems[0];
+                                let label = item.chart.data.labels[item.dataIndex];
+                                return Array.isArray(label) ? label.join(' ') : label;
+                            }
+                        }
+                    }
+                }
+            };
+            
+            const detailCtx = document.getElementById('detailChart').getContext('2d');
+            new Chart(detailCtx, {
+                type: 'bar',
+                data: chartData,
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    indexAxis: 'y',
+                    plugins: {
+                        ...tooltipCallback.plugins,
+                        legend: { display: false },
+                        title: { display: true, text: '세대별 교인 수 (명)', font: { size: 16 } }
+                    },
+                    scales: {
+                        x: { beginAtZero: true },
+                        y: { ticks: { font: { size: 12 } } }
+                    }
+                }
+            });
+            
+            document.querySelectorAll('a.internal-link').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+            const modal = document.getElementById('gallery-modal');
+            const backdrop = document.getElementById('modal-backdrop');
+            const modalContent = modal.querySelector('.modal-content');
+            const openModalTriggers = [document.getElementById('vision-space-trigger-detail')];
+            const closeModalButton = document.getElementById('close-modal');
+
+            function openModal() {
+                if(!modal) return;
+                modal.classList.remove('hidden');
+                setTimeout(() => {
+                    if(backdrop) backdrop.classList.remove('opacity-0');
+                    if(modalContent) modalContent.classList.remove('scale-95');
+                }, 10);
+            }
+
+            function closeModal() {
+                if(!modal) return;
+                if(backdrop) backdrop.classList.add('opacity-0');
+                if(modalContent) modalContent.classList.add('scale-95');
+                setTimeout(() => {
+                    modal.classList.add('hidden');
+                }, 300);
+            }
+
+            openModalTriggers.forEach(trigger => {
+                if (trigger) {
+                    trigger.addEventListener('click', openModal);
+                }
+            });
+            
+            if(closeModalButton) closeModalButton.addEventListener('click', closeModal);
+            if(backdrop) backdrop.addEventListener('click', closeModal);
+
+        });
+
+        window.onload = function() {
+            document.body.style.opacity = '1';
+        };
+    </script>
+</body>
+</html>
