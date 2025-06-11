@@ -11,133 +11,29 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
         /* 화면용 기본 스타일 */
-        html {
-            scroll-behavior: smooth;
-        }
-        body {
-            font-family: 'Noto Sans KR', sans-serif;
-            background: #f8fafc;
-        }
-        .detail-chart-container {
-            position: relative;
-            height: 350px;
-            width: 100%;
-            max-width: 600px;
-            margin: auto;
-        }
-        .slide {
-            min-height: 100vh;
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 2rem 1rem;
-            position: relative;
-            overflow: hidden;
-            border-bottom: 1px solid #e2e8f0;
-        }
-        .content-box {
-            padding: 3rem 2.5rem;
-            background-color: white;
-            border-radius: 1.5rem;
-            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-            width: 100%;
-            max-width: 1200px;
-            position: relative;
-            z-index: 1;
-        }
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 5px;
-            top: 0;
-            bottom: 0;
-            width: 3px;
-            background-color: #e2e8f0;
-        }
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 5px;
-            width: 14px;
-            height: 14px;
-            border-radius: 9999px;
-            background-color: white;
-            border: 3px solid;
-        }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Noto Sans KR', sans-serif; background: #f8fafc; }
+        .detail-chart-container { position: relative; height: 350px; width: 100%; max-width: 600px; margin: auto; }
+        .slide { min-height: 100vh; width: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 2rem 1rem; position: relative; overflow: hidden; border-bottom: 1px solid #e2e8f0; }
+        .content-box { padding: 3rem 2.5rem; background-color: white; border-radius: 1.5rem; box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1); width: 100%; max-width: 1200px; position: relative; z-index: 1; }
+        .timeline::before { content: ''; position: absolute; left: 5px; top: 0; bottom: 0; width: 3px; background-color: #e2e8f0; }
+        .timeline-item::before { content: ''; position: absolute; left: 0; top: 5px; width: 14px; height: 14px; border-radius: 9999px; background-color: white; border: 3px solid; }
 
        /**
         * ▼▼▼ 인쇄 설정 CSS ▼▼▼
         */
        @media print {
-            /* 목차 등 불필요 요소 숨기기 */
-            #toc, footer, #gallery-modal, .slide::before {
-                display: none !important;
-            }
-
-            /* 페이지 크기를 가로 비율로 설정 */
-            @page {
-                size: 16in 9in; /* 가로 방향의 16:9 비율 설정 */
-                margin: 0;
-            }
-
-            /* 기본 스타일 리셋 */
-            html, body {
-                width: 100%;
-                height: auto;
-                margin: 0;
-                padding: 0;
-                background: #ffffff;
-                -webkit-print-color-adjust: exact;
-                print-color-adjust: exact;
-                overflow: visible !important;
-            }
-            
-            /* 각 섹션(슬라이드)을 한 페이지로 만듦 */
-            .slide {
-                width: 100% !important;
-                height: 100% !important;
-                min-height: 0 !important;
-                margin: 0 !important;
-                padding: 0 !important;
-                overflow: hidden !important;
-                display: flex !important;
-                align-items: stretch !important;
-                justify-content: stretch !important;
-                page-break-after: always; /* 각 슬라이드 후 페이지 나누기 */
-                page-break-inside: avoid;
-                border-bottom: none;
-            }
-
-            /* 마지막 슬라이드 뒤 빈 페이지 제거 */
-            .slide:last-of-type {
-                page-break-after: auto;
-            }
-
-            /* 콘텐츠 박스 스타일 조정 */
+            #toc, footer, #gallery-modal, .slide::before { display: none !important; }
+            @page { size: 16in 9in; margin: 0; }
+            html, body { width: 100%; height: auto; margin: 0; padding: 0; background: #ffffff; -webkit-print-color-adjust: exact; print-color-adjust: exact; overflow: visible !important; }
+            .slide { width: 100% !important; height: 100% !important; min-height: 0 !important; margin: 0 !important; padding: 0 !important; overflow: hidden !important; display: flex !important; align-items: stretch !important; justify-content: stretch !important; page-break-after: always; page-break-inside: avoid; border-bottom: none; }
+            .slide:last-of-type { page-break-after: auto; }
             .content-box {
-                width: 100% !important;
-                height: 100% !important;
-                max-width: none !important;
-                margin: 0 !important;
-                padding: 4rem !important;
-                box-sizing: border-box !important;
-                border-radius: 0 !important;
-                box-shadow: none !important;
-                border: none !important;
-                background-color: white !important;
-                backdrop-filter: none !important;
-                display: flex !important;
-                flex-direction: column !important;
-                justify-content: center !important;
-                align-items: center !important;
+                width: 100% !important; height: 100% !important; max-width: none !important; margin: 0 !important; padding: 3rem !important; /* 패딩 조정 */
+                box-sizing: border-box !important; border-radius: 0 !important; box-shadow: none !important; border: none !important; background-color: white !important;
+                display: flex !important; flex-direction: column !important; justify-content: center !important; /* 수직 중앙 정렬 유지 */
             }
-            
-            h1, h2, h3, h4, h5, h6 {
-                page-break-after: avoid;
-            }
+            h1, h2, h3, h4, h5, h6 { page-break-after: avoid; }
        }
     </style>
 </head>
@@ -145,18 +41,7 @@
 
     <div class="max-w-7xl mx-auto">
         <nav id="toc" class="p-2 bg-white/80 backdrop-blur-md rounded-xl shadow-lg sticky top-4 z-20">
-            <h2 class="text-center font-bold text-lg mb-2 text-slate-700">목차</h2>
-            <ul class="grid grid-cols-4 lg:grid-cols-8 gap-2">
-                <li><a href="#title-slide" class="internal-link block text-center p-2 text-sm bg-slate-100 rounded-lg"><span>처음</span></a></li>
-                <li><a href="#detail-status" class="internal-link block text-center p-2 text-sm bg-slate-100 rounded-lg"><span>I. 현황</span></a></li>
-                <li><a href="#detail-surroundings" class="internal-link block text-center p-2 text-sm bg-slate-100 rounded-lg"><span>II. 주변</span></a></li>
-                <li><a href="#detail-swot" class="internal-link block text-center p-2 text-sm bg-slate-100 rounded-lg"><span>III. 진단</span></a></li>
-                <li><a href="#detail-vision" class="internal-link block text-center p-2 text-sm bg-slate-100 rounded-lg"><span>IV. 비전</span></a></li>
-                <li><a href="#detail-roadmap" class="internal-link block text-center p-2 text-sm bg-slate-100 rounded-lg"><span>V. 계획</span></a></li>
-                <li><a href="#detail-strategy" class="internal-link block text-center p-2 text-sm bg-slate-100 rounded-lg"><span>VI. 전략</span></a></li>
-                <li><a href="#detail-conclusion" class="internal-link block text-center p-2 text-sm bg-slate-100 rounded-lg"><span>VII. 결론</span></a></li>
-            </ul>
-        </nav>
+            </nav>
         
         <section id="title-slide" class="slide">
             <div class="content-box">
@@ -170,7 +55,7 @@
         <section id="detail-status" class="slide">
             <div class="content-box">
                 <h2 class="text-3xl md:text-4xl font-bold text-center text-blue-800 mb-10">I. 교회 현황</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div class="grid grid-cols-2 gap-12 items-center w-full">
                     <div>
                         <h3 class="text-2xl font-bold mb-4 text-center">교회 핵심 지표</h3>
                         <table class="w-full text-left text-base">
@@ -195,7 +80,7 @@
         <section id="detail-surroundings" class="slide">
             <div class="content-box">
                 <h2 class="text-3xl md:text-4xl font-bold text-center text-cyan-800 mb-10">II. 교회 주변 상황</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+                <div class="grid grid-cols-2 gap-8 items-start w-full">
                     <div class="bg-cyan-50 p-6 rounded-lg h-full border-l-4 border-cyan-400">
                         <h3 class="text-2xl font-bold mb-4 flex items-center text-cyan-900"><span class="text-3xl mr-3">🏙️</span> 지리 및 교통</h3>
                         <p class="text-gray-700"><span class="font-bold text-green-600">장점:</span> 서울 내에 위치하여 전반적인 접근성이 높음.</p>
@@ -217,7 +102,7 @@
         <section id="detail-swot" class="slide">
             <div class="content-box">
                 <h2 class="text-3xl md:text-4xl font-bold text-center text-orange-800 mb-10">III. 교회의 강점과 개선할 점</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="grid grid-cols-2 gap-8 w-full">
                     <div class="bg-green-50 p-6 rounded-lg border-l-4 border-green-500">
                         <h3 class="text-2xl font-bold mb-4 text-green-700 text-center">강점 (Strengths)</h3>
                         <ul class="space-y-4 text-base">
@@ -322,28 +207,7 @@
             </div>
         </section>
 
-        <footer class="text-center my-12">
-            <p class="text-sm text-gray-500">3팀(정찬희, 장건우, 한은진)의 기획안을 바탕으로 제작되었습니다.</p>
-        </footer>
-    </div>
-    
-    <div id="gallery-modal" class="fixed inset-0 z-50 flex items-center justify-center hidden">
-        <div id="modal-backdrop" class="absolute inset-0 bg-black bg-opacity-75"></div>
-        <div class="bg-white rounded-lg p-6 max-w-4xl w-full mx-4 relative">
-            <h3 class="text-2xl font-bold text-center mb-6">선교적 공간 활용: 요한정</h3>
-            <button id="close-modal" class="absolute top-4 right-4 text-gray-600 hover:text-black text-3xl">&times;</button>
-            <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
-                <img src="https://cdn87523823.blazingcdn.net/cdn-img/box1/dsnsda/news/dsnsda.1749130268652.42253.17.1280.1273.jpg" alt="교회 1층 카페의 야간 외부 전경" class="w-full h-full object-cover rounded-lg shadow-md">
-                <img src="https://cdn87523823.blazingcdn.net/cdn-img/box1/dsnsda/news/dsnsda.1749131793851.60210.2.960.1280.jpg" alt="요한정 카페 내부 공간" class="w-full h-full object-cover rounded-lg shadow-md">
-                <img src="https://cdn87523823.blazingcdn.net/cdn-img/box1/dsnsda/news/dsnsda.1749424035824.91890.11.1280.960.jpg" alt="요한정 아이스크림" class="w-full h-full object-cover rounded-lg shadow-md">
-                <img src="https://cdn87523823.blazingcdn.net/cdn-img/box1/dsnsda/news/dsnsda.1749424246056.96838.2.960.1280.jpg" alt="청년들이 테이블에 모여 교제하는 모습" class="w-full h-full object-cover rounded-lg shadow-md">
-                <img src="https://cdn87523823.blazingcdn.net/cdn-img/box1/dsnsda/news/dsnsda.1749424035824.91890.9.1280.960.jpg" alt="또 다른 그룹의 청년들이 모여 대화하는 모습" class="w-full h-full object-cover rounded-lg shadow-md">
-                <img src="https://cdn87523823.blazingcdn.net/cdn-img/box1/dsnsda/news/dsnsda.1749425002012.52638.13.1280.960.jpg" alt="카페 공간에서 아이스크림 만드는 집사님" class="w-full h-full object-cover rounded-lg shadow-md">
-            </div>
-        </div>
-    </div>
-
-    <script>
+        <script>
         document.addEventListener('DOMContentLoaded', function () {
             // 차트 스크립트
             const chartData = {
@@ -357,80 +221,13 @@
                     hoverOffset: 4
                 }]
             };
-
-            const tooltipCallback = {
-                plugins: {
-                    tooltip: {
-                        callbacks: {
-                            title: function(tooltipItems) {
-                                const item = tooltipItems[0];
-                                let label = item.chart.data.labels[item.dataIndex];
-                                return Array.isArray(label) ? label.join(' ') : label;
-                            }
-                        }
-                    }
-                }
-            };
-            
             const detailCtx = document.getElementById('detailChart').getContext('2d');
             if (detailCtx) {
-                new Chart(detailCtx, {
-                    type: 'bar',
-                    data: chartData,
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        indexAxis: 'y',
-                        plugins: {
-                            ...tooltipCallback.plugins,
-                            legend: { display: false },
-                            title: { display: true, text: '세대별 교인 수 (명)', font: { size: 16 } }
-                        },
-                        scales: {
-                            x: { beginAtZero: true },
-                            y: { ticks: { font: { size: 12 } } }
-                        }
-                    }
-                });
+                new Chart(detailCtx, { type: 'bar', data: chartData, options: { responsive: true, maintainAspectRatio: false, indexAxis: 'y', plugins: { legend: { display: false }, title: { display: true, text: '세대별 교인 수 (명)', font: { size: 16 } } }, scales: { x: { beginAtZero: true }, y: { ticks: { font: { size: 12 } } } } } });
             }
-            
-            // 네비게이션 링크 스크롤
-            document.querySelectorAll('a.internal-link').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    const targetId = this.getAttribute('href');
-                    const targetElement = document.querySelector(targetId);
-                    if (targetElement) {
-                        targetElement.scrollIntoView({
-                            behavior: 'smooth'
-                        });
-                    }
-                });
-            });
-
-            // 모달 로직
-            const modal = document.getElementById('gallery-modal');
-            const backdrop = document.getElementById('modal-backdrop');
-            const closeModalButton = document.getElementById('close-modal');
-            const openModalTriggers = [document.getElementById('vision-space-trigger-detail')];
-
-            function openModal() {
-                if(modal) modal.classList.remove('hidden');
-            }
-
-            function closeModal() {
-                if(modal) modal.classList.add('hidden');
-            }
-
-            openModalTriggers.forEach(trigger => {
-                if (trigger) {
-                    trigger.addEventListener('click', openModal);
-                }
-            });
-            
-            if(closeModalButton) closeModalButton.addEventListener('click', closeModal);
-            if(backdrop) backdrop.addEventListener('click', closeModal);
         });
-    </script>
+        </script>
+
+    </div>
 </body>
 </html>
