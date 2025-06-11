@@ -17,7 +17,6 @@
         body {
             font-family: 'Noto Sans KR', sans-serif;
             background: linear-gradient(175deg, #f0f4f8 0%, #ffffff 100%);
-            /* FOUC(Flash of Unstyled Content) 방지를 위해 초기에 숨김 */
             opacity: 0;
             transition: opacity 0.5s ease-in-out;
         }
@@ -32,7 +31,7 @@
             min-height: 100vh;
             width: 100%;
             scroll-snap-align: start;
-            scroll-margin-top: 3.5rem; /* Adjusted for smaller sticky nav height */
+            scroll-margin-top: 3.5rem;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -107,43 +106,35 @@
         .modal-backdrop { transition: opacity 0.3s ease; }
         .modal-content { transition: transform 0.3s ease; }
 
-       /**
-        * ▼▼▼ 인쇄 문제 해결을 위한 핵심 CSS 코드 블록 ▼▼▼
-        */
        @media print {
-            /* 인쇄 시 목차(TOC), 푸터, 갤러리 팝업 등 불필요한 요소 숨기기 */
             #toc, footer, #gallery-modal {
                 display: none !important;
             }
 
-            /* 페이지 크기를 16:9 비율로 지정하고 모든 여백 제거 */
             @page {
                 size: 16in 9in;
                 margin: 0;
             }
 
-            /* 기본 HTML, Body 스타일을 인쇄에 맞게 초기화 */
             html, body {
                 width: 100%;
                 height: 100%;
                 margin: 0;
                 padding: 0;
-                background: #ffffff; /* 배경색을 강제로 흰색으로 지정 */
-                -webkit-print-color-adjust: exact; /* 브라우저가 배경색과 이미지를 인쇄하도록 강제 */
+                background: #ffffff;
+                -webkit-print-color-adjust: exact;
                 print-color-adjust: exact;
             }
 
-            /* [가장 중요한 부분] 애니메이션으로 숨겨진 슬라이드들을 강제로 표시 */
             body, .slide, .content-box {
                 opacity: 1 !important;
                 transform: none !important;
                 visibility: visible !important;
             }
 
-            /* 각 슬라이드를 한 페이지에 꽉 채우는 프레젠테이션 스타일로 설정 */
             .slide {
-                page-break-after: always;  /* 각 슬라이드 다음에 페이지 나누기 */
-                page-break-inside: avoid;   /* 슬라이드 내용이 페이지 중간에 잘리지 않도록 함 */
+                page-break-after: always;
+                page-break-inside: avoid;
                 width: 100%;
                 height: 100%;
                 padding: 0;
@@ -153,11 +144,10 @@
                 justify-content: center;
                 align-items: center;
                 overflow: hidden;
-                min-height: 0; /* vh 단위 오버라이드 */
-                scroll-snap-align: none; /* 스크롤 스냅 비활성화 */
+                min-height: 0;
+                scroll-snap-align: none;
             }
 
-            /* 슬라이드 내 콘텐츠 박스 스타일을 페이지에 맞게 조정 */
             .content-box {
                 width: 100%;
                 height: 100%;
@@ -165,19 +155,17 @@
                 border-radius: 0;
                 box-shadow: none;
                 border: none;
-                padding: 3rem; /* 콘텐츠와 페이지 가장자리 사이의 여백 */
+                padding: 3rem;
                 box-sizing: border-box;
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
             }
             
-            /* 장식용 가상 요소(배경 원) 숨기기 */
             .slide::before {
                 display: none;
             }
 
-            /* 모든 애니메이션 및 전환 효과 제거하여 즉시 렌더링 */
             * {
                transition: none !important;
                animation: none !important;
@@ -203,10 +191,12 @@
         </nav>
 
         <section id="title-slide" class="slide is-visible">
-            <header class="text-center">
-                <h1 class="text-5xl md:text-6xl font-black text-gray-900 mb-4">답십리교회 10년 성장 계획</h1>
-                <p class="text-xl text-gray-600 mt-2">사람을 세우고, 미래를 향하며, 세상을 섬기는 교회를 향한 로드맵</p>
-            </header>
+            <div class="content-box">
+                <header class="text-center">
+                    <h1 class="text-5xl md:text-6xl font-black text-gray-900 mb-4">답십리교회 10년 성장 계획</h1>
+                    <p class="text-xl text-gray-600 mt-2">사람을 세우고, 미래를 향하며, 세상을 섬기는 교회를 향한 로드맵</p>
+                </header>
+            </div>
         </section>
 
         <section id="detail-status" class="slide">
@@ -286,15 +276,15 @@
             <div class="content-box">
                 <h2 class="text-3xl md:text-4xl font-bold text-center text-green-800 mb-10">IV. 비전 및 핵심 사역 철학</h2>
                 <div class="space-y-8">
-                    <div class="transform transition-transform duration-300 hover:scale-105 p-4 rounded-lg">
+                    <div class="p-4 rounded-lg">
                         <h3 class="text-2xl font-bold flex items-center mb-2 text-green-900"><span class="text-4xl mr-3">🪜</span>신앙의 사다리 회복</h3>
                         <p class="text-gray-700 text-lg ml-12">졸업, 군 입대, 취업 등 생애 주기 변화로 교회를 떠나는 청년들이 안정적으로 신앙을 이어가도록 돕습니다. 이미 신앙 교육을 받은 이들이 편안하게 정착하고 즉시 교회의 '일꾼'이 될 수 있도록 문턱을 낮추는 '수평 이동'을 긍정적으로 재해석합니다.</p>
                     </div>
-                    <div class="transform transition-transform duration-300 hover:scale-105 p-4 rounded-lg">
+                    <div class="p-4 rounded-lg">
                         <h3 class="text-2xl font-bold flex items-center mb-2 text-green-900"><span class="text-4xl mr-3">🌷</span>재능을 꽃피우는 교회 (은사 중심적 사역)</h3>
                         <p class="text-gray-700 text-lg ml-12">"성도를 온전하게 하여 봉사의 일을 하게 하며 그리스도의 몸을 세우려 하심이라" (엡 4:12) 말씀에 따라, 새로운 성도의 재능을 발견하여 즉시 사역에 투입합니다. 이론 교육보다 현장 경험을 통한 빠른 성장을 지원하며, 목회자는 청년들의 주도성을 신뢰하고 필요한 자원을 과감히 투자합니다.</p>
                     </div>
-                    <div id="vision-space-trigger-detail" class="cursor-pointer transform transition-transform duration-300 hover:scale-105 p-4 rounded-lg">
+                    <div id="vision-space-trigger-detail" class="cursor-pointer p-4 rounded-lg">
                         <h3 class="text-2xl font-bold flex items-center mb-2 text-green-900"><span class="text-4xl mr-3">🏠</span>선교적 공간 활용</h3>
                         <p class="text-gray-700 text-lg ml-12">교회 공간을 단순 예배 장소를 넘어, 지역 사회와 소통하는 선교적 공간으로 재설계합니다. 1층을 카페('요한정')나 쉼터처럼 열린 공간으로 만들고, 특정 그룹이 독점하지 않는 다목적 공간으로 활용하여 관계 중심의 공동체를 지향합니다. <span class="font-bold text-green-600 underline">여기를 클릭하여 갤러리를 확인하세요.</span></p>
                     </div>
@@ -342,13 +332,13 @@
             <div class="content-box">
                 <h2 class="text-3xl md:text-4xl font-bold text-center text-amber-800 mb-10">VI. 교회 성장을 위한 세부 전략</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div class="bg-amber-50/50 p-4 rounded-lg flex items-start transform transition-transform hover:scale-105"><span class="text-3xl mr-4">📊</span><div><h3 class="font-bold text-lg">NCD 주기적 진단</h3><p class="text-sm text-gray-600">5년 주기(2025, 2029, 2034)로 NCD 진단을 실시하여, 최소치 요소를 개선하고 강점을 극대화하는 방향으로 계획을 보완합니다.</p></div></div>
-                    <div class="bg-amber-50/50 p-4 rounded-lg flex items-start transform transition-transform hover:scale-105"><span class="text-3xl mr-4">🏠</span><div><h3 class="font-bold text-lg">공간 활용 극대화 및 선교적 재설계</h3><p class="text-sm text-gray-600">교회 공간을 다목적 선교 자원으로 활용합니다. 1층을 카페, 쉼터 등 열린 공간으로 만들고, 사용자 중심의 유연한 설계를 통해 지역 사회와 교류를 확대합니다.</p></div></div>
-                    <div class="bg-amber-50/50 p-4 rounded-lg flex items-start transform transition-transform hover:scale-105"><span class="text-3xl mr-4">💡</span><div><h3 class="font-bold text-lg">재능 기반 리더십 구축</h3><p class="text-sm text-gray-600">새 성도의 재능을 즉시 사역에 투입하여 현장 중심 성장을 지원하고, 사람을 움직이는 '동원력'을 중심으로 리더를 세웁니다.</p></div></div>
-                    <div class="bg-amber-50/50 p-4 rounded-lg flex items-start transform transition-transform hover:scale-105"><span class="text-3xl mr-4">🐑</span><div><h3 class="font-bold text-lg">'잃은 양' 회복을 위한 접근</h3><p class="text-sm text-gray-600">교회를 떠난 청년들이 안정적으로 정착하도록 '신앙의 사다리'를 구축하고, 이들을 통해 주변 비신자까지 연결되는 관계 확산을 기대합니다.</p></div></div>
-                    <div class="bg-amber-50/50 p-4 rounded-lg flex items-start transform transition-transform hover:scale-105"><span class="text-3xl mr-4">🔗</span><div><h3 class="font-bold text-lg">온/오프라인 관계 강화</h3><p class="text-sm text-gray-600">디지털 매체로 일상 소통을, '같이 식사합시다' 등 오프라인 프로그램으로 깊은 관계를 형성하며, 신뢰 기반의 적극적 시도를 지속합니다.</p></div></div>
-                    <div class="bg-amber-50/50 p-4 rounded-lg flex items-start transform transition-transform hover:scale-105"><span class="text-3xl mr-4">✨</span><div><h3 class="font-bold text-lg">매력적인 예배 및 문화 조성</h3><p class="text-sm text-gray-600">젊은 세대를 고려한 속도감 있는 예배를 만들고, '작은 성공' 경험을 축적하여 '하루하루 최선을 다하는' 긍정적 공동체 문화를 만듭니다.</p></div></div>
-                    <div class="bg-amber-50/50 p-4 rounded-lg flex items-start md:col-span-2 transform transition-transform hover:scale-105"><span class="text-3xl mr-4">🚀</span><div><h3 class="font-bold text-lg">성장 모델의 확산</h3><p class="text-sm text-gray-600">교회 내부 성장을 넘어, 신규 교회를 개척하고 다른 교회에 컨설팅을 제공하는 등 교단 전체에 기여하는 것을 목표로 합니다.</p></div></div>
+                    <div class="bg-amber-50/50 p-4 rounded-lg flex items-start"><span class="text-3xl mr-4">📊</span><div><h3 class="font-bold text-lg">NCD 주기적 진단</h3><p class="text-sm text-gray-600">5년 주기(2025, 2029, 2034)로 NCD 진단을 실시하여, 최소치 요소를 개선하고 강점을 극대화하는 방향으로 계획을 보완합니다.</p></div></div>
+                    <div class="bg-amber-50/50 p-4 rounded-lg flex items-start"><span class="text-3xl mr-4">🏠</span><div><h3 class="font-bold text-lg">공간 활용 극대화 및 선교적 재설계</h3><p class="text-sm text-gray-600">교회 공간을 다목적 선교 자원으로 활용합니다. 1층을 카페, 쉼터 등 열린 공간으로 만들고, 사용자 중심의 유연한 설계를 통해 지역 사회와 교류를 확대합니다.</p></div></div>
+                    <div class="bg-amber-50/50 p-4 rounded-lg flex items-start"><span class="text-3xl mr-4">💡</span><div><h3 class="font-bold text-lg">재능 기반 리더십 구축</h3><p class="text-sm text-gray-600">새 성도의 재능을 즉시 사역에 투입하여 현장 중심 성장을 지원하고, 사람을 움직이는 '동원력'을 중심으로 리더를 세웁니다.</p></div></div>
+                    <div class="bg-amber-50/50 p-4 rounded-lg flex items-start"><span class="text-3xl mr-4">🐑</span><div><h3 class="font-bold text-lg">'잃은 양' 회복을 위한 접근</h3><p class="text-sm text-gray-600">교회를 떠난 청년들이 안정적으로 정착하도록 '신앙의 사다리'를 구축하고, 이들을 통해 주변 비신자까지 연결되는 관계 확산을 기대합니다.</p></div></div>
+                    <div class="bg-amber-50/50 p-4 rounded-lg flex items-start"><span class="text-3xl mr-4">🔗</span><div><h3 class="font-bold text-lg">온/오프라인 관계 강화</h3><p class="text-sm text-gray-600">디지털 매체로 일상 소통을, '같이 식사합시다' 등 오프라인 프로그램으로 깊은 관계를 형성하며, 신뢰 기반의 적극적 시도를 지속합니다.</p></div></div>
+                    <div class="bg-amber-50/50 p-4 rounded-lg flex items-start"><span class="text-3xl mr-4">✨</span><div><h3 class="font-bold text-lg">매력적인 예배 및 문화 조성</h3><p class="text-sm text-gray-600">젊은 세대를 고려한 속도감 있는 예배를 만들고, '작은 성공' 경험을 축적하여 '하루하루 최선을 다하는' 긍정적 공동체 문화를 만듭니다.</p></div></div>
+                    <div class="bg-amber-50/50 p-4 rounded-lg flex items-start md:col-span-2"><span class="text-3xl mr-4">🚀</span><div><h3 class="font-bold text-lg">성장 모델의 확산</h3><p class="text-sm text-gray-600">교회 내부 성장을 넘어, 신규 교회를 개척하고 다른 교회에 컨설팅을 제공하는 등 교단 전체에 기여하는 것을 목표로 합니다.</p></div></div>
                 </div>
             </div>
         </section>
@@ -387,7 +377,6 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            // --- Intersection Observer for animations ---
             const slides = document.querySelectorAll('.slide');
             const observer = new IntersectionObserver((entries, observer) => {
                 entries.forEach(entry => {
@@ -395,14 +384,12 @@
                         entry.target.classList.add('is-visible');
                     }
                 });
-            }, { threshold: 0.3 }); // Trigger when 30% of the slide is visible
+            }, { threshold: 0.3 });
 
             slides.forEach(slide => {
                 observer.observe(slide);
             });
 
-
-            // --- Chart.js ---
             const chartData = {
                 labels: ['어린이', '중고생', '20대', '30대', '40대', '50대', '60대', '70대 이상'],
                 datasets: [{
@@ -449,7 +436,6 @@
                 }
             });
             
-            // --- Navigation Links ---
             document.querySelectorAll('a.internal-link').forEach(anchor => {
                 anchor.addEventListener('click', function (e) {
                     e.preventDefault();
@@ -463,7 +449,6 @@
                 });
             });
 
-            // --- Modal Logic ---
             const modal = document.getElementById('gallery-modal');
             const backdrop = document.getElementById('modal-backdrop');
             const modalContent = modal.querySelector('.modal-content');
@@ -499,7 +484,6 @@
 
         });
 
-        // 페이지 로드 후 콘텐츠를 부드럽게 표시
         window.onload = function() {
             document.body.style.opacity = '1';
         };
