@@ -3,166 +3,262 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>답십리교회 10년 성장 계획 대시보드</title>
+    <title>답십리교회 10년 성장 계획 (Full SPA)</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
+        html {
+            scroll-behavior: smooth;
+        }
         body {
             font-family: 'Noto Sans KR', sans-serif;
             background-color: #f0f4f8;
         }
-        .chart-container {
+        .dashboard-chart-container {
             position: relative;
             height: 250px;
             width: 100%;
             max-width: 250px;
             margin: auto;
         }
+        .detail-chart-container {
+            position: relative;
+            height: 300px;
+            width: 100%;
+            max-width: 600px;
+            margin: auto;
+        }
+        .detail-section {
+            padding: 3rem 1.5rem;
+            margin-top: 2rem;
+            background-color: white;
+            border-radius: 1.5rem;
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 5px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background-color: #e2e8f0;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 5px;
+            width: 12px;
+            height: 12px;
+            border-radius: 9999px;
+            background-color: white;
+            border: 2px solid;
+        }
     </style>
 </head>
 <body class="p-4 md:p-8">
 
-    <div class="max-w-6xl mx-auto">
+    <div id="dashboard" class="max-w-6xl mx-auto">
         <header class="text-center mb-8 md:mb-12">
             <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900">답십리교회 10년 성장 계획</h1>
             <p class="text-lg text-gray-600 mt-2">사람을 세우고, 미래를 향하며, 세상을 섬기는 교회를 향한 로드맵</p>
         </header>
 
         <main class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            
-            <a href="#" id="link-status" class="block bg-white rounded-2xl shadow-lg hover:shadow-2xl hover:scale-[1.02] transition-all duration-300 p-6">
+            <a href="#detail-status" class="internal-link block bg-white rounded-2xl shadow-lg hover:shadow-2xl hover:scale-[1.02] transition-all duration-300 p-6">
                 <div class="h-full flex flex-col">
                     <h2 class="text-2xl font-bold text-center text-blue-800 mb-4">SECTION 1. 교회의 현재</h2>
                     <div class="flex-grow grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
                         <div class="space-y-3">
                             <h3 class="text-xl font-bold text-gray-800 text-center">핵심 지표</h3>
-                            <div class="flex items-center bg-blue-50 p-3 rounded-lg">
-                                <span class="text-3xl mr-3">👥</span>
-                                <div><p class="font-bold">전체 등록 교인</p><p class="text-2xl font-black text-blue-600">132명</p></div>
-                            </div>
-                            <div class="flex items-center bg-blue-50 p-3 rounded-lg">
-                                <span class="text-3xl mr-3">🙌</span>
-                                <div><p class="font-bold">대예배 출석</p><p class="text-2xl font-black text-blue-600">70-80명</p></div>
-                            </div>
-                            <div class="flex items-center bg-blue-50 p-3 rounded-lg">
-                                <span class="text-3xl mr-3">📈</span>
-                                <div><p class="font-bold">'잃은 양' 및 구도자</p><p class="text-2xl font-black text-blue-600">20-40명</p></div>
-                            </div>
+                            <div class="flex items-center bg-blue-50 p-3 rounded-lg"><span class="text-3xl mr-3">👥</span><div><p class="font-bold">전체 등록 교인</p><p class="text-2xl font-black text-blue-600">132명</p></div></div>
+                            <div class="flex items-center bg-blue-50 p-3 rounded-lg"><span class="text-3xl mr-3">🙌</span><div><p class="font-bold">대예배 출석</p><p class="text-2xl font-black text-blue-600">70-80명</p></div></div>
+                            <div class="flex items-center bg-blue-50 p-3 rounded-lg"><span class="text-3xl mr-3">📈</span><div><p class="font-bold">'잃은 양' 및 구도자</p><p class="text-2xl font-black text-blue-600">20-40명</p></div></div>
                         </div>
                         <div>
                             <h3 class="text-xl font-bold text-gray-800 text-center mb-2">세대별 구성</h3>
-                            <div class="chart-container">
-                                <canvas id="generationChart"></canvas>
-                            </div>
+                            <div class="dashboard-chart-container"><canvas id="dashboardChart"></canvas></div>
                             <p class="mt-2 text-center text-sm text-gray-600">청년층(20-30대)이 <span class="font-bold text-orange-500">57.5%</span>로 핵심 동력입니다.</p>
                         </div>
                     </div>
                 </div>
             </a>
-
-            <a href="#" id="link-vision" class="block bg-white rounded-2xl shadow-lg hover:shadow-2xl hover:scale-[1.02] transition-all duration-300 p-6">
-                <div class="h-full flex flex-col">
-                    <h2 class="text-2xl font-bold text-center text-green-800 mb-6">SECTION 2. 핵심 비전과 철학</h2>
+            <a href="#detail-vision" class="internal-link block bg-white rounded-2xl shadow-lg hover:shadow-2xl hover:scale-[1.02] transition-all duration-300 p-6">
+                <div class="h-full flex flex-col"><h2 class="text-2xl font-bold text-center text-green-800 mb-6">SECTION 2. 핵심 비전과 철학</h2>
                     <div class="flex-grow flex flex-col justify-center space-y-4">
-                        <div class="bg-green-50 p-4 rounded-lg border-l-4 border-green-500">
-                            <h3 class="text-lg font-bold text-green-900 flex items-center"><span class="text-3xl mr-3">🪜</span>신앙의 사다리 회복</h3>
-                            <p class="text-gray-600 mt-1 text-sm">청년들이 삶의 변화 속에서도 신앙을 이어가도록 돕습니다.</p>
-                        </div>
-                        <div class="bg-green-50 p-4 rounded-lg border-l-4 border-green-500">
-                            <h3 class="text-lg font-bold text-green-900 flex items-center"><span class="text-3xl mr-3">🌷</span>재능을 꽃피우는 교회</h3>
-                            <p class="text-gray-600 mt-1 text-sm">모든 성도의 재능을 발견하고 사역을 통해 성장시킵니다.</p>
-                        </div>
-                        <div class="bg-green-50 p-4 rounded-lg border-l-4 border-green-500">
-                            <h3 class="text-lg font-bold text-green-900 flex items-center"><span class="text-3xl mr-3">🏠</span>선교적 공간 활용</h3>
-                            <p class="text-gray-600 mt-1 text-sm">교회 공간을 지역 사회와 소통하는 선교의 장으로 만듭니다.</p>
-                        </div>
+                        <div class="bg-green-50 p-4 rounded-lg border-l-4 border-green-500"><h3 class="text-lg font-bold text-green-900 flex items-center"><span class="text-3xl mr-3">🪜</span>신앙의 사다리 회복</h3><p class="text-gray-600 mt-1 text-sm">청년들이 삶의 변화 속에서도 신앙을 이어가도록 돕습니다.</p></div>
+                        <div class="bg-green-50 p-4 rounded-lg border-l-4 border-green-500"><h3 class="text-lg font-bold text-green-900 flex items-center"><span class="text-3xl mr-3">🌷</span>재능을 꽃피우는 교회</h3><p class="text-gray-600 mt-1 text-sm">모든 성도의 재능을 발견하고 사역을 통해 성장시킵니다.</p></div>
+                        <div class="bg-green-50 p-4 rounded-lg border-l-4 border-green-500"><h3 class="text-lg font-bold text-green-900 flex items-center"><span class="text-3xl mr-3">🏠</span>선교적 공간 활용</h3><p class="text-gray-600 mt-1 text-sm">교회 공간을 지역 사회와 소통하는 선교의 장으로 만듭니다.</p></div>
                     </div>
                 </div>
             </a>
-            
-            <a href="#" id="link-roadmap" class="block lg:col-span-2 bg-white rounded-2xl shadow-lg hover:shadow-2xl hover:scale-[1.01] transition-all duration-300 p-6">
-                 <div class="h-full flex flex-col">
-                    <h2 class="text-2xl font-bold text-center text-purple-800 mb-4">SECTION 3. 10년 성장 로드맵</h2>
-                    <div class="text-center bg-slate-100 p-3 rounded-lg mb-6">
-                         <p class="italic text-gray-800">"우리가 더하기 법에 따라 작은 일에 충실하면 하나님께서는 곱하기 법에 따라 역사하실 것이다." <span class="text-sm not-italic font-semibold">(실물, 360)</span></p>
-                    </div>
+            <a href="#detail-roadmap" class="internal-link block lg:col-span-2 bg-white rounded-2xl shadow-lg hover:shadow-2xl hover:scale-[1.01] transition-all duration-300 p-6">
+                 <div class="h-full flex flex-col"><h2 class="text-2xl font-bold text-center text-purple-800 mb-4">SECTION 3. 10년 성장 로드맵</h2>
+                    <div class="text-center bg-slate-100 p-3 rounded-lg mb-6"><p class="italic text-gray-800">"우리가 더하기 법에 따라 작은 일에 충실하면 하나님께서는 곱하기 법에 따라 역사하실 것이다." <span class="text-sm not-italic font-semibold">(실물, 360)</span></p></div>
                     <div class="flex-grow grid grid-cols-1 md:grid-cols-3 gap-6">
-                        <div class="bg-purple-50 p-4 rounded-lg border-t-4 border-purple-300 text-center">
-                            <h3 class="text-xl font-black text-purple-600">Phase 1</h3>
-                            <p class="font-bold text-lg text-gray-800 mb-2">기반 구축기 <span class="font-light text-sm">(25-27)</span></p>
-                            <p class="text-sm text-gray-600">교회 내실을 다지고 성장 사역의 기반을 설계하는 시기</p>
-                        </div>
-                        <div class="bg-purple-50 p-4 rounded-lg border-t-4 border-purple-400 text-center">
-                            <h3 class="text-xl font-black text-purple-700">Phase 2</h3>
-                            <p class="font-bold text-lg text-gray-800 mb-2">사역 확장기 <span class="font-light text-sm">(28-31)</span></p>
-                            <p class="text-sm text-gray-600">지역사회와 글로벌 선교로 영향력을 넓히는 단계</p>
-                        </div>
-                        <div class="bg-purple-50 p-4 rounded-lg border-t-4 border-purple-500 text-center">
-                            <h3 class="text-xl font-black text-purple-800">Phase 3</h3>
-                            <p class="font-bold text-lg text-gray-800 mb-2">자립 및 확산기 <span class="font-light text-sm">(32-34)</span></p>
-                            <p class="text-sm text-gray-600">성공 모델을 전수하며 교단 전체에 기여하는 시기</p>
-                        </div>
+                        <div class="bg-purple-50 p-4 rounded-lg border-t-4 border-purple-300 text-center"><h3 class="text-xl font-black text-purple-600">Phase 1</h3><p class="font-bold text-lg text-gray-800 mb-2">기반 구축기 <span class="font-light text-sm">(2025-2027)</span></p><p class="text-sm text-gray-600">교회 내실을 다지고 성장 사역의 기반을 설계하는 시기</p></div>
+                        <div class="bg-purple-50 p-4 rounded-lg border-t-4 border-purple-400 text-center"><h3 class="text-xl font-black text-purple-700">Phase 2</h3><p class="font-bold text-lg text-gray-800 mb-2">사역 확장기 <span class="font-light text-sm">(2028-2031)</span></p><p class="text-sm text-gray-600">지역사회와 글로벌 선교로 영향력을 넓히는 단계</p></div>
+                        <div class="bg-purple-50 p-4 rounded-lg border-t-4 border-purple-500 text-center"><h3 class="text-xl font-black text-purple-800">Phase 3</h3><p class="font-bold text-lg text-gray-800 mb-2">자립 및 확산기 <span class="font-light text-sm">(2032-2034)</span></p><p class="text-sm text-gray-600">성공 모델을 전수하며 교단 전체에 기여하는 시기</p></div>
                     </div>
                  </div>
             </a>
-
         </main>
-        
-        <footer class="text-center mt-12">
-            <p class="text-sm text-gray-500">3팀(정찬희, 장건우, 한은진)의 기획안을 바탕으로 제작되었습니다.</p>
-        </footer>
     </div>
+
+    <div id="detail-status" class="max-w-6xl mx-auto detail-section">
+        <h2 class="text-3xl font-bold text-center text-blue-800 mb-8">교회 현황 상세 분석</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div>
+                <h3 class="text-2xl font-bold mb-4">교회 핵심 지표</h3>
+                <table class="w-full text-left">
+                    <tbody>
+                        <tr class="border-b"><td class="py-2 font-semibold">교회명</td><td class="py-2">제칠일안식일예수재림교 답십리교회</td></tr>
+                        <tr class="border-b"><td class="py-2 font-semibold">위치</td><td class="py-2">서울시 동대문구 답십리로 28길 38</td></tr>
+                        <tr class="border-b"><td class="py-2 font-semibold">목회자</td><td class="py-2">담임목사 류대근, 전도사 임다비</td></tr>
+                        <tr class="border-b"><td class="py-2 font-semibold">재직 현황</td><td class="py-2">장로 9, 남집사 16, 여집사 31</td></tr>
+                        <tr class="border-b"><td class="py-2 font-semibold">예배 출석</td><td class="py-2">안교 50, 대예배 70-80</td></tr>
+                        <tr class="border-b"><td class="py-2 font-semibold">재정 현황</td><td class="py-2">연간 십일금 약 1.3 ~ 1.5억 원</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <div>
+                <h3 class="text-2xl font-bold mb-4">세대별 구성 심층 분석</h3>
+                <div class="detail-chart-container"><canvas id="detailChart"></canvas></div>
+            </div>
+        </div>
+        <div class="text-center mt-12"><a href="#dashboard" class="internal-link inline-block bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-2 px-6 rounded-full">대시보드로 돌아가기</a></div>
+    </div>
+
+    <div id="detail-vision" class="max-w-6xl mx-auto detail-section">
+        <h2 class="text-3xl font-bold text-center text-green-800 mb-8">핵심 비전과 철학</h2>
+        <div class="space-y-8">
+            <div>
+                <h3 class="text-2xl font-bold flex items-center mb-2"><span class="text-4xl mr-3">🪜</span>신앙의 사다리 회복</h3>
+                <p class="text-gray-600">졸업, 군 입대, 취업 등 생애 주기 변화로 교회를 떠나는 청년들이 안정적으로 신앙을 이어가도록 돕습니다. 이미 신앙 교육을 받은 이들이 편안하게 정착하고 즉시 교회의 '일꾼'이 될 수 있도록 문턱을 낮추는 '수평 이동'을 긍정적으로 재해석합니다.</p>
+            </div>
+            <div>
+                <h3 class="text-2xl font-bold flex items-center mb-2"><span class="text-4xl mr-3">🌷</span>재능을 꽃피우는 교회</h3>
+                <p class="text-gray-600">"성도를 온전하게 하여 봉사의 일을 하게 하며 그리스도의 몸을 세우려 하심이라" (엡 4:12) 말씀에 따라, 새로운 성도의 재능을 발견하여 즉시 사역에 투입합니다. 이론 교육보다 현장 경험을 통한 빠른 성장을 지원하며, 목회자는 청년들의 주도성을 신뢰하고 필요한 자원을 과감히 투자합니다.</p>
+            </div>
+            <div>
+                <h3 class="text-2xl font-bold flex items-center mb-2"><span class="text-4xl mr-3">🏠</span>선교적 공간 활용</h3>
+                <p class="text-gray-600">교회 공간을 단순 예배 장소를 넘어, 지역 사회와 소통하는 선교적 공간으로 재설계합니다. 1층을 카페('요한정')나 쉼터처럼 열린 공간으로 만들고, 특정 그룹이 독점하지 않는 다목적 공간으로 활용하여 관계 중심의 공동체를 지향합니다.</p>
+            </div>
+        </div>
+        <div class="text-center mt-12"><a href="#dashboard" class="internal-link inline-block bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-2 px-6 rounded-full">대시보드로 돌아가기</a></div>
+    </div>
+
+    <div id="detail-roadmap" class="max-w-6xl mx-auto detail-section">
+        <h2 class="text-3xl font-bold text-center text-purple-800 mb-8">10년 성장 로드맵 상세 계획</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="bg-slate-50 p-6 rounded-lg">
+                <h3 class="text-2xl font-black text-purple-600 mb-3">Phase 1 (2025-2027)<br><span class="text-xl font-bold text-gray-700">기반 구축기</span></h3>
+                <div class="relative pl-4 timeline border-purple-600">
+                    <div class="relative mb-4 timeline-item"><p class="font-bold">2025</p><p class="text-sm">NCD 진단, 유튜브 정비, 1층 공간화</p></div>
+                    <div class="relative mb-4 timeline-item"><p class="font-bold">2026</p><p class="text-sm">은사별 사역팀 구성, 세대교제 프로그램</p></div>
+                    <div class="relative timeline-item"><p class="font-bold">2027</p><p class="text-sm">청년 소그룹(4개), 장년-청년 멘토링</p></div>
+                </div>
+            </div>
+            <div class="bg-slate-50 p-6 rounded-lg">
+                <h3 class="text-2xl font-black text-purple-700 mb-3">Phase 2 (2028-2031)<br><span class="text-xl font-bold text-gray-700">사역 확장기</span></h3>
+                <div class="relative pl-4 timeline border-purple-700">
+                    <div class="relative mb-4 timeline-item"><p class="font-bold">2028</p><p class="text-sm">국내 봉사단, 지역사회 사역</p></div>
+                    <div class="relative mb-4 timeline-item"><p class="font-bold">2029</p><p class="text-sm">해외 단기선교, 리더 양성 시작</p></div>
+                    <div class="relative mb-4 timeline-item"><p class="font-bold">2030</p><p class="text-sm">세대별 소그룹 정규화, 주중 커뮤니티 센터</p></div>
+                    <div class="relative timeline-item"><p class="font-bold">2031</p><p class="text-sm">'교회 일꾼 학교' 개설, 교회 개척 기획</p></div>
+                </div>
+            </div>
+            <div class="bg-slate-50 p-6 rounded-lg">
+                <h3 class="text-2xl font-black text-purple-800 mb-3">Phase 3 (2032-2034)<br><span class="text-xl font-bold text-gray-700">자립 및 확산기</span></h3>
+                <div class="relative pl-4 timeline border-purple-800">
+                    <div class="relative mb-4 timeline-item"><p class="font-bold">2032</p><p class="text-sm">성장 모델 매뉴얼 제작, 외부 컨설팅</p></div>
+                    <div class="relative mb-4 timeline-item"><p class="font-bold">2033</p><p class="text-sm">신규 교회 건설 시작, 리더십 컨퍼런스</p></div>
+                    <div class="relative timeline-item"><p class="font-bold">2034</p><p class="text-sm">신규 교회 완공, 성장 모델 발표/전수</p></div>
+                </div>
+            </div>
+        </div>
+        <div class="text-center mt-12"><a href="#dashboard" class="internal-link inline-block bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-2 px-6 rounded-full">대시보드로 돌아가기</a></div>
+    </div>
+
+    <footer class="text-center my-12">
+        <p class="text-sm text-gray-500">3팀(정찬희, 장건우, 한은진)의 기획안을 바탕으로 제작되었습니다.</p>
+    </footer>
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            const generationData = {
+            const chartData = {
                 labels: ['어린이', '중고생', '20대', '30대', '40대', '50대', '60대', '70대 이상'],
                 datasets: [{
                     label: '세대별 교인 수',
                     data: [5, 2, 52, 24, 9, 13, 9, 18],
-                    backgroundColor: [
-                        '#FFC107', '#8BC34A', '#FF5722', '#F44336',
-                        '#9C27B0', '#3F51B5', '#03A9F4', '#607D8B'
-                    ],
+                    backgroundColor: ['#FFC107', '#8BC34A', '#FF5722', '#F44336', '#9C27B0', '#3F51B5', '#03A9F4', '#607D8B'],
                     borderColor: '#FFFFFF',
                     borderWidth: 2,
                     hoverOffset: 4
                 }]
             };
 
-            const generationConfig = {
+            const tooltipCallback = {
+                plugins: {
+                    tooltip: {
+                        callbacks: {
+                            title: function(tooltipItems) {
+                                const item = tooltipItems[0];
+                                let label = item.chart.data.labels[item.dataIndex];
+                                return Array.isArray(label) ? label.join(' ') : label;
+                            }
+                        }
+                    }
+                }
+            };
+
+            const dashboardCtx = document.getElementById('dashboardChart').getContext('2d');
+            new Chart(dashboardCtx, {
                 type: 'doughnut',
-                data: generationData,
+                data: chartData,
                 options: {
                     responsive: true,
                     maintainAspectRatio: false,
-                    plugins: {
-                        legend: {
-                           display: false
-                        },
-                        tooltip: {
-                            callbacks: {
-                                title: function(tooltipItems) {
-                                    const item = tooltipItems[0];
-                                    let label = item.chart.data.labels[item.dataIndex];
-                                    if (Array.isArray(label)) {
-                                      return label.join(' ');
-                                    } else {
-                                      return label;
-                                    }
-                                }
-                            }
-                        }
-                    },
+                    plugins: { ...tooltipCallback.plugins, legend: { display: false } },
                     cutout: '60%',
                 }
-            };
+            });
+
+            const detailCtx = document.getElementById('detailChart').getContext('2d');
+            new Chart(detailCtx, {
+                type: 'bar',
+                data: chartData,
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    indexAxis: 'y',
+                    plugins: {
+                        ...tooltipCallback.plugins,
+                        legend: { display: false },
+                        title: { display: true, text: '세대별 교인 수 (명)' }
+                    },
+                    scales: {
+                        x: { beginAtZero: true }
+                    }
+                }
+            });
             
-            const ctx = document.getElementById('generationChart').getContext('2d');
-            new Chart(ctx, generationConfig);
+            document.querySelectorAll('a.internal-link').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
         });
     </script>
 </body>
