@@ -72,12 +72,12 @@
         * ▼▼▼ 인쇄 문제 해결을 위한 최종 CSS 코드 블록 ▼▼▼
         */
        @media print {
-            /* 인쇄 불필요 요소 숨기기 */
+            /* 인쇄 불필요 요소 숨기기 (목차, 푸터, 모달 등) */
             #toc, footer, #gallery-modal, .slide::before {
                 display: none !important;
             }
 
-            /* 프레젠테이션 페이지 설정 (A4 가로 비율과 유사한 16:9 비율 유지) */
+            /* 프레젠테이션 페이지 설정 (16:9 비율 유지) */
             @page {
                 size: 16in 9in;
                 margin: 0;
@@ -95,7 +95,7 @@
                 overflow: visible !important;
             }
             
-            /* 모든 슬라이드의 위치와 크기를 명확하게 재정의 */
+            /* 모든 슬라이드를 한 페이지로 명확하게 재정의 (모든 슬라이드가 보이게 하는 핵심) */
             .slide {
                 width: 100% !important;
                 height: 100% !important; /* 페이지 높이에 꽉 채움 */
@@ -104,11 +104,11 @@
                 padding: 0 !important;
                 overflow: hidden !important;
                 display: flex !important;
-                align-items: stretch !important; /* 자식 요소가 전체 높이를 차지하도록 */
-                justify-content: stretch !important; /* 자식 요소가 전체 너비를 차지하도록 */
-                page-break-after: always;
-                page-break-inside: avoid;
-                border-bottom: none; /* 화면용 구분선 제거 */
+                align-items: stretch !important;
+                justify-content: stretch !important;
+                page-break-after: always; /* 각 슬라이드 후 페이지 나누기 */
+                page-break-inside: avoid; /* 슬라이드 내부에서 페이지 나뉘지 않게 */
+                border-bottom: none;
             }
 
             /* 마지막 슬라이드 뒤 빈 페이지 제거 */
@@ -116,13 +116,13 @@
                 page-break-after: auto;
             }
 
-            /* 콘텐츠 박스를 슬라이드 내에서 중앙 정렬되도록 설정 */
+            /* 콘텐츠 박스를 슬라이드 내에서 중앙 정렬 */
             .content-box {
                 width: 100% !important;
                 height: 100% !important;
                 max-width: none !important;
                 margin: 0 !important;
-                padding: 4rem !important; /* 충분한 안쪽 여백 */
+                padding: 4rem !important; /* 안쪽 여백 */
                 box-sizing: border-box !important;
                 border-radius: 0 !important;
                 box-shadow: none !important;
@@ -135,7 +135,6 @@
                 align-items: center !important;
             }
             
-            /* 제목 뒤에서 페이지가 나뉘지 않도록 설정 */
             h1, h2, h3, h4, h5, h6 {
                 page-break-after: avoid;
             }
