@@ -10,79 +10,30 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
-        /* 화면용 기본 스타일 (애니메이션 제거) */
-        html {
-            scroll-behavior: smooth;
-        }
-        body {
-            font-family: 'Noto Sans KR', sans-serif;
-            background: #f8fafc;
-        }
-        .detail-chart-container {
-            position: relative;
-            height: 350px;
-            width: 100%;
-            max-width: 600px;
-            margin: auto;
-        }
-        .slide {
-            min-height: 100vh;
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 2rem 1rem;
-            position: relative;
-            overflow: hidden;
-            border-bottom: 1px solid #e2e8f0;
-        }
-        .content-box {
-            padding: 3rem 2.5rem;
-            background-color: white;
-            border-radius: 1.5rem;
-            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-            width: 100%;
-            max-width: 1200px;
-            position: relative;
-            z-index: 1;
-        }
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 5px;
-            top: 0;
-            bottom: 0;
-            width: 3px;
-            background-color: #e2e8f0;
-        }
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 5px;
-            width: 14px;
-            height: 14px;
-            border-radius: 9999px;
-            background-color: white;
-            border: 3px solid;
-        }
+        /* 화면용 기본 스타일 */
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Noto Sans KR', sans-serif; background: #f8fafc; }
+        .detail-chart-container { position: relative; height: 350px; width: 100%; max-width: 600px; margin: auto; }
+        .slide { min-height: 100vh; width: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 2rem 1rem; border-bottom: 1px solid #e2e8f0; }
+        .content-box { padding: 3rem 2.5rem; background-color: white; border-radius: 1.5rem; box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1); width: 100%; max-width: 1200px; }
+        .timeline::before { content: ''; position: absolute; left: 5px; top: 0; bottom: 0; width: 3px; background-color: #e2e8f0; }
+        .timeline-item::before { content: ''; position: absolute; left: 0; top: 5px; width: 14px; height: 14px; border-radius: 9999px; background-color: white; border: 3px solid; }
 
+       /* 인쇄용 스타일 */
        @media print {
-            /* 인쇄 불필요 요소 숨기기 */
-            #toc, footer, #gallery-modal, .slide::before {
-                display: none !important;
-            }
+            /* 불필요 요소 숨기기 */
+            #toc, footer, #gallery-modal { display: none !important; }
 
-            /* 16:9 프레젠테이션 페이지 설정 */
+            /* 16:9 페이지 설정 */
             @page {
                 size: 16in 9in;
                 margin: 0;
             }
 
+            /* 기본 스타일 리셋 */
             html, body {
                 width: 100%;
-                height: auto;
+                height: 100%;
                 margin: 0;
                 padding: 0;
                 background: #ffffff;
@@ -90,20 +41,18 @@
                 print-color-adjust: exact;
                 overflow: hidden !important;
             }
-            
+
             .slide {
                 width: 100% !important;
                 height: 100% !important;
                 min-height: auto !important;
-                margin: 0 !important;
                 padding: 0 !important;
+                margin: 0 !important;
+                border: none !important;
                 overflow: hidden !important;
                 display: flex !important;
-                align-items: stretch !important;
-                justify-content: stretch !important;
                 page-break-after: always;
                 page-break-inside: avoid;
-                border: none;
             }
 
             .slide:last-of-type {
@@ -114,40 +63,56 @@
                 width: 100% !important;
                 height: 100% !important;
                 max-width: none !important;
-                margin: 0 !important;
-                box-sizing: border-box !important;
                 border-radius: 0 !important;
                 box-shadow: none !important;
                 border: none !important;
-                background-color: white !important;
+                padding: 3rem !important;
+                box-sizing: border-box !important;
                 display: flex !important;
                 flex-direction: column !important;
                 justify-content: center !important;
-                align-items: center !important; /* 수평 중앙 정렬 추가 */
-                padding: 3rem !important; /* 기본 패딩 */
+                align-items: center !important;
             }
-
-            /* --- [수정사항 2] 페이지 넘침 방지용 컴팩트 스타일 --- */
-            #detail-status .grid { gap: 1.5rem !important; }
-            #detail-status .detail-chart-container { height: 320px !important; }
-            #detail-status td { padding-top: 0.5rem !important; padding-bottom: 0.5rem !important; }
-
-            #detail-vision .space-y-8 > :not([hidden]) ~ :not([hidden]) { margin-top: 1.5rem !important; }
-            #detail-vision h3 { font-size: 1.75rem !important; }
-            #detail-vision p { font-size: 1.1rem !important; line-height: 1.6 !important; }
             
-            #detail-roadmap .grid { gap: 1.5rem !important; }
-            #detail-roadmap .mb-8 { margin-bottom: 2rem !important; }
-            #detail-roadmap h3 { font-size: 1.5rem !important; margin-bottom: 0.5rem !important; }
-            #detail-roadmap p { font-size: 0.95rem !important; }
-
-            #detail-strategy .grid { gap: 1rem !important; }
-            #detail-strategy .p-4 { padding: 0.8rem !important; }
-            #detail-strategy h3 { font-size: 1.1rem !important; margin-bottom: 0.25rem !important; }
-            #detail-strategy p { font-size: 0.95rem !important; }
-            #detail-strategy .text-3xl { font-size: 1.75rem !important; }
+            /* --- [해결] 페이지 넘침 방지 및 레이아웃 최적화 --- */
             
-            h1, h2, h3, h4, h5, h6 { page-break-after: avoid; }
+            /* [문제 2-1] 'I. 교회 현황' 페이지 넘침 방지 */
+            #detail-status .grid {
+                flex-grow: 1; /* flex-grow를 이용해 남는 공간을 채우도록 함 */
+                min-height: 0; /* flex 자식 요소의 높이 계산 오류 방지 */
+            }
+            #detail-status .grid > div {
+                display: flex;
+                flex-direction: column;
+            }
+            #detail-status h3 {
+                font-size: 1.7rem !important;
+                margin-bottom: 1rem !important;
+            }
+            #detail-status .detail-chart-container {
+                flex-grow: 1;
+                min-height: 0;
+                height: auto !important; /* 고정 높이 제거 */
+            }
+             #detail-status td {
+                padding-top: 0.4rem !important;
+                padding-bottom: 0.4rem !important;
+                font-size: 0.95em;
+            }
+            
+            /* [문제 2-2] 'IV. 비전' 페이지 넘침 방지 */
+            #detail-vision .space-y-8 {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                gap: 2rem; /* space-y-8 대신 gap 사용 */
+                flex-grow: 1;
+            }
+             #detail-vision h3 { font-size: 1.75rem !important; margin-bottom: 0.5rem !important;}
+             #detail-vision p { font-size: 1.1rem !important; line-height: 1.6; }
+             #detail-vision .space-y-8 > div { margin: 0 !important; }
+
+             h1, h2, h3, p, li, td { page-break-inside: avoid; } /* 텍스트 중간 잘림 방지 */
        }
     </style>
 </head>
@@ -180,7 +145,7 @@
         <section id="detail-status" class="slide">
             <div class="content-box">
                 <h2 class="text-3xl md:text-4xl font-bold text-center text-blue-800 mb-10">I. 교회 현황</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-stretch h-full">
                     <div>
                         <h3 class="text-2xl font-bold mb-4 text-center">교회 핵심 지표</h3>
                         <table class="w-full text-left text-base">
@@ -194,9 +159,9 @@
                             </tbody>
                         </table>
                     </div>
-                    <div>
+                    <div class="flex flex-col">
                         <h3 class="text-2xl font-bold mb-4 text-center">세대별 구성 (총 132명)</h3>
-                        <div class="detail-chart-container"><canvas id="detailChart"></canvas></div>
+                        <div class="detail-chart-container flex-grow"><canvas id="detailChart"></canvas></div>
                     </div>
                 </div>
             </div>
