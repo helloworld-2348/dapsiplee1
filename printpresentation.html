@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
-        /* 화면용 기본 스타일 (애니메이션 관련 속성 제거) */
+        /* 화면용 기본 스타일 (애니메이션 제거) */
         html {
             scroll-behavior: smooth;
         }
@@ -35,7 +35,7 @@
             padding: 2rem 1rem;
             position: relative;
             overflow: hidden;
-            border-bottom: 1px solid #e2e8f0; /* 슬라이드 구분선 */
+            border-bottom: 1px solid #e2e8f0;
         }
         .content-box {
             padding: 3rem 2.5rem;
@@ -68,9 +68,6 @@
             border: 3px solid;
         }
 
-       /**
-        * ▼▼▼ 인쇄 문제 해결을 위한 최종 CSS 코드 블록 ▼▼▼
-        */
        @media print {
             /* 인쇄 불필요 요소 숨기기 */
             #toc, footer, #gallery-modal, .slide::before {
@@ -83,7 +80,6 @@
                 margin: 0;
             }
 
-            /* HTML, Body 기본 스타일 리셋 */
             html, body {
                 width: 100%;
                 height: auto;
@@ -92,52 +88,66 @@
                 background: #ffffff;
                 -webkit-print-color-adjust: exact;
                 print-color-adjust: exact;
-                overflow: visible !important;
+                overflow: hidden !important;
             }
             
-            /* 모든 요소의 위치와 크기를 명확하게 재정의 */
             .slide {
                 width: 100% !important;
-                height: 100% !important; /* 페이지 높이에 꽉 채움 */
-                min-height: 0 !important; /* vh 단위 무효화 */
+                height: 100% !important;
+                min-height: auto !important;
                 margin: 0 !important;
                 padding: 0 !important;
                 overflow: hidden !important;
                 display: flex !important;
-                align-items: stretch !important; /* 자식 요소가 전체 높이를 차지하도록 */
-                justify-content: stretch !important; /* 자식 요소가 전체 너비를 차지하도록 */
+                align-items: stretch !important;
+                justify-content: stretch !important;
                 page-break-after: always;
                 page-break-inside: avoid;
-                border-bottom: none; /* 화면용 구분선 제거 */
+                border: none;
             }
 
-            /* 마지막 슬라이드 뒤 빈 페이지 제거 */
             .slide:last-of-type {
                 page-break-after: auto;
             }
 
-            /* 콘텐츠 박스를 슬라이드 내에서 중앙 정렬되도록 설정 */
             .content-box {
                 width: 100% !important;
                 height: 100% !important;
                 max-width: none !important;
                 margin: 0 !important;
-                padding: 4rem !important; /* 충분한 안쪽 여백 */
                 box-sizing: border-box !important;
                 border-radius: 0 !important;
                 box-shadow: none !important;
                 border: none !important;
                 background-color: white !important;
-                backdrop-filter: none !important;
                 display: flex !important;
                 flex-direction: column !important;
                 justify-content: center !important;
-                align-items: center !important;
+                align-items: center !important; /* 수평 중앙 정렬 추가 */
+                padding: 3rem !important; /* 기본 패딩 */
             }
+
+            /* --- [수정사항 2] 페이지 넘침 방지용 컴팩트 스타일 --- */
+            #detail-status .grid { gap: 1.5rem !important; }
+            #detail-status .detail-chart-container { height: 320px !important; }
+            #detail-status td { padding-top: 0.5rem !important; padding-bottom: 0.5rem !important; }
+
+            #detail-vision .space-y-8 > :not([hidden]) ~ :not([hidden]) { margin-top: 1.5rem !important; }
+            #detail-vision h3 { font-size: 1.75rem !important; }
+            #detail-vision p { font-size: 1.1rem !important; line-height: 1.6 !important; }
             
-            h1, h2, h3, h4, h5, h6 {
-                page-break-after: avoid; /* 제목 뒤에서 페이지가 나뉘지 않도록 */
-            }
+            #detail-roadmap .grid { gap: 1.5rem !important; }
+            #detail-roadmap .mb-8 { margin-bottom: 2rem !important; }
+            #detail-roadmap h3 { font-size: 1.5rem !important; margin-bottom: 0.5rem !important; }
+            #detail-roadmap p { font-size: 0.95rem !important; }
+
+            #detail-strategy .grid { gap: 1rem !important; }
+            #detail-strategy .p-4 { padding: 0.8rem !important; }
+            #detail-strategy h3 { font-size: 1.1rem !important; margin-bottom: 0.25rem !important; }
+            #detail-strategy p { font-size: 0.95rem !important; }
+            #detail-strategy .text-3xl { font-size: 1.75rem !important; }
+            
+            h1, h2, h3, h4, h5, h6 { page-break-after: avoid; }
        }
     </style>
 </head>
@@ -372,9 +382,9 @@
                 }
             };
             
-            const detailCtx = document.getElementById('detailChart').getContext('2d');
+            const detailCtx = document.getElementById('detailChart');
             if (detailCtx) {
-                new Chart(detailCtx, {
+                new Chart(detailCtx.getContext('2d'), {
                     type: 'bar',
                     data: chartData,
                     options: {
