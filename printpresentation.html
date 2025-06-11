@@ -77,7 +77,7 @@
                 display: none !important;
             }
 
-            /* 16:9 프레젠테이션 페이지 설정 */
+            /* 프레젠테이션 페이지 설정 (A4 가로 비율과 유사한 16:9 비율 유지) */
             @page {
                 size: 16in 9in;
                 margin: 0;
@@ -95,7 +95,7 @@
                 overflow: visible !important;
             }
             
-            /* 모든 요소의 위치와 크기를 명확하게 재정의 */
+            /* 모든 슬라이드의 위치와 크기를 명확하게 재정의 */
             .slide {
                 width: 100% !important;
                 height: 100% !important; /* 페이지 높이에 꽉 채움 */
@@ -135,8 +135,9 @@
                 align-items: center !important;
             }
             
+            /* 제목 뒤에서 페이지가 나뉘지 않도록 설정 */
             h1, h2, h3, h4, h5, h6 {
-                page-break-after: avoid; /* 제목 뒤에서 페이지가 나뉘지 않도록 */
+                page-break-after: avoid;
             }
        }
     </style>
