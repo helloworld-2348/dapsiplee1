@@ -17,6 +17,7 @@
         body {
             font-family: 'Noto Sans KR', sans-serif;
             background: linear-gradient(175deg, #f0f4f8 0%, #ffffff 100%);
+            /* FOUC(Flash of Unstyled Content) 방지를 위해 초기에 숨김 */
             opacity: 0;
             transition: opacity 0.5s ease-in-out;
         }
@@ -106,42 +107,43 @@
         .modal-backdrop { transition: opacity 0.3s ease; }
         .modal-content { transition: transform 0.3s ease; }
 
-       ुटmedia print {
-            /* 인쇄 시 목차(TOC), 푸터, 갤러리 팝업 숨기기 */
+       /**
+        * ▼▼▼ 인쇄 문제 해결을 위한 핵심 CSS 코드 블록 ▼▼▼
+        */
+       @media print {
+            /* 인쇄 시 목차(TOC), 푸터, 갤러리 팝업 등 불필요한 요소 숨기기 */
             #toc, footer, #gallery-modal {
                 display: none !important;
             }
 
-            /* 페이지 크기를 16:9 비율로 지정하고 여백 제거 */
+            /* 페이지 크기를 16:9 비율로 지정하고 모든 여백 제거 */
             @page {
                 size: 16in 9in;
                 margin: 0;
             }
 
-            /* 기본 HTML, Body 스타일 초기화 */
+            /* 기본 HTML, Body 스타일을 인쇄에 맞게 초기화 */
             html, body {
                 width: 100%;
                 height: 100%;
                 margin: 0;
                 padding: 0;
-                background: #ffffff;
-                -webkit-print-color-adjust: exact;
+                background: #ffffff; /* 배경색을 강제로 흰색으로 지정 */
+                -webkit-print-color-adjust: exact; /* 브라우저가 배경색과 이미지를 인쇄하도록 강제 */
                 print-color-adjust: exact;
             }
 
-            /* * ▼▼▼ 문제 해결을 위한 핵심 코드 ▼▼▼
-             * 스크롤 애니메이션으로 숨겨진 슬라이드들을 강제로 표시합니다. 
-             */
+            /* [가장 중요한 부분] 애니메이션으로 숨겨진 슬라이드들을 강제로 표시 */
             body, .slide, .content-box {
                 opacity: 1 !important;
                 transform: none !important;
                 visibility: visible !important;
             }
 
-            /* 각 슬라이드를 한 페이지에 꽉 채우도록 설정 */
+            /* 각 슬라이드를 한 페이지에 꽉 채우는 프레젠테이션 스타일로 설정 */
             .slide {
-                page-break-after: always;
-                page-break-inside: avoid;
+                page-break-after: always;  /* 각 슬라이드 다음에 페이지 나누기 */
+                page-break-inside: avoid;   /* 슬라이드 내용이 페이지 중간에 잘리지 않도록 함 */
                 width: 100%;
                 height: 100%;
                 padding: 0;
@@ -151,11 +153,11 @@
                 justify-content: center;
                 align-items: center;
                 overflow: hidden;
-                min-height: 0;
-                scroll-snap-align: none;
+                min-height: 0; /* vh 단위 오버라이드 */
+                scroll-snap-align: none; /* 스크롤 스냅 비활성화 */
             }
 
-            /* 슬라이드 내 콘텐츠 박스 스타일 조정 */
+            /* 슬라이드 내 콘텐츠 박스 스타일을 페이지에 맞게 조정 */
             .content-box {
                 width: 100%;
                 height: 100%;
@@ -163,19 +165,19 @@
                 border-radius: 0;
                 box-shadow: none;
                 border: none;
-                padding: 3rem;
+                padding: 3rem; /* 콘텐츠와 페이지 가장자리 사이의 여백 */
                 box-sizing: border-box;
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
             }
             
-            /* 장식용 가상 요소 숨기기 */
+            /* 장식용 가상 요소(배경 원) 숨기기 */
             .slide::before {
                 display: none;
             }
 
-            /* 애니메이션 및 전환 효과 제거 */
+            /* 모든 애니메이션 및 전환 효과 제거하여 즉시 렌더링 */
             * {
                transition: none !important;
                animation: none !important;
@@ -202,8 +204,8 @@
 
         <section id="title-slide" class="slide is-visible">
             <header class="text-center">
-                <h1 class="text-5xl md:text-6xl font-black text-gray-900 mb-4 animate-fade-in-down">답십리교회 10년 성장 계획</h1>
-                <p class="text-xl text-gray-600 mt-2 animate-fade-in-up">사람을 세우고, 미래를 향하며, 세상을 섬기는 교회를 향한 로드맵</p>
+                <h1 class="text-5xl md:text-6xl font-black text-gray-900 mb-4">답십리교회 10년 성장 계획</h1>
+                <p class="text-xl text-gray-600 mt-2">사람을 세우고, 미래를 향하며, 세상을 섬기는 교회를 향한 로드맵</p>
             </header>
         </section>
 
@@ -261,19 +263,19 @@
                     <div class="bg-green-50/50 p-6 rounded-lg border-l-4 border-green-500">
                         <h3 class="text-2xl font-bold mb-4 text-green-700 text-center">강점 (Strengths)</h3>
                         <ul class="space-y-4 text-base">
-                            <li class="flex items-start"><span class="mr-2 mt-1">✅</span><div class="whitespace-nowrap"><span class="font-semibold">높은 청년 비율:</span> 20-30대가 57.5%를 차지하여 교회에 활력을 제공.</div></li>
-                            <li class="flex items-start"><span class="mr-2 mt-1">✅</span><div class="whitespace-nowrap"><span class="font-semibold">'잃은 양' 사역 집중:</span> 갈 곳 없는 재림 청년들을 위한 사역에 집중.</div></li>
-                            <li class="flex items-start"><span class="mr-2 mt-1">✅</span><div class="whitespace-nowrap"><span class="font-semibold">명확한 사역 비전:</span> 사람을 세우는 데 중점을 둔 명확한 비전 보유.</div></li>
-                            <li class="flex items-start"><span class="mr-2 mt-1">✅</span><div class="whitespace-nowrap"><span class="font-semibold">성도들의 적극적 참여:</span> 청년 중심의 능동적인 사역 참여 분위기.</div></li>
+                            <li class="flex items-start"><span class="mr-2 mt-1">✅</span><div><span class="font-semibold">높은 청년 비율:</span> 20-30대가 57.5%를 차지하여 교회에 활력을 제공.</div></li>
+                            <li class="flex items-start"><span class="mr-2 mt-1">✅</span><div><span class="font-semibold">'잃은 양' 사역 집중:</span> 갈 곳 없는 재림 청년들을 위한 사역에 집중.</div></li>
+                            <li class="flex items-start"><span class="mr-2 mt-1">✅</span><div><span class="font-semibold">명확한 사역 비전:</span> 사람을 세우는 데 중점을 둔 명확한 비전 보유.</div></li>
+                            <li class="flex items-start"><span class="mr-2 mt-1">✅</span><div><span class="font-semibold">성도들의 적극적 참여:</span> 청년 중심의 능동적인 사역 참여 분위기.</div></li>
                         </ul>
                     </div>
                     <div class="bg-red-50/50 p-6 rounded-lg border-l-4 border-red-500">
                         <h3 class="text-2xl font-bold mb-4 text-red-700 text-center">개선 및 발전 과제</h3>
                         <ul class="space-y-4 text-base">
-                            <li class="flex items-start"><span class="mr-2 mt-1">🛠️</span><div class="whitespace-nowrap"><span class="font-semibold">지리/교통의 불리함 극복:</span> 위치적 약점을 상쇄할 매력적인 콘텐츠 강화.</div></li>
-                            <li class="flex items-start"><span class="mr-2 mt-1">🛠️</span><div class="whitespace-nowrap"><span class="font-semibold">효율적인 공간 활용:</span> 비효율적인 공간 구조를 개선하고 다목적으로 활용.</div></li>
-                            <li class="flex items-start"><span class="mr-2 mt-1">🛠️</span><div class="whitespace-nowrap"><span class="font-semibold">'신앙의 사다리' 구축:</span> 청년들이 지속적으로 정착할 수 있는 시스템 마련.</div></li>
-                            <li class="flex items-start"><span class="mr-2 mt-1">🛠️</span><div class="whitespace-nowrap"><span class="font-semibold">생동감 있는 예배 구현:</span> 모든 세대가 몰입하는 감동적인 예배 경험 제공.</div></li>
+                            <li class="flex items-start"><span class="mr-2 mt-1">🛠️</span><div><span class="font-semibold">지리/교통의 불리함 극복:</span> 위치적 약점을 상쇄할 매력적인 콘텐츠 강화.</div></li>
+                            <li class="flex items-start"><span class="mr-2 mt-1">🛠️</span><div><span class="font-semibold">효율적인 공간 활용:</span> 비효율적인 공간 구조를 개선하고 다목적으로 활용.</div></li>
+                            <li class="flex items-start"><span class="mr-2 mt-1">🛠️</span><div><span class="font-semibold">'신앙의 사다리' 구축:</span> 청년들이 지속적으로 정착할 수 있는 시스템 마련.</div></li>
+                            <li class="flex items-start"><span class="mr-2 mt-1">🛠️</span><div><span class="font-semibold">생동감 있는 예배 구현:</span> 모든 세대가 몰입하는 감동적인 예배 경험 제공.</div></li>
                         </ul>
                     </div>
                 </div>
@@ -497,6 +499,7 @@
 
         });
 
+        // 페이지 로드 후 콘텐츠를 부드럽게 표시
         window.onload = function() {
             document.body.style.opacity = '1';
         };
